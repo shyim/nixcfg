@@ -10,7 +10,6 @@
                 "net.ipv6.conf.all.disable_ipv6=0"
             ];
             image = "lscr.io/linuxserver/wireguard";
-            env_file = "/srv/docker/wakapi/.db.env";
             volumes = ["/srv/docker/wireguard/:/config"];
         };
     };
