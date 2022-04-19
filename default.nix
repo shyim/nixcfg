@@ -12,6 +12,10 @@
         ./docker
     ];
 
+
+    boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.cleanTmpDir = true;
+
     networking.hostName = "aelia";
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";
