@@ -15,6 +15,7 @@
 
         shellAliases = {
             nano = "nvim";
+            vi = "nvim";
             vim = "nvim";
             cat = "bat";
             ls = "lsd";
