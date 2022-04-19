@@ -8,6 +8,7 @@
         ./services.nix
         ./security.nix
         ./shell.nix
+        ./backup.nix
         ./docker
     ];
 
