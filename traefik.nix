@@ -39,4 +39,6 @@
       web-redirect.redirectScheme.scheme = "https";
     };
   };
+
+  systemd.services.traefik.serviceConfig.EnvironmentFile = "/srv/traefik/.env";
 }
