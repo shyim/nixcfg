@@ -10,8 +10,10 @@
         ./shell.nix
         ./backup.nix
         ./docker
+        ./screego.nix
     ];
 
+    nixpkgs.overlays = import ./overlays;
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.cleanTmpDir = true;

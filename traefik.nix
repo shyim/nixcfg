@@ -38,6 +38,7 @@
     http.middlewares = {
       web-redirect.redirectScheme.scheme = "https";
     };
+    http.services = {};
   };
 
   systemd.services.traefik.serviceConfig.EnvironmentFile = "/srv/traefik/.env";
