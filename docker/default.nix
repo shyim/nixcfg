@@ -8,5 +8,6 @@
         ./n8n.nix
         ./switch.nix
         ./wireguard.nix
+        ./tanoshi.nix
     ];
 }
