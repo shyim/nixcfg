@@ -4,7 +4,8 @@
     systemd.timers.restic-backup = {
         wantedBy = [ "timers.target" ];
         timerConfig.Unit = "restic-backup.service";
-        timerConfig.OnCalendar = "*-*-* */12:00:00"; # all 12 hours
+        timerConfig.OnBootSec = "12h";
+	timerConfig.OnUnitActiveSec = "12h";
     };
 
     systemd.services.restic-backup = {
