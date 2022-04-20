@@ -9,5 +9,6 @@
         ./switch.nix
         ./wireguard.nix
         ./tanoshi.nix
+        ./qodana.nix
     ];
 }
