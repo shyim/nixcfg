@@ -19,6 +19,7 @@
     boot.cleanTmpDir = true;
 
     networking.hostName = "aelia";
+    networking.domain = "shyim.de";
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";
 }

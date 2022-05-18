@@ -10,5 +10,6 @@
         ./wireguard.nix
         ./tanoshi.nix
         ./qodana.nix
+        ./thelounge.nix
     ];
 }

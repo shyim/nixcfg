@@ -15,5 +15,6 @@
         serviceConfig.User = "root";
 
         serviceConfig.ExecStart = "${pkgs.restic}/bin/restic backup /srv /root";
+	serviceConfig.ExecStartPost = "${pkgs.restic}/bin/restic forget --keep-monthly 12 --keep-within 14d --prune";
     };
 }
