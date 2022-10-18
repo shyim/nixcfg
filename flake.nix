@@ -24,8 +24,6 @@
           imports = [
             ./helia
           ];
-
-          deployment.buildOnTarget = true;
         };
       };
 
