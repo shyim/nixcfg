@@ -8,5 +8,6 @@
         psmisc # killall
         unzip
         tmux
+	rclone 
     ];
 }
