@@ -8,9 +8,11 @@
         ./services.nix
         ./security.nix
         ./shell.nix
-        ./backup.nix
         ./docker
         ./screego.nix
+        ./tailscale.nix
+        ./switch.nix
+        ./rclone.nix
     ];
 
     nixpkgs.overlays = import ./overlays;
@@ -18,8 +20,12 @@
     boot.kernelPackages = pkgs.linuxPackages_latest;
     boot.cleanTmpDir = true;
 
-    networking.hostName = "aelia";
-    networking.domain = "shyim.de";
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";
+
+    virtualisation.docker.daemon.settings = {
+    	fixed-cidr-v6 = "fd00::/80";
+  	ipv6 = true;
+	live-restore = true;
+    };
 }
