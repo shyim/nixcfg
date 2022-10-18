@@ -1,0 +1,17 @@
+name: Colmena
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Nix
+        uses: cachix/install-nix-action@v18
+      - name: Build config
+        run: |
+          nix develop
+          colmena build
