@@ -20,10 +20,12 @@
           time.timeZone = "Europe/Berlin";
         };
 
-        helia = { name, nodes, pkgs, ... }: {
+        "helia.shyim.de" = { name, nodes, pkgs, ... }: {
           imports = [
-            ./aelia
+            ./helia
           ];
+
+          deployment.buildOnTarget = true;
         };
       };
 
