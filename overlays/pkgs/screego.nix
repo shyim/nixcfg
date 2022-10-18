@@ -2,12 +2,12 @@
 
 stdenv.mkDerivation rec {
   name = "screego";
-  version = "1.6.2";
+  version = "1.7.4";
 
   src = fetchurl {
     url =
-      "https://github.com/screego/server/releases/download/v1.6.2/screego_1.6.2_linux_amd64.tar.gz";
-    sha256 = "sha256-bKAbdDoxEVi+uvGRYDfyKHg4FT6hozNoBkjiJFbUc1Y=";
+      "https://github.com/screego/server/releases/download/v1.7.4/screego_1.7.4_linux_amd64.tar.gz";
+    sha256 = "1y2kjg8pkfvj28d9yh5bzf55r324p36ssydp44zzw5gda5zrmabc";
   };
 
   nativeBuildInputs = [ makeWrapper ];

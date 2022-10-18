@@ -56,8 +56,8 @@ in {
         in {
           User = "root";
           Type = "simple";
-          ExecStart = "${pkgs.docker-compose_2}/libexec/docker/cli-plugins/docker-compose -f ${cfgFile} up --remove-orphans";
-          ExecStop = "${pkgs.docker-compose_2}/libexec/docker/cli-plugins/docker-compose -f ${cfgFile} stop";
+          ExecStart = "${pkgs.docker-compose}/libexec/docker/cli-plugins/docker-compose -f ${cfgFile} up --remove-orphans";
+          ExecStop = "${pkgs.docker-compose}/libexec/docker/cli-plugins/docker-compose -f ${cfgFile} stop";
           Restart = "on-failure";
         };
       }
