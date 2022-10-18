@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+            ssh-private-key: ${{ secrets.SSH_KEY }}
       - name: Install Nix
         uses: cachix/install-nix-action@v18
       - name: Build config
         run: |
-          nix develop -c colmena build
+          nix develop -c colmena apply
