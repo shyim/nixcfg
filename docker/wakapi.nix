@@ -10,7 +10,7 @@
 
 
         services.wakapi = {
-            image = "ghcr.io/muety/wakapi:2.3.4";
+            image = "ghcr.io/muety/wakapi:2.4.0";
             labels = [
                 "traefik.enable=true"
                 "traefik.http.routers.http-hakatime.entrypoints=web"
