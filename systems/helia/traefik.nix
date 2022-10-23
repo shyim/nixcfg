@@ -50,6 +50,4 @@
       ];
     };
   };
-
-  systemd.services.traefik.serviceConfig.EnvironmentFile = "/srv/traefik/.env";
 }
