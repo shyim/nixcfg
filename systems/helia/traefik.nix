@@ -25,14 +25,14 @@
       storage = "/srv/traefik/acme.json";
       dnsChallenge = {
         provider = "cloudflare";
-        resolvers = ["1.1.1.1:53" "1.0.0.1:53"];
+        resolvers = [ "1.1.1.1:53" "1.0.0.1:53" ];
       };
     };
   };
 
   services.traefik.dynamicConfigOptions = {
     http.middlewares = {
-      compress.compress = {};
+      compress.compress = { };
     };
 
     http.middlewares = {

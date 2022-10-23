@@ -21,7 +21,7 @@ stdenvNoCC.mkDerivation rec {
 
   nativeBuildInputs = [ makeWrapper ];
   buildInputs = [ jre_headless util-linux ];
-  patches = [./opensearch-home-fix.patch ];
+  patches = [ ./opensearch-home-fix.patch ];
 
   installPhase = ''
     mkdir -p $out

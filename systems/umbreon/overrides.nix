@@ -1,4 +1,5 @@
-self: super: let 
+self: super:
+let
 in {
   custom-php81 = super.pkgs.php81.buildEnv {
     extensions = { all, enabled }: with all; enabled ++ [ redis blackfire ];

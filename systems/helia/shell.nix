@@ -1,21 +1,21 @@
 { config, pkgs, ... }:
 
 {
-    users.defaultUserShell = pkgs.fish;
+  users.defaultUserShell = pkgs.fish;
 
-    environment = {
-        variables = {
-            EDITOR = "nvim";
-        };
-
-        shellAliases = {
-            nano = "nvim";
-            vi = "nvim";
-            vim = "nvim";
-        };
+  environment = {
+    variables = {
+      EDITOR = "nvim";
     };
 
-    programs.fish = {
-        enable = true;
+    shellAliases = {
+      nano = "nvim";
+      vi = "nvim";
+      vim = "nvim";
     };
+  };
+
+  programs.fish = {
+    enable = true;
+  };
 }

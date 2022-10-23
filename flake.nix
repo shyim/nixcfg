@@ -37,20 +37,20 @@
       };
 
       darwinConfigurations = {
-      umbreon = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./systems/umbreon
-          home-manager.darwinModules.default
-          darwin-modules.darwinModules.default
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.shyim = import ./home;
-          }
-        ];
+        umbreon = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./systems/umbreon
+            home-manager.darwinModules.default
+            darwin-modules.darwinModules.default
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.shyim = import ./home;
+            }
+          ];
+        };
       };
-    };
 
       devShell = forAllSystems (system:
         let pkgs = nixpkgsFor.${system};

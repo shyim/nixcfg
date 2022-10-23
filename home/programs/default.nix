@@ -1,8 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
-    imports = [
-        ./git
-        ./shell
-    ];
+  imports = [
+    ./git
+    ./shell
+  ];
 }

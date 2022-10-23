@@ -17,7 +17,7 @@
   services.nix-daemon.enable = true;
   nix.package = pkgs.nix;
   nix.extraOptions = ''
-      experimental-features = nix-command flakes
+    experimental-features = nix-command flakes
   '';
 
   environment.shells = [ pkgs.fish ];

@@ -1,8 +1,8 @@
-{ pkgs, lib, config,  ... }: {
+{ pkgs, lib, config, ... }: {
   services.redis.enable = true;
   services.redis.dataDir = null;
   services.redis.extraConfig = ''
-  save ""
+    save ""
   '';
 
   services.mysql.enable = true;

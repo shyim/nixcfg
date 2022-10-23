@@ -19,7 +19,7 @@
       tag.gpgsign = true;
 
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUY8rriTGw3ZcAtT6jJrsu5JAuUqi1WjFwOyWGoFZLA";
-      
+
       url = {
         "git@github.com:" = {
           insteadOf = "https://github.com/";
