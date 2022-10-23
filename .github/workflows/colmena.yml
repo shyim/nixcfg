@@ -18,6 +18,13 @@ jobs:
             ssh-private-key: ${{ secrets.SSH_KEY }}
       - name: Install Nix
         uses: cachix/install-nix-action@v18
+
+      - name: Uncrypt secrets
+        run: |
+          echo "${{ secrets.GIT_CRYPT }}" | base64 -d > keyfile
+          nix develop -c git-crypt unlock keyfile
+          rm keyfile
+
       - name: Build config
         run: |
           nix develop -c colmena apply
