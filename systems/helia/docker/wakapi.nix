@@ -4,7 +4,6 @@
     services.docker-compose.wakapi.config = {
         services.mysql = {
             image = "mysql:8.0";
-            env_file = "/srv/docker/wakapi/.db.env";
             volumes = ["/srv/docker/wakapi/db:/var/lib/mysql"];
         };
 
@@ -24,7 +23,6 @@
                 "traefik.http.routers.hakatime.tls.domains[0].main=fos.gg"
                 "traefik.http.routers.hakatime.tls.domains[0].sans=*.fos.gg"
             ];
-            env_file = "/srv/docker/wakapi/.app.env";
             volumes = ["/srv/docker/wakapi/db:/var/lib/mysql"];
         };
     };
