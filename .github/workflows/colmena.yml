@@ -24,6 +24,7 @@ jobs:
           echo "${{ secrets.GIT_CRYPT }}" | base64 -d > keyfile
           nix develop -c git-crypt unlock keyfile
           rm keyfile
+          rm .gitattributes
 
       - name: Build config
         run: |
