@@ -22,7 +22,7 @@
 
         "helia.shyim.de" = { name, nodes, pkgs, ... }: {
           imports = [
-            ./helia
+            ./systems/helia
           ];
         };
       };

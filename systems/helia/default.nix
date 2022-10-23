@@ -17,7 +17,9 @@
     ./rclone.nix
   ];
 
-  nixpkgs.overlays = import ./overlays;
+  nixpkgs.overlays = [
+    (import ../../pkgs)
+  ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.cleanTmpDir = true;
