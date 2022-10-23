@@ -16,7 +16,6 @@
         services.gamercard = {
             image = "ghcr.io/shyim/gamercard";
             healthcheck.disable = true;
-            env_file = "/srv/docker/gamercard/.env";
             labels = [
                 "traefik.enable=true"
                 "traefik.http.routers.gamercard.entrypoints=websecure"

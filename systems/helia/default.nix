@@ -15,6 +15,7 @@
     ./tailscale.nix
     ./switch.nix
     ./rclone.nix
+    ./secrets
   ];
 
   nixpkgs.overlays = [
