@@ -1,12 +1,16 @@
 name: Colmena
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+    paths:
+      - 'systems/helia/**.nix'
   workflow_dispatch:
 
 jobs:
-  build:
+  helia:
     runs-on: ubuntu-latest
+    concurrency: helia
     steps:
       - uses: actions/checkout@v3
       - uses: webfactory/ssh-agent@v0.5.4
