@@ -15,12 +15,12 @@
       vim = "nvim";
       vi = "nvim";
     };
-    loginShellInit = let awsume  = pkgs.callPackage ../../../pkgs/awsume {}; in ''
+    loginShellInit = ''
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
       export EDITOR=nvim
       set fish_greeting
 
-      alias awsume="source ${awsume}/bin/awsume.fish"
+      alias awsume="source ${pkgs.awsume}/bin/awsume.fish"
 
       function ecsexec
           if not set -q argv[1]

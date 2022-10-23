@@ -2,6 +2,8 @@
 
 {
   imports = [
-    ./home.nix
+    ./programs
   ];
+
+  home.stateVersion = "22.11";
 }

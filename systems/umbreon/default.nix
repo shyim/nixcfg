@@ -1,9 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    <home-manager/nix-darwin>
-    <nix-darwin-modules>
-
     ./packages.nix
     ./services.nix
     ./secrets.nix
@@ -27,6 +24,4 @@
   programs.fish.enable = true;
 
   environment.loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin";
-
-  programs.zsh.enable = true;
 }

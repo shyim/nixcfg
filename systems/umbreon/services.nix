@@ -8,6 +8,7 @@
   services.mysql.enable = true;
   services.mysql.extraOptions = ''
     sql-require-primary-key=ON
+    sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION"
   '';
   services.mysql.extraClientOptions = ''
     user=root
@@ -19,8 +20,6 @@
     home = "/Users/shyim";
   };
 
-  home-manager.users.shyim = import ./home;
-
   services.blackfire.enable = true;
 
   services.phpfpm.pools.php81 = {
@@ -29,9 +28,9 @@
       "pm" = "dynamic";
       "pm.max_children" = 32;
       "pm.max_requests" = 500;
-      "pm.start_servers" = 2;
-      "pm.min_spare_servers" = 2;
-      "pm.max_spare_servers" = 5;
+      "pm.start_servers" = 10;
+      "pm.min_spare_servers" = 10;
+      "pm.max_spare_servers" = 32;
       "php_admin_value[error_log]" = "stderr";
       "php_admin_flag[log_errors]" = true;
       "catch_workers_output" = true;
@@ -69,5 +68,5 @@
   };
 
   services.elasticsearch.enable = true;
-  services.elasticsearch.package = pkgs.callPackage ./pkgs/opensearch {};
+  services.elasticsearch.package = pkgs.opensearch;
 }
