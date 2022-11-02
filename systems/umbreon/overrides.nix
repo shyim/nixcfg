@@ -1,9 +1,6 @@
 self: super:
 let
-in {
-  custom-php81 = super.pkgs.php81.buildEnv {
-    extensions = { all, enabled }: with all; enabled ++ [ redis blackfire ];
-    extraConfig = ''
+  phpIni = ''
       memory_limit = 2G
       pdo_mysql.default_socket=/tmp/mysql.sock
       mysqli.default_socket=/tmp/mysql.sock
@@ -21,5 +18,13 @@ in {
       realpath_cache_ttl=3600
       date.timezone=Europe/Berlin
     '';
+in {
+  custom-php81 = super.pkgs.php81.buildEnv {
+    extensions = { all, enabled }: with all; enabled ++ [ redis blackfire ];
+    extraConfig = phpIni;
+  };
+  custom-php81-pcov = super.pkgs.php81.buildEnv {
+    extensions = { all, enabled }: with all; enabled ++ [ redis pcov ];
+    extraConfig = phpIni;
   };
 }

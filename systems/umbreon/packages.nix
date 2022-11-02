@@ -56,5 +56,10 @@
     ripgrep
     htop
     bat
+
+    (pkgs.writeShellScriptBin "php-pcov" ''
+        exec ${pkgs.custom-php81-pcov}/bin/php "$@"
+      ''
+    )
   ];
 }
