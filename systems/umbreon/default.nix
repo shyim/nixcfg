@@ -3,7 +3,7 @@
   imports = [
     ./packages.nix
     ./services.nix
-    ./secrets.nix
+    ./secrets
   ];
 
   nixpkgs.overlays = [
