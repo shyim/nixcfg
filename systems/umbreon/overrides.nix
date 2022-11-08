@@ -20,11 +20,11 @@ let
     '';
 in {
   custom-php81 = super.pkgs.php81.buildEnv {
-    extensions = { all, enabled }: with all; enabled ++ [ redis blackfire ];
+    extensions = { all, enabled }: with all; enabled ++ [ redis amqp blackfire ];
     extraConfig = phpIni;
   };
   custom-php81-pcov = super.pkgs.php81.buildEnv {
-    extensions = { all, enabled }: with all; enabled ++ [ redis pcov ];
+    extensions = { all, enabled }: with all; enabled ++ [ redis amqp pcov ];
     extraConfig = phpIni;
   };
 }
