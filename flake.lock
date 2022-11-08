@@ -27,11 +27,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1665760862,
-        "narHash": "sha256-P/yCxxi5DhBkRhEkvVLwLm9h96gEjfGfLfCJCUiYf6E=",
+        "lastModified": 1667891828,
+        "narHash": "sha256-YyJ1kNQnbvK7ewkR+qXkhlt0T1J+rX08a8QsaVotUqs=",
         "owner": "shyim",
         "repo": "nix-darwin-modules",
-        "rev": "d5a1c5afb3949b73b4ac778057ac6eb25dc0615c",
+        "rev": "a6b6f7fce53a17d2c6a3940fbcdb2a750cc42752",
         "type": "github"
       },
       "original": {

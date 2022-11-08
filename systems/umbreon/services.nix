@@ -69,4 +69,7 @@
 
   services.elasticsearch.enable = true;
   services.elasticsearch.package = pkgs.opensearch;
+
+  services.rabbitmq.enable = true;
+  services.rabbitmq.managementPlugin.enable = true;
 }
