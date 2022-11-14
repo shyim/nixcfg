@@ -56,7 +56,8 @@
     ripgrep
     htop
     bat
-
+    symfony-cli
+    qemu
     (pkgs.writeShellScriptBin "php-pcov" ''
         exec ${pkgs.custom-php81-pcov}/bin/php "$@"
       ''
