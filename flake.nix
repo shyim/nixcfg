@@ -17,13 +17,14 @@
     devenv.url = "github:cachix/devenv/v0.2";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, home-manager, darwin, darwin-modules, phps, ... }:
+  outputs = { nixpkgs, home-manager, darwin, darwin-modules, phps, devenv, ... }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
     in
     {
+      packages = devenv.packages;
       colmena = {
         meta = {
           nixpkgs = import nixpkgs {
@@ -46,9 +47,7 @@
         umbreon = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            ./systems/umbreon {
-              phps = phps;
-            }
+            ./systems/umbreon
             home-manager.darwinModules.default
             darwin-modules.darwinModules.default
             {
