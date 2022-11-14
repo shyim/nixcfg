@@ -62,5 +62,6 @@
         exec ${pkgs.custom-php81-pcov}/bin/php "$@"
       ''
     )
+    cachix
   ];
 }

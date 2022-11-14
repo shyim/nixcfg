@@ -47,6 +47,7 @@
         umbreon = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
+            { environment.systemPackages = [ devenv.packages.aarch64-darwin.devenv ]; }
             ./systems/umbreon
             home-manager.darwinModules.default
             darwin-modules.darwinModules.default
