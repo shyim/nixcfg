@@ -20,24 +20,6 @@
     home = "/Users/shyim";
   };
 
-  services.blackfire.enable = true;
-
-  services.phpfpm.pools.php81 = {
-    phpPackage = pkgs.custom-php81;
-    settings = {
-      "pm" = "dynamic";
-      "pm.max_children" = 32;
-      "pm.max_requests" = 500;
-      "pm.start_servers" = 10;
-      "pm.min_spare_servers" = 10;
-      "pm.max_spare_servers" = 32;
-      "php_admin_value[error_log]" = "stderr";
-      "php_admin_flag[log_errors]" = true;
-      "catch_workers_output" = true;
-    };
-  };
-
-
   services.caddy.enable = true;
   services.caddy.virtualHosts."http://sw6.dev.localhost" = {
     extraConfig = ''

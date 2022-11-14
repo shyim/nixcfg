@@ -4,6 +4,7 @@
     ./packages.nix
     ./services.nix
     ./secrets
+    ./php.nix
   ];
 
   nixpkgs.overlays = [

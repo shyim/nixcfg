@@ -22,9 +22,9 @@
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
+      extraArgs = { inherit nixpkgs phps devenv; };
     in
     {
-      packages = devenv.packages;
       colmena = {
         meta = {
           nixpkgs = import nixpkgs {
@@ -45,9 +45,9 @@
 
       darwinConfigurations = {
         umbreon = darwin.lib.darwinSystem {
+          specialArgs = extraArgs;
           system = "aarch64-darwin";
           modules = [
-            { environment.systemPackages = [ devenv.packages.aarch64-darwin.devenv ]; }
             ./systems/umbreon
             home-manager.darwinModules.default
             darwin-modules.darwinModules.default

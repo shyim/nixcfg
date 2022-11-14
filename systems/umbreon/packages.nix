@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, devenv, phps, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
@@ -27,10 +27,7 @@
     htop
     jq
     tree
-    custom-php81
     tmux
-    custom-php81.packages.composer
-    custom-php81.packages.php-cs-fixer
     wget
     git-crypt
     nodejs-16_x
@@ -58,10 +55,7 @@
     bat
     symfony-cli
     qemu
-    (pkgs.writeShellScriptBin "php-pcov" ''
-        exec ${pkgs.custom-php81-pcov}/bin/php "$@"
-      ''
-    )
     cachix
+    devenv.packages.aarch64-darwin.devenv
   ];
 }
