@@ -10,8 +10,14 @@
 
     darwin-modules.url = "github:shyim/nix-darwin-modules";
     darwin-modules.inputs.nixpkgs.follows = "nixpkgs";
+
+    phps.url = "github:fossar/nix-phps";
+    phps.inputs.nixpkgs.follows = "nixpkgs";
+
+    devenv.url = "github:cachix/devenv/v0.2";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, home-manager, darwin, darwin-modules, ... }:
+  outputs = { nixpkgs, home-manager, darwin, darwin-modules, phps, ... }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
@@ -40,7 +46,9 @@
         umbreon = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            ./systems/umbreon
+            ./systems/umbreon {
+              phps = phps;
+            }
             home-manager.darwinModules.default
             darwin-modules.darwinModules.default
             {
