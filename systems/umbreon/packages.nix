@@ -46,7 +46,6 @@
     awsume
     go-jira
     colima
-    docker
     platformsh
     gh
     asciinema

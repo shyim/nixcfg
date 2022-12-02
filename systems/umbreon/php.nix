@@ -11,6 +11,7 @@ let
       display_errors = On
       error_reporting = E_ALL
       assert.active=0
+      opcache.memory_consumption=256M
       opcache.interned_strings_buffer=20
       opcache.enable_cli = 1
       zend.assertions = 0
@@ -19,12 +20,8 @@ let
       realpath_cache_ttl=3600
       date.timezone=Europe/Berlin
     '';
-    php82 = phps.packages.aarch64-darwin.php82.buildEnv {
-      extensions = { all, enabled }: with all; enabled ++ [ redis amqp ];
-      extraConfig = phpIni;
-    };
-    php82Cov = phps.packages.aarch64-darwin.php82.buildEnv {
-      extensions = { all, enabled }: with all; enabled ++ [ redis amqp ];
+    phpPkg = phps.packages.aarch64-darwin.php81.buildEnv {
+      extensions = { all, enabled }: with all; enabled ++ [ redis amqp (blackfire// { extensionName = "blackfire"; }) ];
       extraConfig = phpIni;
     };
 in
@@ -32,18 +29,14 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    php82
-    php82.packages.composer
-    (pkgs.writeShellScriptBin "php-cov" ''
-        exec ${php82Cov}/bin/php "$@"
-      ''
-    )
+    phpPkg
+    phpPkg.packages.composer
   ];
 
   services.blackfire.enable = true;
 
   services.phpfpm.pools.php81 = {
-    phpPackage = php82;
+    phpPackage = phpPkg;
     settings = {
       "pm" = "dynamic";
       "pm.max_children" = 32;

@@ -14,7 +14,7 @@
     phps.url = "github:fossar/nix-phps";
     phps.inputs.nixpkgs.follows = "nixpkgs";
 
-    devenv.url = "github:cachix/devenv/v0.2";
+    devenv.url = "github:cachix/devenv/main";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs = { nixpkgs, home-manager, darwin, darwin-modules, phps, devenv, ... }:
