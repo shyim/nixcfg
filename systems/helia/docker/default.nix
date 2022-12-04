@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./gamercard.nix
     ./wakapi.nix
     ./n8n.nix
     ./switch.nix
