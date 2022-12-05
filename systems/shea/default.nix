@@ -11,6 +11,8 @@
     ./tailscale.nix
     ./traefik.nix
     ./screego.nix
+    ./switch.nix
+    ./secrets
   ];
 
   nixpkgs.overlays = [

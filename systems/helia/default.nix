@@ -11,9 +11,6 @@
     ./security.nix
     ./shell.nix
     ./docker
-    ./tailscale.nix
-    ./switch.nix
-    ./rclone.nix
     ./secrets
   ];
 

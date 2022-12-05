@@ -8,8 +8,6 @@
     entryPoints = [ "web" ];
   };
 
-
-
   services.traefik.dynamicConfigOptions.http.routers.nut = {
     rule = "Host(`nut.shyim.de`)";
     middlewares = "compress@file";
