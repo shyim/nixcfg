@@ -18,6 +18,7 @@
 
   services.traefik.dynamicConfigOptions.http.routers.http-screego = {
     rule = "Host(`screen.fos.gg`)";
+    service = "screego";
     middlewares = "web-redirect@file";
     entryPoints = [ "web" ];
   };
