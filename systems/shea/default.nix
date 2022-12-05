@@ -9,6 +9,8 @@
     ./packages.nix
     ./shell.nix
     ./tailscale.nix
+    ./traefik.nix
+    ./screego.nix
   ];
 
   nixpkgs.overlays = [
