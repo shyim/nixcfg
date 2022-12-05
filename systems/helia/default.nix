@@ -11,7 +11,6 @@
     ./security.nix
     ./shell.nix
     ./docker
-    ./screego.nix
     ./tailscale.nix
     ./switch.nix
     ./rclone.nix
