@@ -5,6 +5,10 @@
     ./hardware-configuration.nix
     ./services.nix
     ./security.nix
+    ./networking.nix
+    ./packages.nix
+    ./shell.nix
+    ./tailscale.io
   ];
 
   nixpkgs.overlays = [
