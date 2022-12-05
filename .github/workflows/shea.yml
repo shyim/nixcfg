@@ -13,9 +13,16 @@ jobs:
     concurrency: shea
     steps:
       - uses: actions/checkout@v3
+
+      - name: Cache install Nix packages
+        uses: mtoohey31/cache-flake-attrs@v2
+        with:
+          key: ${{ runner.os }}-nix-${{ hashFiles('./flake.lock', './flake.nix') }}
+
       - uses: webfactory/ssh-agent@v0.5.4
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
+
       - name: Install Nix
         uses: cachix/install-nix-action@v18
 

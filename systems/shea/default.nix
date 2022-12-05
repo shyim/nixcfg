@@ -8,7 +8,7 @@
     ./networking.nix
     ./packages.nix
     ./shell.nix
-    ./tailscale.io
+    ./tailscale.nix
   ];
 
   nixpkgs.overlays = [
