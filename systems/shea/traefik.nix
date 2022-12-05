@@ -7,6 +7,7 @@
     api.dashboard = true;
     api.insecure = true;
     pilot.dashboard = false;
+    experimental.http3 = true;
     entryPoints = {
       web = {
         address = ":80";
