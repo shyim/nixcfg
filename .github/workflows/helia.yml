@@ -1,4 +1,4 @@
-name: Colmena
+name: Helia
 on:
   push:
     branches:
@@ -28,4 +28,4 @@ jobs:
 
       - name: Build config
         run: |
-          nix develop -c colmena apply
+          nix develop -c colmena apply --on @helia

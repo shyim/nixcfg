@@ -1,0 +1,31 @@
+name: Shea
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'systems/shea/**.nix'
+  workflow_dispatch:
+
+jobs:
+  shea:
+    runs-on: ubuntu-latest
+    concurrency: shea
+    steps:
+      - uses: actions/checkout@v3
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+            ssh-private-key: ${{ secrets.SSH_KEY }}
+      - name: Install Nix
+        uses: cachix/install-nix-action@v18
+
+      - name: Uncrypt secrets
+        run: |
+          echo "${{ secrets.GIT_CRYPT }}" | base64 -d > keyfile
+          nix develop -c git-crypt unlock keyfile
+          rm keyfile
+          rm .gitattributes
+
+      - name: Build config
+        run: |
+          nix develop -c colmena apply --on @shea

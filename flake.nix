@@ -32,13 +32,19 @@
           };
         };
 
-        defaults = { pkgs, ... }: {
-          time.timeZone = "Europe/Berlin";
-        };
-
         "helia.shyim.de" = { name, nodes, pkgs, ... }: {
+          deployment.tags = [ "helia" ];
+
           imports = [
             ./systems/helia
+          ];
+        };
+
+        "shea.shyim.de" = { name, nodes, pkgs, ... }: {
+          deployment.tags = [ "shea" ];
+
+          imports = [
+            ./systems/shea
           ];
         };
       };
