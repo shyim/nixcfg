@@ -2,7 +2,7 @@
 
 let
   version = "1.7.4";
-  soruces = {
+  sources = {
     "x86_64-linux" = fetchurl {
       url = "https://github.com/screego/server/releases/download/v1.7.4/screego_1.7.4_linux_amd64.tar.gz";
       sha256 = "1y2kjg8pkfvj28d9yh5bzf55r324p36ssydp44zzw5gda5zrmabc";
