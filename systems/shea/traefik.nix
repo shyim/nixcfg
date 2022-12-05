@@ -14,6 +14,7 @@
       };
       websecure = {
         address = ":443";
+        http3 = true;
       };
     };
     providers.docker = {
