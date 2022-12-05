@@ -67,10 +67,12 @@
         };
       };
 
-      devShell = forAllSystems (system:
+      devShells = forAllSystems (system:
         let pkgs = nixpkgsFor.${system};
-        in pkgs.mkShell {
-          buildInputs = with pkgs; [ nixpkgs-fmt colmena git-crypt ];
+        in {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [ nixpkgs-fmt colmena git-crypt ];
+          };
         });
     };
 }
