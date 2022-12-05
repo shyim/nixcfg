@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install Nix
+        uses: cachix/install-nix-action@v18
+
       - name: Cache install Nix packages
         uses: mtoohey31/cache-flake-attrs@v2
         with:
@@ -22,9 +25,6 @@ jobs:
       - uses: webfactory/ssh-agent@v0.5.4
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
-
-      - name: Install Nix
-        uses: cachix/install-nix-action@v18
 
       - name: Uncrypt secrets
         run: |
