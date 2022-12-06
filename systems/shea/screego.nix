@@ -16,30 +16,10 @@
   networking.firewall.allowedTCPPorts = [ 3478 ];
   networking.firewall.allowedUDPPorts = [ 3478 ];
 
-  services.traefik.dynamicConfigOptions.http.routers.http-screego = {
-    rule = "Host(`screen.fos.gg`)";
-    service = "screego";
-    middlewares = "web-redirect@file";
-    entryPoints = [ "web" ];
-  };
-
-  services.traefik.dynamicConfigOptions.http.routers.screego = {
-    rule = "Host(`screen.fos.gg`)";
-    middlewares = "compress@file";
-    service = "screego";
-    entryPoints = [ "websecure" ];
-    tls = {
-      certResolver = "cf";
-      domains = [
-        {
-          main = "fos.gg";
-          sans = [ "*.fos.gg" ];
-        }
-      ];
-    };
-  };
-
-  services.traefik.dynamicConfigOptions.http.services = {
-    screego.loadBalancer.servers = [{ url = "http://127.0.0.1:5050"; }];
+  services.caddy.virtualHosts."screen.fos.gg" = {
+    extraConfig = ''
+      reverse_proxy :5050
+      encode gzip
+    '';
   };
 }

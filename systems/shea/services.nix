@@ -3,6 +3,9 @@
 {
   services.openssh.enable = true;
 
+  # Caddy
+  services.caddy.enable = true;
+
   # The Lounge
   services.thelounge.enable = true;
   services.thelounge.extraConfig = {

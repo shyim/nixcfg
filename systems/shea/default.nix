@@ -10,7 +10,6 @@
     ./packages.nix
     ./shell.nix
     ./tailscale.nix
-    ./traefik.nix
     ./screego.nix
     ./switch.nix
     ./secrets
