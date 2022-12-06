@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./modules/docker-compose.nix
     ./hardware-configuration.nix
     ./networking.nix
     ./traefik.nix
@@ -10,7 +9,6 @@
     ./services.nix
     ./security.nix
     ./shell.nix
-    ./docker
     ./secrets
   ];
 
