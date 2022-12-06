@@ -2,6 +2,7 @@
 
 {
   imports = [
+   ./backup.nix
    ./rclone.nix
    ./screego.nix
    ./switch.nix
