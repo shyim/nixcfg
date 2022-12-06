@@ -10,8 +10,15 @@
   services.thelounge.enable = true;
   services.thelounge.extraConfig = {
     reverseProxy = true;
-    host = "unix:/tmp/thelounge.sock";
+    host = "unix:/var/run/thelounge/web.sock";
   };
+  systemd.services.thelounge.serviceConfig = {
+    StateDirectory = "thelounge";
+    RuntimeDirectory = "thelounge";
+    StateDirectoryMode = "0750";
+    RuntimeDirectoryMode = "0750";
+  };
+  
 
   # MySQL
   services.mysql.enable = true;
