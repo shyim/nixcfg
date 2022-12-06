@@ -5,15 +5,9 @@
     ./hardware-configuration.nix
     ./services.nix
     ./security.nix
-    ./networking.nix
-    ./packages.nix
     ./shell.nix
-    ./tailscale.nix
-    ./screego.nix
-    ./switch.nix
     ./secrets
     ./services
-    ./rclone.nix
   ];
 
   nixpkgs.overlays = [
@@ -22,6 +16,11 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.cleanTmpDir = true;
+
+  networking = {
+    hostName = "shea";
+    domain = "shyim.de";
+  };
 
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";

@@ -1,6 +1,16 @@
 { config, pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [
+    htop
+    neovim
+    git
+    psmisc # killall
+    unzip
+    tmux
+    rclone
+  ];
+
   users.defaultUserShell = pkgs.fish;
 
   environment = {
