@@ -14,6 +14,7 @@
   };
 
   systemd.services.thelounge.serviceConfig = {
+    Requires = [ "thelounge.socket" ];
     Group = "caddy";
     StateDirectory = "thelounge";
     RuntimeDirectory = "thelounge";
