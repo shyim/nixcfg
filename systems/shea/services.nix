@@ -14,23 +14,12 @@
   };
 
   systemd.services.thelounge.serviceConfig = {
-    Requires = [ "thelounge.socket" ];
     Group = "caddy";
     StateDirectory = "thelounge";
     RuntimeDirectory = "thelounge";
     StateDirectoryMode = "0770";
     RuntimeDirectoryMode = "0770";
-  };
-
-  systemd.sockets.thelounge = {
-    description = "The Lounge";
-    wantedBy = [ "sockets.target" ];
-    socketConfig = {
-      ListenStream = "/run/thelounge/web.sock";
-      SocketMode = "0770";
-      SocketUser = "thelounge";
-      SocketGroup = "caddy";
-    };
+    UMask = "0002";
   };
 
   services.caddy.virtualHosts."http://irc.shyim.de" = {
