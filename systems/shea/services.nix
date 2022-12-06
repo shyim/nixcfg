@@ -10,7 +10,7 @@
   services.thelounge.enable = true;
   services.thelounge.extraConfig = {
     reverseProxy = true;
-    host = "unix:/var/run/thelounge/web.sock";
+    host = "unix:/run/thelounge/web.sock";
   };
 
   systemd.services.thelounge.serviceConfig = {
@@ -25,7 +25,7 @@
     description = "The Lounge";
     wantedBy = [ "sockets.target" ];
     socketConfig = {
-      ListenStream = "/var/run/thelounge/web.sock";
+      ListenStream = "/run/thelounge/web.sock";
       SocketMode = "0770";
       SocketUser = "thelounge";
       SocketGroup = "caddy";
@@ -34,7 +34,7 @@
 
   services.caddy.virtualHosts."http://irc.shyim.de" = {
     extraConfig = ''
-      reverse_proxy unix/var/run/thelounge/web.sock
+      reverse_proxy unix/run/thelounge/web.sock
     '';
   };
   
