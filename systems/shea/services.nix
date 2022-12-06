@@ -21,7 +21,7 @@
 
   services.caddy.virtualHosts."http://irc.shyim.de" = {
     extraConfig = ''
-      reverse_proxy unix:/var/run/thelounge/web.sock
+      reverse_proxy unix/var/run/thelounge/web.sock
     '';
   };
   
