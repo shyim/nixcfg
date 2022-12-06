@@ -13,6 +13,7 @@
     host = "unix:/var/run/thelounge/web.sock";
   };
   systemd.services.thelounge.serviceConfig = {
+    Group = "caddy";
     StateDirectory = "thelounge";
     RuntimeDirectory = "thelounge";
     StateDirectoryMode = "0750";
