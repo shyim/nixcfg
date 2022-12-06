@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  networking.firewall.allowedTCPPorts = [ 22 80 443 ];
-  networking.firewall.allowedUDPPorts = [ 443 ];
+  # Is managed in Oracle Security List
   networking.firewall.enable = false;
 
   users.users.root.openssh.authorizedKeys.keys = [
