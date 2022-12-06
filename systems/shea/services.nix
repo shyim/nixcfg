@@ -10,18 +10,7 @@
   services.thelounge.enable = true;
   services.thelounge.extraConfig = {
     reverseProxy = true;
-    host = "unix:/run/thelounge.sock";
-  };
-
-  systemd.sockets.thelounge = {
-    description = "The Lounge Socket";
-    wantedBy = [ "sockets.target" ];
-    socketConfig = {
-      ListenStream = "/run/thelounge.sock";
-      SocketMode = "0660";
-      SocketUser = "root";
-      SocketGroup = "thelounge";
-    };
+    host = "unix:/tmp/thelounge.sock";
   };
 
   # MySQL
