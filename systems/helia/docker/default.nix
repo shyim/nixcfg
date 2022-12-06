@@ -3,6 +3,5 @@
 {
   imports = [
     ./wakapi.nix
-    ./thelounge.nix
   ];
 }

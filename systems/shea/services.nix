@@ -22,9 +22,10 @@
     UMask = "0002";
   };
 
-  services.caddy.virtualHosts."http://irc.shyim.de" = {
+  services.caddy.virtualHosts."irc.shyim.de" = {
     extraConfig = ''
       reverse_proxy unix/run/thelounge/web.sock
+      encode gzip
     '';
   };
   
