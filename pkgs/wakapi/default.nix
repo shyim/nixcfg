@@ -11,6 +11,16 @@ buildGoModule {
         sha256 = "sha256-IWTSxfpJ1zQImo6rxnSPgGte83VSRrF7Bkhv2r6KkRo=";
     };
 
+    preBuild = ''
+      substituteInPlace config/db.go \
+      --replace '@tcp(%s:%d)' "@unix(%s)"
+
+      substituteInPlace config/db.go \
+      --replace 'config.Port,' ""
+    '';
+
+    doCheck = false;
+
     vendorSha256 = "sha256-heLJ6Yl+DPj74sDvHpDgtEf9Ogpj54Kpk2Z20z2/7qw=";
 
     meta = with lib; {
