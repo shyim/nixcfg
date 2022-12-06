@@ -18,6 +18,12 @@
     StateDirectoryMode = "0750";
     RuntimeDirectoryMode = "0750";
   };
+
+  services.caddy.virtualHosts."http://irc.shyim.de" = {
+    extraConfig = ''
+      reverse_proxy unix:/var/run/thelounge/web.sock
+    '';
+  };
   
 
   # MySQL
