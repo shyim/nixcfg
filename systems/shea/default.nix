@@ -14,6 +14,7 @@
     ./screego.nix
     ./switch.nix
     ./secrets
+    ./rclone.nix
   ];
 
   nixpkgs.overlays = [
