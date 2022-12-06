@@ -32,7 +32,7 @@
           };
         };
 
-        "shea.shyim.de" = { name, nodes, pkgs, ... }: {
+        "shea.bunny-chickadee.ts.net" = { name, nodes, pkgs, ... }: {
           deployment.tags = [ "shea" ];
           deployment.buildOnTarget = true;
 
