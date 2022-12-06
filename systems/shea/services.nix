@@ -16,8 +16,8 @@
     Group = "caddy";
     StateDirectory = "thelounge";
     RuntimeDirectory = "thelounge";
-    StateDirectoryMode = "0750";
-    RuntimeDirectoryMode = "0750";
+    StateDirectoryMode = "0770";
+    RuntimeDirectoryMode = "0770";
   };
 
   services.caddy.virtualHosts."http://irc.shyim.de" = {
