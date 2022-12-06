@@ -17,19 +17,18 @@
     devenv.url = "github:cachix/devenv/main";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, home-manager, darwin, darwin-modules, phps, devenv, ... }:
+  outputs = { nixpkgs, home-manager, darwin, darwin-modules, phps, devenv, self, ... }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
-      extraArgs = { inherit nixpkgs phps devenv; };
+      extraArgs = system: { inherit nixpkgs phps devenv; myFlakePackages = self.packages.${system}; };
     in
     {
       colmena = {
         meta = {
-          nixpkgs = import nixpkgs {
-            system = "x86_64-linux";
-          };
+          nixpkgs = import nixpkgs {};
+          specialArgs = extraArgs "aarch64-linux";
         };
 
         "shea.bunny-chickadee.ts.net" = { name, nodes, pkgs, ... }: {
@@ -44,7 +43,7 @@
 
       darwinConfigurations = {
         umbreon = darwin.lib.darwinSystem {
-          specialArgs = extraArgs;
+          specialArgs = extraArgs "aarch64-darwin";
           system = "aarch64-darwin";
           modules = [
             ./systems/umbreon
@@ -65,6 +64,19 @@
           default = pkgs.mkShell {
             buildInputs = with pkgs; [ nixpkgs-fmt colmena git-crypt ];
           };
-        });
+        }
+      );
+
+      packages = forAllSystems (system:
+        let pkgs = nixpkgsFor.${system};
+        in {
+          awsume = pkgs.callPackage ./pkgs/awsume { };
+          elasticsearch8 = pkgs.callPackage ./pkgs/elasticsearch8 { };
+          openjdk = pkgs.callPackage ./pkgs/openjdk { };
+          opensearch = pkgs.callPackage ./pkgs/opensearch { };
+          screego = pkgs.callPackage ./pkgs/screego { };
+          wakapi = pkgs.callPackage ./pkgs/wakapi { };
+        }
+      );
     };
 }

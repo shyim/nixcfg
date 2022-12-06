@@ -20,8 +20,7 @@
     wantedBy = [ "timers.target" ];
     partOf = [ "restic.service" ];
     timerConfig = {
-      OnBootSec = "5min";
-      OnUnitActiveSec = "1d";
+      OnCalendar = [ "daily" ];
       Unit = "restic.service";
     };
   };

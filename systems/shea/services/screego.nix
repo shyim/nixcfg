@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, myFlakePackages, ... }:
 
 {
   systemd.services.screego = {
@@ -10,7 +10,7 @@
       SCREEGO_SERVER_ADDRESS = "127.0.0.1:5050";
       SCREEGO_CLOSE_ROOM_WHEN_OWNER_LEAVES = "false";
     };
-    serviceConfig.ExecStart = "${pkgs.screego}/bin/screego serve";
+    serviceConfig.ExecStart = "${myFlakePackages.screego}/bin/screego serve";
   };
 
   networking.firewall.allowedTCPPorts = [ 3478 ];

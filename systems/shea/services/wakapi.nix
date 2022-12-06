@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, myFlakePackages, ... }:
 
 {
   users.users.wakapi = {
@@ -23,7 +23,7 @@
       WAKAPI_DB_TYPE = "mysql";
     };
     serviceConfig = {
-      ExecStart = "${pkgs.wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
+      ExecStart = "${myFlakePackages.wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
       User = "wakapi";
       Group = "caddy";
       StateDirectory = "wakapi";
