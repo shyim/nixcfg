@@ -32,14 +32,6 @@
           };
         };
 
-        "helia.shyim.de" = { name, nodes, pkgs, ... }: {
-          deployment.tags = [ "helia" ];
-
-          imports = [
-            ./systems/helia
-          ];
-        };
-
         "shea.shyim.de" = { name, nodes, pkgs, ... }: {
           deployment.tags = [ "shea" ];
           deployment.buildOnTarget = true;
