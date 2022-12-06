@@ -71,7 +71,6 @@
         let pkgs = nixpkgsFor.${system};
         in {
           awsume = pkgs.callPackage ./pkgs/awsume { };
-          elasticsearch8 = pkgs.callPackage ./pkgs/elasticsearch8 { };
           openjdk = pkgs.callPackage ./pkgs/openjdk { };
           opensearch = pkgs.callPackage ./pkgs/opensearch { };
           screego = pkgs.callPackage ./pkgs/screego { };
