@@ -3,6 +3,7 @@
 {
   networking.firewall.allowedTCPPorts = [ 22 80 443 ];
   networking.firewall.allowedUDPPorts = [ 443 ];
+  networking.firewall.enable = false;
 
   users.users.root.openssh.authorizedKeys.keys = [
     # GitHub Action
