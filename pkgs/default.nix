@@ -4,4 +4,5 @@ self: super: {
   openjdk = super.callPackage ./openjdk { };
   opensearch = super.callPackage ./opensearch { };
   screego = super.pkgs.callPackage ./screego { };
+  wakapi = super.pkgs.callPackage ./wakapi { };
 }
