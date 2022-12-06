@@ -10,6 +10,7 @@
   services.thelounge.enable = true;
   services.thelounge.extraConfig = {
     reverseProxy = true;
+    host = "unix:/var/run/thelounge.sock";
   };
 
   # MySQL
