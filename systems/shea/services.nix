@@ -5,6 +5,11 @@
 
   # Caddy
   services.caddy.enable = true;
+  services.caddy.globalConfig = ''
+    {
+      admin off
+    }
+  '';
   
 
   # MySQL
