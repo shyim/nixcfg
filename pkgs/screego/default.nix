@@ -1,15 +1,15 @@
 { stdenv, lib, fetchurl, makeWrapper }:
 
 let
-  version = "1.7.4";
+  version = "1.8.0";
   sources = {
     "x86_64-linux" = fetchurl {
-      url = "https://github.com/screego/server/releases/download/v1.7.4/screego_1.7.4_linux_amd64.tar.gz";
+      url = "https://github.com/screego/server/releases/download/v${version}/screego_${version}_linux_amd64.tar.gz";
       sha256 = "1y2kjg8pkfvj28d9yh5bzf55r324p36ssydp44zzw5gda5zrmabc";
     };
     "aarch64-linux" = fetchurl {
-      url = "https://github.com/screego/server/releases/download/v1.7.4/screego_1.7.4_linux_arm64.tar.gz";
-      sha256 = "1dip76y9vcww7b4ypjqhn2i59pkgzpg226jg7k07jk6wl74d0axa";
+      url = "https://github.com/screego/server/releases/download/v${version}/screego_${version}_linux_arm64.tar.gz";
+      sha256 = "sha256-+EFezY6m0A9L+s+5dryXwN+BbjN0abhethMRG9jsLMo=";
     };
   };
 in stdenv.mkDerivation rec {

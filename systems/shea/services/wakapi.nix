@@ -3,7 +3,7 @@
 {
   users.users.wakapi = {
     description = "The wakapi service user";
-    group = "wakapi";
+    group = "caddy";
     isSystemUser = true;
   };
 
