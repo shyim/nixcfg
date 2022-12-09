@@ -5,7 +5,7 @@ let
   sources = {
     "x86_64-linux" = fetchurl {
       url = "https://github.com/screego/server/releases/download/v${version}/screego_${version}_linux_amd64.tar.gz";
-      sha256 = "1y2kjg8pkfvj28d9yh5bzf55r324p36ssydp44zzw5gda5zrmabc";
+      sha256 = "sha256-ya5Aj5mFqmtWqWqMimsMQKDdXkRWBO1QUdUwuAnR0dE=";
     };
     "aarch64-linux" = fetchurl {
       url = "https://github.com/screego/server/releases/download/v${version}/screego_${version}_linux_arm64.tar.gz";
