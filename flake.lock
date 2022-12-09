@@ -50,11 +50,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1670261248,
-        "narHash": "sha256-hK5S27Z1bkyRc/HIfxvWC8w0Bb4Mq4OhsboO+ZZty+4=",
+        "lastModified": 1670595126,
+        "narHash": "sha256-a29TqpEzmfkaR5dySOS8VaXZmM5WFJnuIsuAxb+vIxE=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "f574b0640ec60c729bb92fe4693956317a65ba6e",
+        "rev": "12ee6282ffc76078a49f7e0f90b067c81ee9b9c1",
         "type": "github"
       },
       "original": {
@@ -141,11 +141,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1670280307,
-        "narHash": "sha256-3x+0whP1nCz5adQMIsBA3L9fI/ABOpRUJdbw0AmxBnU=",
+        "lastModified": 1670513770,
+        "narHash": "sha256-muL74fsbGA8K8WlZSPNWddOiuBnC54kAajncX6nXrh4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2af0d07678fc15612345e0dd55337550dcf6465f",
+        "rev": "054d9e3187ca00479e8036dc0e92900a384f30fd",
         "type": "github"
       },
       "original": {
@@ -173,15 +173,18 @@
     "nix": {
       "inputs": {
         "lowdown-src": "lowdown-src",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": [
+          "devenv",
+          "nixpkgs"
+        ],
         "nixpkgs-regression": "nixpkgs-regression"
       },
       "locked": {
-        "lastModified": 1670008416,
-        "narHash": "sha256-dy196b8xJIpeOGeoERwfaKbgBP06vlOU7IuqrY2k0gU=",
+        "lastModified": 1670343089,
+        "narHash": "sha256-Cg3gniXYwyP5U314z6ZqiCHyGNj+KkP3W2ckQqz7Pz4=",
         "owner": "domenkozar",
         "repo": "nix",
-        "rev": "35625142b956c50f61921d00a6ab007955e49c64",
+        "rev": "389d4dbc3ba3dd7015df30764e861aa556afb931",
         "type": "github"
       },
       "original": {
@@ -193,16 +196,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1657693803,
-        "narHash": "sha256-G++2CJ9u0E7NNTAi9n5G8TdDmGJXcIjkJ3NF8cetQB8=",
+        "lastModified": 1670507980,
+        "narHash": "sha256-riNZa0xzM1it3pzxciwALeMs+0CsBMWIW2FqulzK8vM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "365e1b3a859281cf11b94f87231adeabbdd878a2",
+        "rev": "2787fc7d1e51404678614bf0fe92fc296746eec0",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-22.05-small",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -239,22 +242,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1670064435,
-        "narHash": "sha256-+ELoY30UN+Pl3Yn7RWRPabykwebsVK/kYE9JsIsUMxQ=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "61a8a98e6d557e6dd7ed0cdb54c3a3e3bbc5e25c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "phps": {
       "inputs": {
         "flake-compat": "flake-compat_2",
@@ -264,11 +251,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1670146539,
-        "narHash": "sha256-oMwdqVI3+gBspxTxQIP8Dzw3Nsi/JW8lGHxHUtbz5BY=",
+        "lastModified": 1670521265,
+        "narHash": "sha256-XOd/dBBr156QgPzAV8r5m/KHVWcKZdZVWb9bttf2hGA=",
         "owner": "fossar",
         "repo": "nix-phps",
-        "rev": "b6da87013fca083bed7552a4178e947f327c98f6",
+        "rev": "16874268883d2426ea0fdf143525aa1380f2cf3a",
         "type": "github"
       },
       "original": {
@@ -292,11 +279,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1670078914,
-        "narHash": "sha256-oS3/KHb+S1Hf/PSqHAs8xVmvORRL3G2N+9hvX5uP1rI=",
+        "lastModified": 1670405695,
+        "narHash": "sha256-240KGbqtLKBOfJGRgbvLjkJiIquPubpst9WMHfyHhDA=",
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "rev": "2597510df32efafda4d05f5122efe612a7a5da66",
+        "rev": "607521bec0cd1e8483b8d4ead7f23433ff19c0a6",
         "type": "github"
       },
       "original": {
@@ -311,7 +298,7 @@
         "darwin-modules": "darwin-modules",
         "devenv": "devenv",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "phps": "phps"
       }
     },
