@@ -14,17 +14,17 @@
     isSystemUser = true;
   };
 
-  systemd.services.nut = {
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      ExecStart = "/opt/nut server --socket /var/run/nut/web.sock";
-      User = "nut";
-      Group = "caddy";
-      StateDirectory = "nut";
-      RuntimeDirectory = "nut";
-      StateDirectoryMode = "0770";
-      RuntimeDirectoryMode = "0770";
-      UMask = "0002";
-    };
-  };
+  # systemd.services.nut = {
+  #   wantedBy = [ "multi-user.target" ];
+  #   serviceConfig = {
+  #     ExecStart = "/opt/nut server --socket /var/run/nut/web.sock";
+  #     User = "nut";
+  #     Group = "caddy";
+  #     StateDirectory = "nut";
+  #     RuntimeDirectory = "nut";
+  #     StateDirectoryMode = "0770";
+  #     RuntimeDirectoryMode = "0770";
+  #     UMask = "0002";
+  #   };
+  # };
 }
