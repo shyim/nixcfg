@@ -10,7 +10,7 @@
   systemd.services.screego = {
     wantedBy = [ "multi-user.target" ];
     environment = {
-      SCREEGO_EXTERNAL_IP = "138.2.153.89";
+      SCREEGO_EXTERNAL_IP = "138.2.153.89,2603:c020:800e:2300:af23:304d:7d5c:bed8";
       SCREEGO_TRUST_PROXY_HEADERS = "true";
       SCREEGO_AUTH_MODE = "none";
       SCREEGO_SERVER_ADDRESS = "unix:/run/screego/screego.sock";
