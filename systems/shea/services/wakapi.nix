@@ -9,6 +9,7 @@
 
   systemd.services.wakapi = {
     wantedBy = [ "multi-user.target" ];
+    after = [ "mysql.service" ];
     environment = {
       ENVIRONMENT = "prod";
       WAKAPI_PASSWORD_SALT = "";

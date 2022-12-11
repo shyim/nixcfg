@@ -3,6 +3,7 @@
 {
   systemd.services.rclone-restic = {
     wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
     serviceConfig.ExecStart = "${pkgs.rclone}/bin/rclone serve restic Backup:backup/shea --config /srv/rclone/rclone.conf --addr 127.0.0.1:7465";
   };
 

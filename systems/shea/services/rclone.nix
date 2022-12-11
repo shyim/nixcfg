@@ -3,6 +3,7 @@
 {
   systemd.services.rclone-private = {
     wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
     serviceConfig.ExecStart = "${pkgs.rclone}/bin/rclone serve webdav Crypt-Privat: --config /srv/rclone/rclone.conf --addr 127.0.0.1:5000 --user $RCLONE_USERNAME --pass $RCLONE_PASSWORD";
   };
 
