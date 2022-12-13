@@ -20,8 +20,6 @@
       export EDITOR=nvim
       set fish_greeting
 
-      alias awsume="source ${pkgs.awsume}/bin/awsume.fish"
-
       function ecsexec
           if not set -q argv[1]
             echo "missing version"

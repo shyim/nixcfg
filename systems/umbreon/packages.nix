@@ -22,7 +22,6 @@
     })
     minio
     redis
-    mysql80
     git
     htop
     jq
@@ -43,7 +42,6 @@
     bash
     cloudflared
     ssm-session-manager-plugin
-    awsume
     go-jira
     colima
     platformsh

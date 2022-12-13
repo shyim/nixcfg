@@ -26,27 +26,8 @@ let
     };
 in
 {
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
     phpPkg
     phpPkg.packages.composer
   ];
-
-  services.blackfire.enable = true;
-
-  services.phpfpm.pools.php81 = {
-    phpPackage = phpPkg;
-    settings = {
-      "pm" = "dynamic";
-      "pm.max_children" = 32;
-      "pm.max_requests" = 500;
-      "pm.start_servers" = 10;
-      "pm.min_spare_servers" = 10;
-      "pm.max_spare_servers" = 32;
-      "php_admin_value[error_log]" = "stderr";
-      "php_admin_flag[log_errors]" = true;
-      "catch_workers_output" = true;
-    };
-  };
 }
