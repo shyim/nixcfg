@@ -35,7 +35,7 @@
         header Connection *Upgrade*
         header Upgrade websocket
       }
-      reverse_proxy @websockets unix/run/screego/screego.sock
+      reverse_proxy @websockets unix//run/screego/screego.sock
       encode gzip
     '';
   };
