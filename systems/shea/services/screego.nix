@@ -31,11 +31,7 @@
 
   services.caddy.virtualHosts."screen.fos.gg" = {
     extraConfig = ''
-      @websockets {
-        header Connection *Upgrade*
-        header Upgrade websocket
-      }
-      reverse_proxy @websockets unix//run/screego/screego.sock
+      reverse_proxy unix//run/screego/screego.sock
       encode gzip
     '';
   };
