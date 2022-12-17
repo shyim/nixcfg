@@ -1,4 +1,4 @@
-{ config, pkgs, myFlakePackages, ... }:
+{ config, pkgs, myFlake, ... }:
 
 {
   users.users.screego = {
@@ -17,7 +17,7 @@
       SCREEGO_CLOSE_ROOM_WHEN_OWNER_LEAVES = "false";
     };
     serviceConfig = {
-      ExecStart = "${myFlakePackages.screego}/bin/screego serve";
+      ExecStart = "${myFlake.packages.${system}.screego}/bin/screego serve";
       User = "screego";
       Group = "caddy";
       RuntimeDirectory = "screego";

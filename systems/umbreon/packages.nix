@@ -1,58 +1,17 @@
-{ pkgs, devenv, phps, ... }:
+{ pkgs, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    nixpkgs-fmt
-    (neovim.override {
-      vimAlias = true;
-      configure = {
-        packages.myPlugins = with vimPlugins; {
-          start = [ vim-lastplace vim-nix ];
-          opt = [ ];
-        };
-        customRC = ''
-          " your custom vimrc
-          set nocompatible
-          set backspace=indent,eol,start
-          " ...
-        '';
-      };
-    })
-    minio
     redis
-    git
-    htop
-    jq
-    tree
-    tmux
-    wget
-    git-crypt
     nodejs-16_x
     platformsh
-    fd
     hcloud
-    rbw
-    rnix-lsp
-    yarn
-    mailhog
     awscli2
-    siege
+    ssm-session-manager-plugin
     bash
     cloudflared
-    ssm-session-manager-plugin
     go-jira
-    colima
-    platformsh
-    gh
-    asciinema
-    ripgrep
-    htop
-    bat
-    symfony-cli
-    qemu
-    cachix
-    devenv.packages.aarch64-darwin.devenv
   ];
 }

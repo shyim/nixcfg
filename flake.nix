@@ -5,8 +5,11 @@
     # Darwin Inputs
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     darwin-modules.url = "github:shyim/nix-darwin-modules";
     darwin-modules.inputs.nixpkgs.follows = "nixpkgs";
@@ -21,14 +24,13 @@
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
-      extraArgs = system: { inherit nixpkgs phps devenv; myFlakePackages = self.packages.${system}; };
+      extraArgs = { inherit nixpkgs phps devenv home-manager; myFlake = self; };
     in
     {
       colmena = {
         meta = {
           nixpkgs = import nixpkgs {};
-          specialArgs = extraArgs "aarch64-linux";
+          specialArgs = extraArgs;
         };
 
         "shea.bunny-chickadee.ts.net" = { name, nodes, pkgs, ... }: {
@@ -43,7 +45,7 @@
 
       darwinConfigurations = {
         umbreon = darwin.lib.darwinSystem {
-          specialArgs = extraArgs "aarch64-darwin";
+          specialArgs = extraArgs;
           system = "aarch64-darwin";
           modules = [
             ./systems/umbreon
@@ -59,7 +61,7 @@
       };
 
       devShells = forAllSystems (system:
-        let pkgs = nixpkgsFor.${system};
+        let pkgs = nixpkgs.legacyPackages.${system};
         in {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [ nixpkgs-fmt colmena git-crypt ];
@@ -68,13 +70,23 @@
       );
 
       packages = forAllSystems (system:
-        let pkgs = nixpkgsFor.${system};
+        let pkgs = nixpkgs.legacyPackages.${system};
         in {
           awsume = pkgs.callPackage ./pkgs/awsume { };
           openjdk = pkgs.callPackage ./pkgs/openjdk { };
           opensearch = pkgs.callPackage ./pkgs/opensearch { };
           screego = pkgs.callPackage ./pkgs/screego { };
           wakapi = pkgs.callPackage ./pkgs/wakapi { };
+
+          homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+    
+            modules = [
+              ./home
+            ];
+
+            extraSpecialArgs = extraArgs;
+          };
         }
       );
     };
