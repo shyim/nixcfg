@@ -2,6 +2,14 @@
 
 {
   programs.starship.enable = true;
+  programs.starship.settings = {
+    container = {
+        disabled = true;
+    };
+    username = {
+        show_always = true;
+    };
+  };
 
   programs.fzf = {
     enable = true;
