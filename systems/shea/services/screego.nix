@@ -13,11 +13,11 @@
       SCREEGO_EXTERNAL_IP = "138.2.153.89,2603:c020:800e:2300:af23:304d:7d5c:bed8";
       SCREEGO_TRUST_PROXY_HEADERS = "true";
       SCREEGO_AUTH_MODE = "none";
-      SCREEGO_SERVER_ADDRESS = "unix:/run/screego/screego.sock";
+      SCREEGO_SERVER_ADDRESS = "127.0.0.1:3412";
       SCREEGO_CLOSE_ROOM_WHEN_OWNER_LEAVES = "false";
     };
     serviceConfig = {
-      ExecStart = "${myFlake.packages.${system}.screego}/bin/screego serve";
+      ExecStart = "${myFlake.packages."aarch64-linux".screego}/bin/screego serve";
       User = "screego";
       Group = "caddy";
       RuntimeDirectory = "screego";
@@ -31,7 +31,7 @@
 
   services.caddy.virtualHosts."screen.fos.gg" = {
     extraConfig = ''
-      reverse_proxy unix//run/screego/screego.sock
+      reverse_proxy 127.0.0.1:3412
       encode gzip
     '';
   };

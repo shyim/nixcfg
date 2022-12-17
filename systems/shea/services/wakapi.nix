@@ -24,7 +24,7 @@
       WAKAPI_DB_TYPE = "mysql";
     };
     serviceConfig = {
-      ExecStart = "${myFlake.packages.${system}.wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
+      ExecStart = "${myFlake.packages."aarch64-linux".wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
       User = "wakapi";
       Group = "caddy";
       StateDirectory = "wakapi";
