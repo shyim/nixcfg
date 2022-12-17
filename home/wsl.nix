@@ -1,7 +1,7 @@
 { config, pkgs, lib, devenv, home-manager, ... }:
 
 {
-  systemd.user.services.ssh-proxy = {
+  systemd.user.services.ssh-proxy = lib.mkIf ( pkgs.stdenv.hostPlatform.isLinux ) {
     Unit = {
       Description = "WSL Proxy";
     };
