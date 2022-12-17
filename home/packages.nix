@@ -33,6 +33,7 @@
     bat
     cachix
     devenv.packages.${system}.devenv
-    home-manager.packages.${system}.home-manager
   ];
+
+  programs.home-manager.enable = true;
 }
