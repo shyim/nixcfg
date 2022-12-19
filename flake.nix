@@ -54,6 +54,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = extraArgs;
               home-manager.users.shyim = import ./home;
             }
           ];
@@ -77,6 +78,7 @@
           opensearch = pkgs.callPackage ./pkgs/opensearch { };
           screego = pkgs.callPackage ./pkgs/screego { };
           wakapi = pkgs.callPackage ./pkgs/wakapi { };
+          dynamodb = pkgs.callPackage ./pkgs/dynamodb { };
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
