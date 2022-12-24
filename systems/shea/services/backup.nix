@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
-
-{
+{ config
+, pkgs
+, ...
+}: {
   systemd.services.rclone-restic = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];

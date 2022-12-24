@@ -1,5 +1,7 @@
-{ lib, python3 }:
-
+{ lib
+, python3
+,
+}:
 python3.pkgs.buildPythonApplication rec {
   pname = "awsume";
   version = "4.5.3";

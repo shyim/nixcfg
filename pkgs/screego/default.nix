@@ -1,5 +1,9 @@
-{ stdenv, lib, fetchurl, makeWrapper }:
-
+{ stdenv
+, lib
+, fetchurl
+, makeWrapper
+,
+}:
 let
   version = "1.8.0";
   sources = {
@@ -12,7 +16,8 @@ let
       sha256 = "sha256-+EFezY6m0A9L+s+5dryXwN+BbjN0abhethMRG9jsLMo=";
     };
   };
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   name = "screego";
   inherit version;
 

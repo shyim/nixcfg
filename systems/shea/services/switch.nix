@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
-
-{
+{ config
+, pkgs
+, ...
+}: {
   services.caddy.virtualHosts."http://nut.shyim.de" = {
     extraConfig = ''
       reverse_proxy unix/var/run/nut/web.sock

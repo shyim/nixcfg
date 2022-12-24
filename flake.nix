@@ -20,27 +20,44 @@
     devenv.url = "github:cachix/devenv/main";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { nixpkgs, home-manager, darwin, darwin-modules, phps, devenv, self, ... }:
+  outputs =
+    { nixpkgs
+    , home-manager
+    , darwin
+    , darwin-modules
+    , phps
+    , devenv
+    , self
+    , ...
+    }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      extraArgs = { inherit nixpkgs phps devenv home-manager; myFlake = self; };
+      extraArgs = {
+        inherit nixpkgs phps devenv home-manager;
+        myFlake = self;
+      };
     in
     {
       colmena = {
         meta = {
-          nixpkgs = import nixpkgs {};
+          nixpkgs = import nixpkgs { };
           specialArgs = extraArgs;
         };
 
-        "shea.bunny-chickadee.ts.net" = { name, nodes, pkgs, ... }: {
-          deployment.tags = [ "shea" ];
-          deployment.buildOnTarget = true;
+        "shea.bunny-chickadee.ts.net" =
+          { name
+          , nodes
+          , pkgs
+          , ...
+          }: {
+            deployment.tags = [ "shea" ];
+            deployment.buildOnTarget = true;
 
-          imports = [
-            ./systems/shea
-          ];
-        };
+            imports = [
+              ./systems/shea
+            ];
+          };
       };
 
       darwinConfigurations = {
@@ -61,18 +78,29 @@
         };
       };
 
-      devShells = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in {
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
           default = pkgs.mkShell {
             buildInputs = with pkgs; [ nixpkgs-fmt colmena git-crypt ];
           };
         }
       );
 
-      packages = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in {
+      formatter = forAllSystems (
+        system:
+        nixpkgs.legacyPackages.${system}.nixpkgs-fmt
+      );
+
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
           awsume = pkgs.callPackage ./pkgs/awsume { };
           openjdk = pkgs.callPackage ./pkgs/openjdk { };
           opensearch = pkgs.callPackage ./pkgs/opensearch { };
@@ -82,7 +110,7 @@
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-    
+
             modules = [
               ./home
             ];

@@ -1,13 +1,15 @@
-{ config, pkgs, lib, ... }:
-
-{
+{ config
+, pkgs
+, lib
+, ...
+}: {
   programs.starship.enable = true;
   programs.starship.settings = {
     container = {
-        disabled = true;
+      disabled = true;
     };
     username = {
-        show_always = true;
+      show_always = true;
     };
   };
 

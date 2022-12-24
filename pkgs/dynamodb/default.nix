@@ -8,8 +8,8 @@
 , coreutils
 , autoPatchelfHook
 , zlib
+,
 }:
-
 stdenvNoCC.mkDerivation rec {
   pname = "dynamodb";
   version = "2022-09-10";

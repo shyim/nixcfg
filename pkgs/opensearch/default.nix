@@ -8,8 +8,8 @@
 , coreutils
 , autoPatchelfHook
 , zlib
+,
 }:
-
 stdenvNoCC.mkDerivation rec {
   pname = "opensearch";
   version = "2.3.0";
@@ -31,7 +31,7 @@ stdenvNoCC.mkDerivation rec {
       --replace 'bin/opensearch-keystore' "$out/bin/opensearch-keystore"
 
     wrapProgram $out/bin/opensearch \
-      --prefix PATH : "${lib.makeBinPath [ util-linux gnugrep coreutils ]}" \
+      --prefix PATH : "${lib.makeBinPath [util-linux gnugrep coreutils]}" \
       --set JAVA_HOME "${jre_headless}"
 
     wrapProgram $out/bin/opensearch-plugin --set JAVA_HOME "${jre_headless}"

@@ -1,6 +1,8 @@
-{ config, pkgs, myFlake, ... }:
-
-{
+{ config
+, pkgs
+, myFlake
+, ...
+}: {
   users.users.wakapi = {
     description = "The wakapi service user";
     group = "caddy";

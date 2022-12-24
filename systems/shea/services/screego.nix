@@ -1,6 +1,8 @@
-{ config, pkgs, myFlake, ... }:
-
-{
+{ config
+, pkgs
+, myFlake
+, ...
+}: {
   users.users.screego = {
     description = "The screego service user";
     group = "caddy";

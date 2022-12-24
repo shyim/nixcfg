@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
-
-{
+{ config
+, pkgs
+, ...
+}: {
   services.thelounge.enable = true;
   services.thelounge.extraConfig = {
     reverseProxy = true;

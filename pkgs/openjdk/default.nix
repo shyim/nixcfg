@@ -3,9 +3,9 @@
 , fetchurl
 , makeWrapper
 , zlib
+,
 }:
-
-stdenv.mkDerivation (rec {
+stdenv.mkDerivation rec {
   pname = "openjdk";
   version = "17.0.2";
 
@@ -27,4 +27,4 @@ stdenv.mkDerivation (rec {
     platforms = lib.platforms.unix;
     maintainers = with lib.maintainers; [ shyim ];
   };
-})
+}

@@ -1,6 +1,7 @@
-{ config, pkgs, ... }:
-
-{
+{ config
+, pkgs
+, ...
+}: {
   # Is managed in Oracle Security List
   networking.firewall.enable = false;
 

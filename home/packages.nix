@@ -1,6 +1,10 @@
-{ config, pkgs, lib, devenv, home-manager, ... }:
-
-{
+{ config
+, pkgs
+, lib
+, devenv
+, home-manager
+, ...
+}: {
   home.packages = with pkgs; [
     nixpkgs-fmt
     (neovim.override {
