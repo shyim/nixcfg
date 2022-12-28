@@ -21,12 +21,13 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   time.timeZone = "Europe/Berlin";
+  system.keyboard.enableKeyMapping = true;
   system.keyboard.swapLeftCommandAndLeftAlt = true;
   system.defaults.finder.ShowPathbar = true;
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
   system.defaults.NSGlobalDomain = {
     "com.apple.swipescrolldirection" = false;
-    "AppleShowAllFiles" = true;
+    "AppleShowAllFiles" = true;œ
     "AppleShowAllExtensions" = true;
   };
 
