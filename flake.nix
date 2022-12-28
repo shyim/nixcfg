@@ -65,7 +65,7 @@
           specialArgs = extraArgs;
           system = "aarch64-darwin";
           modules = [
-            ./systems/umbreon
+            ./systems/generic-mac
             home-manager.darwinModules.default
             darwin-modules.darwinModules.default
             {
@@ -80,7 +80,7 @@
           specialArgs = extraArgs;
           system = "aarch64-darwin";
           modules = [
-            ./systems/umbreon
+            ./systems/generic-mac
             home-manager.darwinModules.default
             darwin-modules.darwinModules.default
             {
