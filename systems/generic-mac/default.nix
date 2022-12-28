@@ -27,9 +27,26 @@
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
   system.defaults.NSGlobalDomain = {
     "com.apple.swipescrolldirection" = false;
-    "AppleShowAllFiles" = true;œ
+    "AppleShowAllFiles" = true;
     "AppleShowAllExtensions" = true;
   };
 
   environment.loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin";
+
+  mas.apps = [
+    # iStat Menus
+    "1319778037"
+
+    # The unarchiver
+    "425424353"
+
+    # Slack
+    "803453959"
+
+    # Tailscale
+    "1475387142"
+
+    # Wireguard
+    "1451685025"
+  ];
 }
