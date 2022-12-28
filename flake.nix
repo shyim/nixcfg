@@ -76,6 +76,21 @@
             }
           ];
         };
+        espeon = darwin.lib.darwinSystem {
+          specialArgs = extraArgs;
+          system = "aarch64-darwin";
+          modules = [
+            ./systems/umbreon
+            home-manager.darwinModules.default
+            darwin-modules.darwinModules.default
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = extraArgs;
+              home-manager.users.shyim = import ./home;
+            }
+          ];
+        };
       };
 
       devShells = forAllSystems (
