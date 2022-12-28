@@ -6,6 +6,9 @@
   networking.firewall.enable = false;
 
   users.users.root.openssh.authorizedKeys.keys = [
+    # Nix Builder
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL/gaAtNIL9lAXswK3nhviG9IwtLUBD31W1JwqqLwSc+"
+
     # GitHub Action
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEkbGqwlPvIaMBd5UV1disj1GtPm0eQsvx9mOdRBbNis"
 
