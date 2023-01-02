@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, remapKeys, ... }: {
   imports = [
     ./packages.nix
     ./services.nix
@@ -22,7 +22,9 @@
 
   time.timeZone = "Europe/Berlin";
   system.keyboard.enableKeyMapping = true;
-  system.keyboard.swapLeftCommandAndLeftAlt = true;
+
+  system.keyboard.swapLeftCommandAndLeftAlt = remapKeys;
+
   system.defaults.finder.ShowPathbar = true;
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
   system.defaults.NSGlobalDomain = {
@@ -39,9 +41,6 @@
 
     # The unarchiver
     "425424353"
-
-    # Slack
-    "803453959"
 
     # Tailscale
     "1475387142"

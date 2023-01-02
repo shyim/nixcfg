@@ -62,7 +62,7 @@
 
       darwinConfigurations = {
         umbreon = darwin.lib.darwinSystem {
-          specialArgs = extraArgs;
+          specialArgs = extraArgs // { remapKeys = false; };
           system = "aarch64-darwin";
           modules = [
             ./systems/generic-mac
@@ -77,7 +77,7 @@
           ];
         };
         espeon = darwin.lib.darwinSystem {
-          specialArgs = extraArgs;
+          specialArgs = extraArgs // { remapKeys = true; };
           system = "aarch64-darwin";
           modules = [
             ./systems/generic-mac
