@@ -38,6 +38,7 @@
     bat
     cachix
     devenv.packages.${system}.devenv
+    fastly
   ];
 
   programs.home-manager.enable = true;
