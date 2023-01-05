@@ -10,6 +10,7 @@
   nix.package = pkgs.nix;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    builders = @/etc/nix/machines
   '';
   nix.settings.trusted-users = [ "root" "shyim" ];
 
@@ -47,5 +48,17 @@
 
     # Wireguard
     "1451685025"
+  ];
+
+  nix.distributedBuilds = true;
+  nix.buildMachines = [
+    {
+      hostName = "shea.bunny-chickadee.ts.net";
+      maxJobs = 10;
+      sshKey = "/Users/shyim/.ssh/nix";
+      sshUser = "root";
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      system = "aarch64-linux";
+    }
   ];
 }

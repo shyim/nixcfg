@@ -36,6 +36,7 @@
     asciinema
     ripgrep
     bat
+    glab
     cachix
     devenv.packages.${system}.devenv
     fastly
