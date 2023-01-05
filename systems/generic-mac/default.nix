@@ -53,6 +53,14 @@
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
+      hostName = "macbook.bunny-chickadee.ts.net";
+      maxJobs = 10;
+      sshKey = "/Users/shyim/.ssh/nix";
+      sshUser = "shyim";
+      supportedFeatures = [ "benchmark" "big-parallel" ];
+      system = "aarch64-darwin";
+    }
+    {
       hostName = "shea.bunny-chickadee.ts.net";
       maxJobs = 10;
       sshKey = "/Users/shyim/.ssh/nix";
