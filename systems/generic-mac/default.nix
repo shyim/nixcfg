@@ -1,4 +1,4 @@
-{ pkgs, remapKeys, ... }: {
+{ pkgs, remapKeys, lib, ... }: {
   imports = [
     ./packages.nix
     ./services.nix
@@ -53,14 +53,6 @@
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
-      hostName = "macbook.bunny-chickadee.ts.net";
-      maxJobs = 10;
-      sshKey = "/Users/shyim/.ssh/nix";
-      sshUser = "shyim";
-      supportedFeatures = [ "benchmark" "big-parallel" ];
-      system = "aarch64-darwin";
-    }
-    {
       hostName = "shea.bunny-chickadee.ts.net";
       maxJobs = 10;
       sshKey = "/Users/shyim/.ssh/nix";
@@ -76,5 +68,20 @@
       supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       system = "x86_64-linux";
     }
-  ];
+    {
+      hostName = "88.99.6.33";
+      maxJobs = 10;
+      sshKey = "/Users/shyim/.ssh/nix";
+      sshUser = "root";
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      system = "x86_64-linux";
+    }
+  ] ++ lib.optional remapKeys {
+    hostName = "100.85.154.60";
+    maxJobs = 10;
+    sshKey = "/Users/shyim/.ssh/nix";
+    sshUser = "shyim";
+    supportedFeatures = [ "benchmark" "big-parallel" ];
+    system = "aarch64-darwin";
+  };
 }
