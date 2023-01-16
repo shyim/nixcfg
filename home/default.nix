@@ -17,4 +17,7 @@
     else "/home/shyim"
   }";
   home.stateVersion = "22.11";
+
+  manual.manpages.enable = false;
+  programs.man.enable = false;
 }

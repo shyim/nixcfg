@@ -3,13 +3,15 @@
 , lib
 , ...
 }: {
-  programs.starship.enable = true;
-  programs.starship.settings = {
-    container = {
-      disabled = true;
-    };
-    username = {
-      show_always = true;
+  programs.starship = {
+    enable = true;
+    settings = {
+      container = {
+        disabled = true;
+      };
+      username = {
+        show_always = true;
+      };
     };
   };
 
@@ -24,11 +26,14 @@
       nano = "nvim";
       vim = "nvim";
       vi = "nvim";
+      cat = "bat";
     };
     loginShellInit = ''
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
       export EDITOR=nvim
       set fish_greeting
+
+      fish_add_path /run/current-system/sw/bin
 
       function ecsexec
           if not set -q argv[1]
@@ -109,4 +114,9 @@
 
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
+
+  programs.bat.enable = true;
+
+  programs.lsd.enable = true;
+  programs.lsd.enableAliases = true;
 }
