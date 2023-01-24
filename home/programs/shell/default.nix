@@ -33,6 +33,10 @@
       export EDITOR=nvim
       set fish_greeting
 
+      export OP_PLUGIN_ALIASES_SOURCED=1
+      alias glab="op plugin run -- glab"
+      alias aws="op plugin run -- aws"
+
       fish_add_path /run/current-system/sw/bin
 
       function ecsexec

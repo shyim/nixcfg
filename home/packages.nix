@@ -40,6 +40,7 @@
     cachix
     devenv.packages.${system}.devenv
     fastly
+    awscli2
   ];
 
   programs.home-manager.enable = true;
