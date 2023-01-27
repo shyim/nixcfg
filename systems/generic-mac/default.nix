@@ -84,4 +84,12 @@
     supportedFeatures = [ "benchmark" "big-parallel" ];
     system = "aarch64-darwin";
   };
+
+  # Ensure gitlab always works even when DNS is broken again
+  environment.etc."hosts".text = ''
+    127.0.0.1 localhost
+    255.255.255.255 broadcasthost
+    ::1 localhost
+    3.126.10.112 gitlab.shopware.com
+  '';
 }
