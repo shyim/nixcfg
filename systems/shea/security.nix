@@ -7,7 +7,7 @@
 
   users.users.root.openssh.authorizedKeys.keys = [
     # Nix Builder
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL/gaAtNIL9lAXswK3nhviG9IwtLUBD31W1JwqqLwSc+"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIE+0y1Z/taJj1sQPYErWmXx2dt7Ol/b8zLVNcCvNw9a"
 
     # GitHub Action
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEkbGqwlPvIaMBd5UV1disj1GtPm0eQsvx9mOdRBbNis"

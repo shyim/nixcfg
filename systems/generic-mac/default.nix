@@ -73,7 +73,7 @@
       maxJobs = 10;
       sshKey = "/Users/shyim/.ssh/nix";
       sshUser = "root";
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" "system" "features" ];
       system = "x86_64-linux";
     }
   ];
