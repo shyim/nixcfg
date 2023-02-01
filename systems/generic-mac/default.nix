@@ -76,14 +76,7 @@
       supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       system = "x86_64-linux";
     }
-  ] ++ lib.optional remapKeys {
-    hostName = "100.85.154.60";
-    maxJobs = 10;
-    sshKey = "/Users/shyim/.ssh/nix";
-    sshUser = "shyim";
-    supportedFeatures = [ "benchmark" "big-parallel" ];
-    system = "aarch64-darwin";
-  };
+  ];
 
   # Ensure gitlab always works even when DNS is broken again
   environment.etc."hosts".text = ''

@@ -41,6 +41,7 @@
     devenv.packages.${system}.devenv
     fastly
     awscli2
+    rclone
   ];
 
   programs.home-manager.enable = true;

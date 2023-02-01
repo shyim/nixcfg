@@ -22,6 +22,6 @@
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_US.UTF-8";
   system.stateVersion = "23.05";
-  
+
   virtualisation.docker.enable = true;
 }
