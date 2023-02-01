@@ -18,6 +18,6 @@
   systemd.services.rclone-tdrive = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];
-    serviceConfig.ExecStart = "${pkgs.rclone}/bin/rclone serve ftp TDrive: --config /srv/rclone/rclone.conf --addr 100.111.47.100:5001 --user $RCLONE_USERNAME --pass $RCLONE_PASSWORD";
+    serviceConfig.ExecStart = "${pkgs.rclone}/bin/rclone serve sftp TDrive: --config /srv/rclone/rclone.conf --addr :5001 --user $RCLONE_USERNAME --pass $RCLONE_PASSWORD";
   };
 }
