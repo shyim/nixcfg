@@ -18,6 +18,6 @@
   systemd.services.rclone-tdrive = {
     wantedBy = [ "multi-user.target" ];
     after = [ "network-online.target" ];
-    serviceConfig.ExecStart = "${pkgs.rclone}/bin/rclone serve sftp TDrive: --config /srv/rclone/rclone.conf --addr :5001 --user $RCLONE_USERNAME --pass $RCLONE_PASSWORD";
+    serviceConfig.ExecStart = "${pkgs.rclone}/bin/rclone serve sftp TDrive: --config /srv/rclone/rclone.conf --addr :5001 --user $RCLONE_USERNAME --pass $RCLONE_PASSWORD --cache-dir=/tmp/cache --vfs-cache-mode full --vfs-cache-max-size 100G --vfs-cache-max-age 5000h --drive-chunk-size 32Mi";
   };
 }
