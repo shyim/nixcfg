@@ -17,7 +17,7 @@
     phps.url = "github:fossar/nix-phps";
     phps.inputs.nixpkgs.follows = "nixpkgs";
 
-    devenv.url = "github:cachix/devenv/main";
+    devenv.url = "github:cachix/devenv/devenv-direnv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
