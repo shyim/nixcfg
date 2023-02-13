@@ -22,4 +22,7 @@ api_url = https://time.fos.gg/api
   home.file.".gnomerc".text = ''
     export SSH_AUTH_SOCK=~/.1password/agent.sock
   '';
+  home.file.".npmrc".text = ''
+audit=false
+'';
 }
