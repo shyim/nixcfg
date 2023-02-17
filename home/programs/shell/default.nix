@@ -37,6 +37,7 @@
       alias glab="op plugin run -- glab"
       alias cachix="op plugin run -- cachix"
       alias aws="op plugin run -- aws"
+      alias hcloud="op plugin run -- hcloud"
 
       fish_add_path /run/current-system/sw/bin
 
