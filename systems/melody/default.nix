@@ -90,9 +90,11 @@ in
     htop
     kitty
     jetbrains.goland
+    jetbrains.phpstorm
     nvtop-amd
     slack
     zoom-us
+    lutris
   ];
 
   programs.steam.enable = true;
@@ -104,6 +106,11 @@ in
 
   security.polkit.enable = true;
   security.sudo.wheelNeedsPassword = false;
+
+  fileSystems.shopware = {
+    fsType = "tmpfs";
+    mountPoint = "/home/shyim/Code/platform/.devenv/state/mysql";
+  };
 
   system.stateVersion = "23.05";
 }
