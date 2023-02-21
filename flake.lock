@@ -299,7 +299,28 @@
         "devenv": "devenv",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "phps": "phps"
+        "phps": "phps",
+        "shopware-cli": "shopware-cli"
+      }
+    },
+    "shopware-cli": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1677015995,
+        "narHash": "sha256-jupOyRpkxkvTsia7nXRq4D2rCZhyxmo0qcQwcN41YrE=",
+        "owner": "FriendsOfShopware",
+        "repo": "shopware-cli",
+        "rev": "8e42fb208663911da952a987e13bbc3731a5fb21",
+        "type": "github"
+      },
+      "original": {
+        "owner": "FriendsOfShopware",
+        "repo": "shopware-cli",
+        "type": "github"
       }
     },
     "utils": {

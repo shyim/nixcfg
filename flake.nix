@@ -19,6 +19,9 @@
 
     devenv.url = "github:cachix/devenv/devenv-direnv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
+
+    shopware-cli.url = "github:FriendsOfShopware/shopware-cli";
+    shopware-cli.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     { nixpkgs
@@ -27,6 +30,7 @@
     , darwin-modules
     , phps
     , devenv
+    , shopware-cli
     , self
     , ...
     }:
@@ -34,7 +38,7 @@
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       extraArgs = {
-        inherit nixpkgs phps devenv home-manager;
+        inherit nixpkgs phps devenv home-manager shopware-cli;
         myFlake = self;
       };
     in
