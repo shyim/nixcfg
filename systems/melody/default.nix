@@ -11,6 +11,22 @@ let
       sha256 = "LoDg3iwK18rDszU/dQEK0/J8DIxrqydsfflZo8IARks=";
     };
   };
+
+  golandCustom = pkgs.jetbrains.goland.overrideAttrs (oldAttrs: rec {
+    version = "231.7515.9";
+    src = pkgs.fetchurl {
+      url = "https://download-cdn.jetbrains.com/go/goland-231.7515.9.tar.gz";
+      sha256 = "0dkvm52lpv3bhcmprs24823gf4dgkv46q84r941g1ikgnzx8n8k5";
+    };
+  });
+
+  phpstormCustom = pkgs.jetbrains.phpstorm.overrideAttrs (oldAttrs: rec {
+    version = "231.7515.16";
+    src = pkgs.fetchurl {
+      url = "https://download-cdn.jetbrains.com/webide/PhpStorm-231.7515.16.tar.gz";
+      sha256 = "09hm512fjn2m58hjr8ynk1k6sjmmm1iv91ykwixy0cf7wlhxpz7w";
+    };
+  });
 in
 {
   imports =
@@ -89,8 +105,8 @@ in
     spotify
     htop
     kitty
-    jetbrains.goland
-    jetbrains.phpstorm
+    golandCustom
+    phpstormCustom
     nvtop-amd
     slack
     zoom-us
