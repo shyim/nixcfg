@@ -128,5 +128,6 @@ in
     mountPoint = "/home/shyim/Code/platform/.devenv/state/mysql";
   };
 
+  services.tailscale.enable = true;
   system.stateVersion = "23.05";
 }
