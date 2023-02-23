@@ -3,6 +3,8 @@
 , lib
 , ...
 }: {
+  programs.lazygit.enable = true;
+
   programs.git = {
     enable = true;
 
@@ -27,6 +29,30 @@
           insteadOf = "https://github.com/";
         };
       };
+    };
+
+    aliases = {
+      a = "add";
+      aa = "add --all";
+      d = "diff";
+      pl = "pull";
+      pu = "push";
+      puf = "push --force";
+      s = "status";
+
+      amend = "commit --amend --no-edit";
+
+      # Reset commands
+      r = "reset HEAD";
+      r1 = "reset HEAD^";
+      r2 = "reset HEAD^^";
+      rhard = "reset --hard";
+      rhard1 = "reset HEAD^ --hard";
+
+      # Stash commands
+      sd = "stash drop";
+      spo = "stash pop";
+      spu = "stash push";
     };
 
     ignores = [
