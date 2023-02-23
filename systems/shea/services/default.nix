@@ -10,5 +10,6 @@
     ./tailscale.nix
     ./thelounge.nix
     ./wakapi.nix
+    ./grafana-agent.nix
   ];
 }

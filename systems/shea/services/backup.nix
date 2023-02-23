@@ -9,7 +9,6 @@
   };
 
   systemd.services.restic = {
-    wantedBy = [ "multi-user.target" ];
     after = [ "rclone-restic.service" ];
     environment = {
       RESTIC_REPOSITORY = "rest:http://localhost:7465/";
