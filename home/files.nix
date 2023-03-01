@@ -24,5 +24,7 @@ api_url = https://time.fos.gg/api
   '';
   home.file.".npmrc".text = ''
     audit=false
+    update-notifier=false
+    prefix=${config.home.homeDirectory}/.npm-packages
   '';
 }
