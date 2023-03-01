@@ -37,13 +37,10 @@
     asciinema
     ripgrep
     bat
-    glab
-    cachix
     devenv.packages.${system}.devenv
     shopware-cli.packages.${system}.shopware-cli
     shopware-cli.packages.${system}.dart-sass-embedded
     fastly
-    awscli2
     rclone
   ];
 

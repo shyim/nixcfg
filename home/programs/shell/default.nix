@@ -2,7 +2,20 @@
 , pkgs
 , lib
 , ...
-}: {
+}: 
+  let _1passwordPlugins = {
+    "glab" = pkgs.glab;
+    "cachix" = pkgs.cachix;
+    "aws" = pkgs.awscli2;
+    "hcloud" = pkgs.hcloud;
+  };
+in {
+  home.packages = builtins.map (name: pkgs.writeShellScriptBin name ''
+    export OP_PLUGIN_ALIASES_SOURCED=1
+    export PATH="${_1passwordPlugins."${name}"}/bin:$PATH"
+    exec op plugin run -- ${name} "$@"
+  '') (builtins.attrNames _1passwordPlugins);
+
   programs.starship = {
     enable = true;
     settings = {
@@ -32,12 +45,6 @@
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
       export EDITOR=nvim
       set fish_greeting
-
-      export OP_PLUGIN_ALIASES_SOURCED=1
-      alias glab="op plugin run -- glab"
-      alias cachix="op plugin run -- cachix"
-      alias aws="op plugin run -- aws"
-      alias hcloud="op plugin run -- hcloud"
 
       fish_add_path /run/current-system/sw/bin
 
