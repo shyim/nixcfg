@@ -35,7 +35,14 @@
       path = "${config.home.homeDirectory}/.go-github-to-jira.yaml"; 
       format = "yaml";
     };
+    secrets.nix_secrets = {
+      path = "${config.home.homeDirectory}/.nix-access-token"; 
+      format = "yaml";
+    };
   };
+
+  home.sessionVariables.NIX_USER_CONF_FILES = "${config.home.homeDirectory}/.config/nix/nix.conf:${config.home.homeDirectory}/.nix-access-token";
+  systemd.user.sessionVariables.NIX_USER_CONF_FILES = "${config.home.homeDirectory}/.config/nix/nix.conf:${config.home.homeDirectory}/.nix-access-token";
 
   # home.sessionVariables.SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";
   # systemd.user.sessionVariables.SSH_AUTH_SOCK = "${config.home.homeDirectory}/.1password/agent.sock";

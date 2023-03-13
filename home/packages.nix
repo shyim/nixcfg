@@ -14,7 +14,6 @@
     tree
     tmux
     wget
-    git-crypt
     fd
     bash
     gh

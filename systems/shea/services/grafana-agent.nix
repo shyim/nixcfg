@@ -2,6 +2,29 @@
 , pkgs
 , ...
 }: {
+  users.groups.grafana-agent = {};
+  users.users.grafana-agent = {
+    isSystemUser = true;
+    group = "grafana-agent";
+  };
+
+  sops.secrets = {
+    grafana_agent_logs = {
+      owner = "grafana-agent";
+      restartUnits = [ "grafana-agent.service" ];
+    };
+    grafana_agent_metrics = {
+      owner = "grafana-agent";
+      restartUnits = [ "grafana-agent.service" ];
+    };
+  };
+
+  systemd.services.grafana-agent = {
+    serviceConfig.SupplementaryGroups = [ config.users.groups.keys.name ];
+    serviceConfig.User = "grafana-agent";
+    serviceConfig.Group = "grafana-agent";
+  };
+
   services.grafana-agent = {
     enable = true;
 
@@ -19,7 +42,7 @@
             clients = [
               {
                 basic_auth = {
-                  password_file = "/etc/grafana-agent-logs";
+                  password_file = config.sops.secrets.grafana_agent_logs.path;
                   username = "180005";
                 };
                 url = "https://logs-prod-eu-west-0.grafana.net/api/prom/push";
@@ -66,7 +89,7 @@
           remote_write = [
             {
               basic_auth = {
-                password_file = "/etc/grafana-agent-metrics";
+                password_file = config.sops.secrets.grafana_agent_metrics.path;
                 username = "362070";
               };
               url = "https://prometheus-prod-01-eu-west-0.grafana.net/api/prom/push";

@@ -2,7 +2,6 @@
   imports = [
     ./packages.nix
     ./services.nix
-    ./secrets
   ];
 
   # Auto upgrade nix package and the daemon service.

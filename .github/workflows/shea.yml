@@ -26,13 +26,6 @@ jobs:
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
 
-      - name: Uncrypt secrets
-        run: |
-          echo "${{ secrets.GIT_CRYPT }}" | base64 -d > keyfile
-          nix develop -c git-crypt unlock keyfile
-          rm keyfile
-          rm .gitattributes
-
       - name: Build config
         run: |
           nix develop -c colmena apply --on @shea

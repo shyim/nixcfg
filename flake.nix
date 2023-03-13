@@ -63,6 +63,7 @@
             deployment.buildOnTarget = true;
 
             imports = [
+              sops-nix.nixosModules.sops
               ./systems/shea
             ];
           };
@@ -125,7 +126,7 @@
         in
         {
           default = pkgs.mkShell {
-            buildInputs = with pkgs; [ nixpkgs-fmt colmena git-crypt ];
+            buildInputs = with pkgs; [ colmena ];
           };
         }
       );

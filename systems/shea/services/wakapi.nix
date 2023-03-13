@@ -9,6 +9,12 @@
     isSystemUser = true;
   };
 
+  sops.secrets = {
+    wakapi = {
+      owner = "wakapi";
+    };
+  };
+
   systemd.services.wakapi = {
     wantedBy = [ "multi-user.target" ];
     after = [ "mysql.service" ];
@@ -24,8 +30,15 @@
       WAKAPI_DB_USER = "wakapi";
       WAKAPI_DB_NAME = "wakapi";
       WAKAPI_DB_TYPE = "mysql";
+      WAKAPI_MAIL_ENABLED = "true";
+      WAKAPI_MAIL_PROVIDER = "smtp";
+      WAKAPI_MAIL_SENDER = "Wakapi <contact@fos.gg>";
+      WAKAPI_MAIL_SMTP_HOST = "smtp.mail.me.com";
+      WAKAPI_MAIL_SMTP_PORT = "587";
+      WAKAPI_MAIL_SMTP_USER = "s.sayakci@icloud.com";
     };
     serviceConfig = {
+      EnvironmentFile = config.sops.secrets.wakapi.path;
       ExecStart = "${myFlake.packages."aarch64-linux".wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
       User = "wakapi";
       Group = "caddy";
