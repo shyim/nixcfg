@@ -1,0 +1,9 @@
+keys:
+  - &shyim age1wz75gdvjhkntzakrfyprs8svhakcka7jgzgd9zkw2u9uef9ve97qn9078q
+  - &server_shea age1s3upav4x8re3wzwvuykmjakk52d8xukw7c9jxa80z8zj0lyxgyysenzhen
+creation_rules:
+  - path_regex: sops/[^/]+\.yaml$
+    key_groups:
+    - age:
+      - *shyim
+      - *server_shea

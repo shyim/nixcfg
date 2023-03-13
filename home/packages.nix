@@ -26,6 +26,8 @@
     shopware-cli.packages.${system}.dart-sass-embedded
     fastly
     rclone
+    age
+    sops
   ];
 
   programs.home-manager.enable = true;

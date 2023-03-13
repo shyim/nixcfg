@@ -22,6 +22,9 @@
 
     shopware-cli.url = "github:FriendsOfShopware/shopware-cli";
     shopware-cli.inputs.nixpkgs.follows = "nixpkgs";
+
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
   outputs =
     { nixpkgs
@@ -32,13 +35,14 @@
     , devenv
     , shopware-cli
     , self
+    , sops-nix
     , ...
     }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       extraArgs = {
-        inherit nixpkgs phps devenv home-manager shopware-cli;
+        inherit nixpkgs phps devenv home-manager shopware-cli sops-nix;
         myFlake = self;
       };
     in
@@ -102,6 +106,7 @@
           system = "x86_64-linux";
           modules = [
             ./systems/melody
+            sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
