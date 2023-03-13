@@ -2,19 +2,23 @@
 , pkgs
 , lib
 , ...
-}: 
-  let _1passwordPlugins = {
+}:
+let
+  _1passwordPlugins = {
     "glab" = pkgs.glab;
     "cachix" = pkgs.cachix;
     "aws" = pkgs.awscli2;
     "hcloud" = pkgs.hcloud;
   };
-in {
-  home.packages = builtins.map (name: pkgs.writeShellScriptBin name ''
-    export OP_PLUGIN_ALIASES_SOURCED=1
-    export PATH="${_1passwordPlugins."${name}"}/bin:$PATH"
-    exec op plugin run -- ${name} "$@"
-  '') (builtins.attrNames _1passwordPlugins);
+in
+{
+  home.packages = builtins.map
+    (name: pkgs.writeShellScriptBin name ''
+      export OP_PLUGIN_ALIASES_SOURCED=1
+      export PATH="${_1passwordPlugins."${name}"}/bin:$PATH"
+      exec op plugin run -- ${name} "$@"
+    '')
+    (builtins.attrNames _1passwordPlugins);
 
   programs.starship = {
     enable = true;
@@ -36,9 +40,6 @@ in {
   programs.fish = {
     enable = true;
     shellAliases = {
-      nano = "nvim";
-      vim = "nvim";
-      vi = "nvim";
       cat = "bat";
     };
     loginShellInit = ''

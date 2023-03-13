@@ -6,5 +6,6 @@
   imports = [
     ./git
     ./shell
+    ./neovim
   ];
 }
