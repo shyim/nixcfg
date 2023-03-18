@@ -17,6 +17,11 @@ api_url = https://time.fos.gg/api
 
     Host *
       ServerAliveInterval 60
+
+    Host shyim-mac
+      HostName 100.71.118.111
+      User shyim
+      ForwardAgent yes
   '';
 
   home.file.".gnomerc".text = ''
