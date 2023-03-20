@@ -1,30 +1,24 @@
 { lib
+, stdenv
 , buildGoModule
 , fetchFromGitHub
-,
 }:
-buildGoModule {
+buildGoModule rec {
   pname = "wakapi";
-  version = "2.5.4";
+  version = "2.6.2";
 
   src = fetchFromGitHub {
     owner = "muety";
     repo = "wakapi";
-    rev = "2.5.4";
-    sha256 = "sha256-IWTSxfpJ1zQImo6rxnSPgGte83VSRrF7Bkhv2r6KkRo=";
+    rev = version;
+    sha256 = "sha256-yMxcePwBUteqrdfvDjZSRInOXMFmwaFoVBihcMQFTME=";
   };
 
-  preBuild = ''
-    substituteInPlace config/db.go \
-    --replace '@tcp(%s:%d)' "@unix(%s)"
+  excludedPackages = [ "scripts" ];
 
-    substituteInPlace config/db.go \
-    --replace 'config.Port,' ""
-  '';
+  CGO_CFLAGS = lib.optionals stdenv.cc.isGNU [ "-Wno-return-local-addr" ];
 
-  doCheck = false;
-
-  vendorSha256 = "sha256-heLJ6Yl+DPj74sDvHpDgtEf9Ogpj54Kpk2Z20z2/7qw=";
+  vendorSha256 = "sha256-sfx8qlmJrS0hkD6DSvKqfnBDbxj8eNA3hnprSwA2fSI=";
 
   meta = with lib; {
     homepage = "https://wakapi.dev";
