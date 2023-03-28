@@ -47,7 +47,10 @@ in
       export EDITOR=nvim
       set fish_greeting
 
-      fish_add_path /run/current-system/sw/bin
+      ${lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''}
+        fish_add_path /run/current-system/sw/bin
+      ''}
+
       fish_add_path $HOME/.npm-packages/bin/
 
       function ecsexec

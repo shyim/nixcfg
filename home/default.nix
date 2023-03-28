@@ -11,6 +11,7 @@
     ./packages.nix
     ./files.nix
     sops-nix.homeManagerModule
+    ./wsl.nix
   ];
 
   home.username = "shyim";
