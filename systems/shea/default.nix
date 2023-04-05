@@ -25,5 +25,5 @@
   system.stateVersion = "23.05";
 
   sops.defaultSopsFile = ./sops/default.yaml;
-  virtualisation.docker.enable = true;
+  virtualisation.podman.enable = true;
 }
