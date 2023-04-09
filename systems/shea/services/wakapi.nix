@@ -25,7 +25,7 @@
       WAKAPI_LISTEN_IPV4 = "";
       WAKAPI_LISTEN_IPV6 = "";
       WAKAPI_LISTEN_SOCKET = "/run/wakapi/web.sock";
-      WAKAPI_DB_HOST = "/var/run/mysqld/mysqld.sock";
+      WAKAPI_DB_HOST = "/run/mysqld/mysqld.sock";
       WAKAPI_DB_PORT = "3306";
       WAKAPI_DB_USER = "wakapi";
       WAKAPI_DB_NAME = "wakapi";
