@@ -33,11 +33,11 @@
   }";
     defaultSopsFile = ./sops/default.yaml;
     secrets.go-github-to-jira = {
-      path = "${config.home.homeDirectory}/.go-github-to-jira.yaml"; 
+      path = "${config.home.homeDirectory}/.go-github-to-jira.yaml";
       format = "yaml";
     };
     secrets.nix_secrets = {
-      path = "${config.home.homeDirectory}/.nix-access-token"; 
+      path = "${config.home.homeDirectory}/.nix-access-token";
       format = "yaml";
     };
   };

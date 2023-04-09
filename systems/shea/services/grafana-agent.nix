@@ -2,7 +2,7 @@
 , pkgs
 , ...
 }: {
-  users.groups.grafana-agent = {};
+  users.groups.grafana-agent = { };
   users.users.grafana-agent = {
     isSystemUser = true;
     group = "grafana-agent";

@@ -2,10 +2,11 @@
 , pkgs
 , lib
 , ...
-}: 
+}:
 let
   socket = "${config.home.homeDirectory}/.1password/agent.sock";
-in {
+in
+{
   config = lib.mkIf (builtins.getEnv "WSLENV" != "") {
     systemd.user.services.ssh-proxy = {
       Unit = {
