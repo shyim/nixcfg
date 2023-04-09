@@ -1,14 +1,20 @@
 { config
 , pkgs
+, lib
 , ...
 }: {
   services.openssh.enable = true;
+
+  sops.secrets.caddy_env = {
+    restartUnits = [ "caddy.service" ];
+  };
 
   # Caddy
   services.caddy.enable = true;
   services.caddy.globalConfig = ''
     admin off
   '';
+  systemd.services.caddy.serviceConfig.EnvironmentFile = lib.mkForce config.sops.secrets.caddy_env.path;
 
   # MySQL
   services.mysql.enable = true;
