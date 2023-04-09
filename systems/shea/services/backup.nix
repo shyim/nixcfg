@@ -10,13 +10,14 @@
   };
 
   systemd.services.rclone-restic = {
-    wantedBy = [ "multi-user.target" ];
-    after = [ "network-online.target" ];
+    requires = [ "network-online.target" ];
+    partOf = [ "restic.service" ];
     serviceConfig.ExecStart = "${pkgs.rclone}/bin/rclone serve restic Backup:backup/shea --config ${config.sops.secrets.rclone_config.path} --addr 127.0.0.1:7465";
+    serviceConfig.Type = "notify";
   };
 
   systemd.services.restic = {
-    after = [ "rclone-restic.service" ];
+    requires = [ "rclone-restic.service" ];
     environment = {
       RESTIC_REPOSITORY = "rest:http://localhost:7465/";
     };

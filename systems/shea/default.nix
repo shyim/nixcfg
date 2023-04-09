@@ -27,6 +27,8 @@
   sops.defaultSopsFile = ./sops/default.yaml;
   virtualisation.podman.enable = true;
 
+  nixpkgs.overlays = [ (import ./overlays/rclone.nix) ];
+
   environment.etc."resolv.conf".text = ''
     domain shyim.de
     search shyim.de shea.shyim.de

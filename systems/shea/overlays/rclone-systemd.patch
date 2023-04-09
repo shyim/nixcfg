@@ -1,0 +1,41 @@
+From fe4626b40b6d673d704676e1c80484ab79499d0b Mon Sep 17 00:00:00 2001
+From: Soner Sayakci <s.sayakci@shopware.com>
+Date: Sun, 9 Apr 2023 16:55:19 +0200
+Subject: [PATCH] serve: trigger systemd notify for restic
+
+Allow to use Type=notify together with serving restic api
+---
+ cmd/serve/restic/restic.go | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/cmd/serve/restic/restic.go b/cmd/serve/restic/restic.go
+index db6427dad336..5ad1b1675fe9 100644
+--- a/cmd/serve/restic/restic.go
++++ b/cmd/serve/restic/restic.go
+@@ -13,6 +13,8 @@ import (
+ 	"strings"
+ 	"time"
+ 
++	sysdnotify "github.com/iguanesolutions/go-systemd/v5/notify"
++
+ 	"github.com/go-chi/chi/v5"
+ 	"github.com/go-chi/chi/v5/middleware"
+ 	"github.com/rclone/rclone/cmd"
+@@ -177,7 +179,17 @@ with a path of ` + "`/<username>/`" + `.
+ 				return nil
+ 			}
+ 			fs.Logf(s.f, "Serving restic REST API on %s", s.URLs())
++
++			if err := sysdnotify.Ready(); err != nil {
++				fs.Logf(s.f, "failed to notify ready to systemd: %v", err)
++			}
++
+ 			s.Wait()
++
++			if err := sysdnotify.Stopping(); err != nil {
++				fs.Logf(s.f, "failed to notify stopping to systemd: %v", err)
++			}
++
+ 			return nil
+ 		})
+ 	},
