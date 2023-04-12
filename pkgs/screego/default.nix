@@ -5,15 +5,11 @@
 ,
 }:
 let
-  version = "1.8.0";
+  version = "1.8.1";
   sources = {
-    "x86_64-linux" = fetchurl {
-      url = "https://github.com/screego/server/releases/download/v${version}/screego_${version}_linux_amd64.tar.gz";
-      sha256 = "sha256-ya5Aj5mFqmtWqWqMimsMQKDdXkRWBO1QUdUwuAnR0dE=";
-    };
     "aarch64-linux" = fetchurl {
       url = "https://github.com/screego/server/releases/download/v${version}/screego_${version}_linux_arm64.tar.gz";
-      sha256 = "sha256-+EFezY6m0A9L+s+5dryXwN+BbjN0abhethMRG9jsLMo=";
+      sha256 = "sha256-joXVSNpkShN4FPAa5Voj5i0cjdkNyVBYO36anXMvXok=";
     };
   };
 in
