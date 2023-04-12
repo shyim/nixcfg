@@ -1,0 +1,23 @@
+From 0490a2b0df22619b5ab71085829e1e31dff0a51b Mon Sep 17 00:00:00 2001
+From: Shyim <s.sayakci@shopware.com>
+Date: Wed, 12 Apr 2023 23:06:19 +0200
+Subject: [PATCH] feat: force usage of turn server
+
+---
+ ui/src/useRoom.ts | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/ui/src/useRoom.ts b/ui/src/useRoom.ts
+index dd0647f..2ea9ca6 100644
+--- a/ui/src/useRoom.ts
++++ b/ui/src/useRoom.ts
+@@ -36,8 +36,7 @@ export interface UseRoom {
+     stopShare: () => void;
+ }
+ 
+-const relayConfig: Partial<RTCConfiguration> =
+-    window.location.search.indexOf('forceTurn=true') !== -1 ? {iceTransportPolicy: 'relay'} : {};
++const relayConfig: Partial<RTCConfiguration> = {iceTransportPolicy: 'relay'};
+ 
+ const hostSession = async ({
+     sid,
