@@ -9,7 +9,6 @@
 
 let
   dockerUp = pkgs.writeShellScriptBin "docker-up" ''
-    set -e
     hcloud server create --image docker-ce --location fsn1 --type cpx31 --name=docker-local --ssh-key 7588395
     docker context rm -f hetzner
     SERVER_IP=$(hcloud server describe docker-local -o json | jq .public_net.ipv4.ip -r)
