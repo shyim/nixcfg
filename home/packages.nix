@@ -3,7 +3,6 @@
 , lib
 , devenv
 , home-manager
-, shopware-cli
 , ...
 }: 
 
@@ -37,8 +36,8 @@ in {
     ripgrep
     bat
     devenv.packages.${system}.devenv
-    shopware-cli.packages.${system}.shopware-cli
-    shopware-cli.packages.${system}.dart-sass-embedded
+    shopware-cli
+    dart-sass-embedded
     fastly
     rclone
     age
@@ -47,6 +46,7 @@ in {
     docker-compose
     dockerUp
     dockerDown
+    colima
   ];
 
   programs.home-manager.enable = true;

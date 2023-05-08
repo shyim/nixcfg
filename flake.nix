@@ -14,14 +14,8 @@
     darwin-modules.url = "github:shyim/nix-darwin-modules";
     darwin-modules.inputs.nixpkgs.follows = "nixpkgs";
 
-    phps.url = "github:fossar/nix-phps";
-    phps.inputs.nixpkgs.follows = "nixpkgs";
-
     devenv.url = "github:cachix/devenv/main";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
-
-    shopware-cli.url = "github:FriendsOfShopware/shopware-cli";
-    shopware-cli.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
@@ -31,9 +25,7 @@
     , home-manager
     , darwin
     , darwin-modules
-    , phps
     , devenv
-    , shopware-cli
     , self
     , sops-nix
     , ...
@@ -42,7 +34,7 @@
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       extraArgs = {
-        inherit nixpkgs phps devenv home-manager shopware-cli sops-nix;
+        inherit nixpkgs devenv home-manager sops-nix;
         myFlake = self;
       };
     in
