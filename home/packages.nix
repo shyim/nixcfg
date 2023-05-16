@@ -47,6 +47,8 @@ in {
     dockerUp
     dockerDown
     colima
+    ncdu
+    cosign
   ];
 
   programs.home-manager.enable = true;
