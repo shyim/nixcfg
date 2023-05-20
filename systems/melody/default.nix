@@ -3,31 +3,6 @@
 , ...
 }:
 
-let
-  discordCustom = pkgs.discord-ptb.override {
-    version = "0.0.39";
-    src = pkgs.fetchurl {
-      url = "https://dl-ptb.discordapp.net/apps/linux/0.0.39/discord-ptb-0.0.39.tar.gz";
-      sha256 = "LoDg3iwK18rDszU/dQEK0/J8DIxrqydsfflZo8IARks=";
-    };
-  };
-
-  golandCustom = pkgs.jetbrains.goland.overrideAttrs (oldAttrs: rec {
-    version = "231.7515.9";
-    src = pkgs.fetchurl {
-      url = "https://download-cdn.jetbrains.com/go/goland-231.7515.9.tar.gz";
-      sha256 = "0dkvm52lpv3bhcmprs24823gf4dgkv46q84r941g1ikgnzx8n8k5";
-    };
-  });
-
-  phpstormCustom = pkgs.jetbrains.phpstorm.overrideAttrs (oldAttrs: rec {
-    version = "231.7515.16";
-    src = pkgs.fetchurl {
-      url = "https://download-cdn.jetbrains.com/webide/PhpStorm-231.7515.16.tar.gz";
-      sha256 = "09hm512fjn2m58hjr8ynk1k6sjmmm1iv91ykwixy0cf7wlhxpz7w";
-    };
-  });
-in
 {
   imports =
     [
@@ -63,6 +38,10 @@ in
     LC_TIME = "de_DE.UTF-8";
   };
 
+  documentation.nixos.enable = false;
+  documentation.man.enable = false;
+
+  programs.fish.enable = true;
   services.xserver.enable = true;
 
   services.xserver.displayManager.gdm.enable = true;
@@ -86,7 +65,7 @@ in
   users.users.shyim = {
     isNormalUser = true;
     description = "shyim";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.fish;
   };
 
@@ -99,20 +78,20 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    discordCustom
+    discord
     google-chrome-dev
     vscode
     spotify
     htop
     kitty
-    golandCustom
-    phpstormCustom
     nvtop-amd
     slack
     zoom-us
     lutris
+    corectrl
   ];
 
+  programs.noisetorch.enable = true;
   programs.steam.enable = true;
 
   programs._1password-gui.enable = true;
@@ -130,4 +109,6 @@ in
 
   services.tailscale.enable = true;
   system.stateVersion = "23.05";
+
+  virtualisation.docker.enable = true;
 }
