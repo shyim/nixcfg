@@ -89,6 +89,7 @@
     zoom-us
     lutris
     corectrl
+    gnomeExtensions.tray-icons-reloaded
   ];
 
   programs.noisetorch.enable = true;
@@ -105,6 +106,19 @@
   fileSystems.shopware = {
     fsType = "tmpfs";
     mountPoint = "/home/shyim/Code/platform/.devenv/state/mysql";
+  };
+
+  boot.supportedFilesystems = [ "ntfs" ];
+
+  fileSystems.games = {
+    fsType = "ntfs3";
+    device = "/dev/sda1";
+    mountPoint = "/mnt/games";
+    options = [
+      "rw"
+      "uid=1000"
+      "gid=1000"
+    ];
   };
 
   services.tailscale.enable = true;
