@@ -90,6 +90,7 @@
     lutris
     corectrl
     gnomeExtensions.tray-icons-reloaded
+    wl-clipboard
   ];
 
   programs.noisetorch.enable = true;
