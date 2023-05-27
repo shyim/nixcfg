@@ -17,7 +17,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_testing;
 
   networking.hostName = "melody";
   networking.networkmanager.enable = true;
@@ -83,7 +83,7 @@
     vscode
     spotify
     htop
-    kitty
+    yuzu-early-access
     nvtop-amd
     slack
     zoom-us
