@@ -4,7 +4,7 @@
 , devenv
 , home-manager
 , ...
-}: 
+}:
 
 let
   dockerUp = pkgs.writeShellScriptBin "docker-up" ''
@@ -20,7 +20,8 @@ let
     docker context rm -f hetzner
     hcloud server delete docker-local
   '';
-in {
+in
+{
   home.packages = with pkgs; [
     nixpkgs-fmt
     git

@@ -7,5 +7,6 @@
     ./git
     ./shell
     ./neovim
+    ./gtk
   ];
 }
