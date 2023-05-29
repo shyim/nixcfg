@@ -1,5 +1,6 @@
 { config
 , pkgs
+, myFlake
 , ...
 }: {
   imports = [
@@ -13,7 +14,7 @@
   boot.loader.systemd-boot.configurationLimit = 5;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   networking = {
     hostName = "shea";
@@ -25,9 +26,9 @@
   system.stateVersion = "23.05";
 
   sops.defaultSopsFile = ./sops/default.yaml;
-  virtualisation.podman.enable = true;
 
   nixpkgs.overlays = [ (import ./overlays/rclone.nix) ];
+  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1t" ];
 
   environment.etc."resolv.conf".text = ''
     domain shyim.de
@@ -36,4 +37,8 @@
     nameserver 8.8.8.8
     options edns0
   '';
+
+  environment.systemPackages = [
+    myFlake.packages."aarch64-linux".yuzu-room
+  ];
 }

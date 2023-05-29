@@ -41,7 +41,7 @@
     {
       colmena = {
         meta = {
-          nixpkgs = import nixpkgs { };
+          nixpkgs = import nixpkgs { system = "aarch64-linux"; };
           specialArgs = extraArgs;
         };
 
@@ -140,6 +140,7 @@
           screego = pkgs.callPackage ./pkgs/screego { };
           wakapi = pkgs.callPackage ./pkgs/wakapi { };
           dynamodb = pkgs.callPackage ./pkgs/dynamodb { };
+          yuzu-room = pkgs.callPackage ./pkgs/yuzu-room { };
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;

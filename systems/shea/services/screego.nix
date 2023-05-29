@@ -24,15 +24,15 @@
     static-auth-secret-file = config.sops.secrets.coturn_secret.path;
     realm = "shea.shyim.de";
     extraConfig = ''
-    #external-ip=2603:c020:800e:2300:af23:304d:7d5c:bed8
-    external-ip=138.2.153.89/10.0.0.106
-    relay-device=enp0s3
-    listening-device=enp0s3
-    no-cli
+      #external-ip=2603:c020:800e:2300:af23:304d:7d5c:bed8
+      external-ip=138.2.153.89/10.0.0.106
+      relay-device=enp0s3
+      listening-device=enp0s3
+      no-cli
 
-    #allocation-default-address-family=keep
-    # Fixes IPv6, but breaks IPv4
-    # keep-address-family
+      #allocation-default-address-family=keep
+      # Fixes IPv6, but breaks IPv4
+      # keep-address-family
     '';
     listening-ips = [
       "10.0.0.106"
