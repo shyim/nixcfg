@@ -1,4 +1,14 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, ... }:
+
+let
+  phpstorm = pkgs.jetbrains.phpstorm.overrideAttrs (oldAttrs: {
+    src = pkgs.fetchurl {
+      url = "https://download-cdn.jetbrains.com/webide/PhpStorm-232.6095.6.tar.gz";
+      hash = "sha256-XaptULlp61sRq4Y6td6IJAC52cEOCCJ1Uwr6GS5NLKM=";
+    };
+  });
+in
+{
   nixpkgs.config.allowUnfree = true;
   programs.fish.enable = true;
 
@@ -20,10 +30,17 @@
     gnomeExtensions.gsconnect
     gnomeExtensions.vitals
     liquidctl
-    wl-clipboard
+    phpstorm
+    winetricks
+    (pkgs.writeShellScriptBin "pbcopy" ''
+      if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
+        ${pkgs.wl-clipboard}/bin/wl-copy
+      else
+        ${pkgs.xclip}/bin/xclip -selection clipboard
+      fi
+    '')
   ];
 
-  programs.noisetorch.enable = true;
   programs.steam.enable = true;
 
   programs._1password-gui.enable = true;
