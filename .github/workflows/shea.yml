@@ -20,9 +20,9 @@ jobs:
           authkey: ${{ secrets.TAILSCALE_TOKEN }}
 
       - name: Install Nix
-        uses: cachix/install-nix-action@v18
+        uses: DeterminateSystems/nix-installer-action@v3
 
-      - uses: webfactory/ssh-agent@v0.5.4
+      - uses: webfactory/ssh-agent@v0.8.0
         with:
             ssh-private-key: ${{ secrets.SSH_KEY }}
 
