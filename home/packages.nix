@@ -3,6 +3,7 @@
 , lib
 , devenv
 , home-manager
+, myFlake
 , ...
 }:
 
@@ -50,6 +51,7 @@ in
     colima
     ncdu
     cosign
+    myFlake.packages.${system}.git-credential-oauth
   ];
 
   programs.home-manager.enable = true;

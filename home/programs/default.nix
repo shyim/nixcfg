@@ -7,6 +7,7 @@
     ./git
     ./shell
     ./neovim
+    ./pipewire
     ./gtk
   ];
 }

@@ -25,9 +25,27 @@
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUY8rriTGw3ZcAtT6jJrsu5JAuUqi1WjFwOyWGoFZLA";
 
       url = {
-        "git@github.com:" = {
-          insteadOf = "https://github.com/";
+        "https://github.com/" = {
+          insteadOf = "git@github.com:";
         };
+      };
+
+      credential."https://github.com" = {
+        oauthClientId = "b91952eb195b2b835775";
+        oauthClientSecret = "fc42dad303fcafe86bb732e005edb20eb4ddea60";
+        helper = [
+          "cache"
+          "oauth"
+        ];
+      };
+
+      credential."https://gitlab.com" = {
+        oauthClientId = "479c978e0e09e2fd3cb96cef0f2228d20dece607e79110af533300cf24bf5600";
+        oauthClientSecret = "94699afe5471650667839e1e3c42080d0aeaa18ed34e6ce0f3a0a931ff47681b";
+        helper = [
+          "cache"
+          "oauth"
+        ];
       };
     };
 
