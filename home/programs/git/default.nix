@@ -28,11 +28,12 @@
         "https://github.com/" = {
           insteadOf = "git@github.com:";
         };
+        "https://gitlab.shopware.com/" = {
+          insteadOf = "git@gitlab.shopware.com:";
+        };
       };
 
       credential."https://github.com" = {
-        oauthClientId = "b91952eb195b2b835775";
-        oauthClientSecret = "fc42dad303fcafe86bb732e005edb20eb4ddea60";
         helper = [
           "cache"
           "oauth"
@@ -40,8 +41,17 @@
       };
 
       credential."https://gitlab.com" = {
-        oauthClientId = "479c978e0e09e2fd3cb96cef0f2228d20dece607e79110af533300cf24bf5600";
-        oauthClientSecret = "94699afe5471650667839e1e3c42080d0aeaa18ed34e6ce0f3a0a931ff47681b";
+        helper = [
+          "cache"
+          "oauth"
+        ];
+      };
+
+      credential."https://gitlab.shopware.com" = {
+        oauthClientId = "27dbdada9445855de26ad7fd4f3f0e0eb30f31ee618cdbcc2987d3ba652e6f6d";
+        oauthScopes = "read_repository write_repository";
+        oauthAuthURL = "/oauth/authorize";
+        oauthTokenURL = "/oauth/token";
         helper = [
           "cache"
           "oauth"
