@@ -18,9 +18,14 @@
       push.default = "current";
       fetch.prune = true;
       pull.rebase = true;
+      rebase.autoStash = true;
       init.defaultBranch = "main";
       gpg.format = "ssh";
       tag.gpgsign = true;
+      credential.helper = [
+        "cache"
+        "oauth"
+      ];
 
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUY8rriTGw3ZcAtT6jJrsu5JAuUqi1WjFwOyWGoFZLA";
 
@@ -33,29 +38,11 @@
         };
       };
 
-      credential."https://github.com" = {
-        helper = [
-          "cache"
-          "oauth"
-        ];
-      };
-
-      credential."https://gitlab.com" = {
-        helper = [
-          "cache"
-          "oauth"
-        ];
-      };
-
       credential."https://gitlab.shopware.com" = {
         oauthClientId = "27dbdada9445855de26ad7fd4f3f0e0eb30f31ee618cdbcc2987d3ba652e6f6d";
         oauthScopes = "read_repository write_repository";
         oauthAuthURL = "/oauth/authorize";
         oauthTokenURL = "/oauth/token";
-        helper = [
-          "cache"
-          "oauth"
-        ];
       };
     };
 
