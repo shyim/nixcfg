@@ -1,6 +1,6 @@
 { config
 , pkgs
-, myFlake
+, flake
 , ...
 }: {
   sops.secrets.coturn_secret = {
@@ -57,7 +57,7 @@
       SCREEGO_CLOSE_ROOM_WHEN_OWNER_LEAVES = "false";
     };
     serviceConfig = {
-      ExecStart = "${myFlake.packages."aarch64-linux".screego}/bin/screego serve";
+      ExecStart = "${flake.packages."aarch64-linux".screego}/bin/screego serve";
       EnvironmentFile = config.sops.secrets.screego_env.path;
       User = "screego";
       Group = "caddy";

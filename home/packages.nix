@@ -3,7 +3,7 @@
 , lib
 , devenv
 , home-manager
-, myFlake
+, flake
 , ...
 }:
 

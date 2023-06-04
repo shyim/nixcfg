@@ -1,6 +1,6 @@
 { config
 , pkgs
-, myFlake
+, flake
 , ...
 }: {
   imports = [
@@ -39,6 +39,6 @@
   '';
 
   environment.systemPackages = [
-    myFlake.packages."aarch64-linux".yuzu-room
+    flake.packages."aarch64-linux".yuzu-room
   ];
 }

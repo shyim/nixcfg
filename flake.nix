@@ -35,7 +35,7 @@
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       extraArgs = {
         inherit nixpkgs devenv home-manager sops-nix;
-        myFlake = self;
+        flake = self;
       };
     in
     {

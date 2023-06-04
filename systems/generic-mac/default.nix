@@ -1,4 +1,4 @@
-{ pkgs, remapKeys, lib, ... }: {
+{ flake, pkgs, remapKeys, lib, ... }: {
   imports = [
     ./packages.nix
     ./services.nix
@@ -13,6 +13,9 @@
     builders = @/etc/nix/machines
   '';
   nix.settings.trusted-users = [ "root" "shyim" ];
+  nix.nixPath = lib.mkForce [
+    "nixpkgs=${flake.inputs.nixpkgs}"
+  ];
 
   environment.shells = [ pkgs.fish ];
   programs.fish.enable = true;

@@ -1,6 +1,6 @@
 { config
 , pkgs
-, myFlake
+, flake
 , ...
 }: {
   users.users.wakapi = {
@@ -40,7 +40,7 @@
     };
     serviceConfig = {
       EnvironmentFile = config.sops.secrets.wakapi.path;
-      ExecStart = "${myFlake.packages."aarch64-linux".wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
+      ExecStart = "${flake.packages."aarch64-linux".wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
       User = "wakapi";
       Group = "caddy";
       StateDirectory = "wakapi";
