@@ -134,14 +134,9 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
-          awsume = pkgs.callPackage ./pkgs/awsume { };
-          openjdk = pkgs.callPackage ./pkgs/openjdk { };
-          opensearch = pkgs.callPackage ./pkgs/opensearch { };
           screego = pkgs.callPackage ./pkgs/screego { };
           wakapi = pkgs.callPackage ./pkgs/wakapi { };
-          dynamodb = pkgs.callPackage ./pkgs/dynamodb { };
           yuzu-room = pkgs.callPackage ./pkgs/yuzu-room { };
-          git-credential-oauth = pkgs.callPackage ./pkgs/git-credential-oauth { };
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;

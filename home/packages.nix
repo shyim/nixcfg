@@ -26,6 +26,7 @@ in
   home.packages = with pkgs; [
     nixpkgs-fmt
     git
+    git-credential-oauth
     htop
     jq
     tree
@@ -51,7 +52,6 @@ in
     colima
     ncdu
     cosign
-    myFlake.packages.${system}.git-credential-oauth
   ];
 
   programs.home-manager.enable = true;
