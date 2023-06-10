@@ -51,8 +51,6 @@ in
       fish_add_path /run/current-system/sw/bin
       ''}
 
-      alias nix-sha 'nix hash to-sri sha256:(nix-prefetch-url $argv[1])'
-
       fish_add_path $HOME/.npm-packages/bin/
 
       function ecsexec

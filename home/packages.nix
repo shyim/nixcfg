@@ -40,7 +40,6 @@ in
     bat
     devenv.packages.${system}.devenv
     shopware-cli
-    dart-sass-embedded
     fastly
     rclone
     age
@@ -52,6 +51,9 @@ in
     colima
     ncdu
     cosign
+    (pkgs.writeShellScriptBin "nix-sha" ''
+      nix hash to-sri sha256:$(nix-prefetch-url $1)
+    '')
   ];
 
   programs.home-manager.enable = true;
