@@ -21,39 +21,41 @@ let
     docker context rm -f hetzner
     hcloud server delete docker-local
   '';
+  nixSha = pkgs.writeShellScriptBin "nix-sha" ''
+    nix hash to-sri sha256:$(nix-prefetch-url $1)
+  '';
 in
 {
   home.packages = with pkgs; [
-    nixpkgs-fmt
-    git
-    git-credential-oauth
-    htop
-    jq
-    tree
-    tmux
-    wget
-    fd
-    bash
-    gh
-    asciinema
-    ripgrep
-    bat
-    devenv.packages.${system}.devenv
-    shopware-cli
-    fastly
-    rclone
     age
-    sops
+    asciinema
+    bash
+    bat
+    colima
+    cosign
+    devenv.packages.${system}.devenv
     docker-client
     docker-compose
-    dockerUp
     dockerDown
-    colima
+    dockerUp
+    fastly
+    fd
+    gh
+    git
+    git-credential-oauth
+    github-copilot-cli
+    htop
+    jq
     ncdu
-    cosign
-    (pkgs.writeShellScriptBin "nix-sha" ''
-      nix hash to-sri sha256:$(nix-prefetch-url $1)
-    '')
+    nixSha
+    nixpkgs-fmt
+    rclone
+    ripgrep
+    shopware-cli
+    sops
+    tmux
+    tree
+    wget
   ];
 
   programs.home-manager.enable = true;
