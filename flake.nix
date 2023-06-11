@@ -19,6 +19,8 @@
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixd.url = "github:nix-community/nixd";
   };
   outputs =
     { nixpkgs
@@ -34,7 +36,7 @@
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       extraArgs = {
-        inherit nixpkgs devenv home-manager sops-nix;
+        inherit sops-nix;
         flake = self;
       };
     in

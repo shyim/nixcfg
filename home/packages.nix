@@ -1,8 +1,6 @@
 { config
 , pkgs
 , lib
-, devenv
-, home-manager
 , flake
 , ...
 }:
@@ -33,7 +31,7 @@ in
     bat
     colima
     cosign
-    devenv.packages.${system}.devenv
+    flake.inputs.devenv.packages.${system}.devenv
     docker-client
     docker-compose
     dockerDown
@@ -46,6 +44,7 @@ in
     github-copilot-cli
     htop
     jq
+    flake.inputs.nixd.packages.${system}.nixd
     ncdu
     nixSha
     nixpkgs-fmt
