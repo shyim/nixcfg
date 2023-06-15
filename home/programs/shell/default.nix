@@ -32,11 +32,6 @@ in
     };
   };
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
   programs.fish = {
     enable = true;
     plugins = [
@@ -59,6 +54,11 @@ in
 
       fish_add_path $HOME/.npm-packages/bin/
     '';
+  };
+
+  programs.atuin = {
+    enable = true;
+    enableFishIntegration = true;
   };
 
   programs.direnv.enable = true;
