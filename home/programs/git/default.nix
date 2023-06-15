@@ -9,6 +9,7 @@
     enable = true;
 
     delta.enable = true;
+    lfs.enable = true;
 
     userEmail = "s.sayakci@shopware.com";
     userName = "Soner Sayakci";
