@@ -44,7 +44,6 @@ in
     github-copilot-cli
     htop
     jq
-    flake.inputs.nixd.packages.${system}.nixd
     ncdu
     nixSha
     nixpkgs-fmt
