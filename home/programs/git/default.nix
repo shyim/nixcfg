@@ -23,19 +23,15 @@
       init.defaultBranch = "main";
       gpg.format = "ssh";
       tag.gpgsign = true;
-      credential.helper = [
-        "cache"
-        "oauth"
-      ];
 
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUY8rriTGw3ZcAtT6jJrsu5JAuUqi1WjFwOyWGoFZLA";
 
       url = {
-        "https://github.com/" = {
-          insteadOf = "git@github.com:";
+        "git@github.com:" = {
+          insteadOf = "https://github.com/";
         };
-        "https://gitlab.shopware.com/" = {
-          insteadOf = "git@gitlab.shopware.com:";
+        "git@gitlab.shopware.com:" = {
+          insteadOf = "https://gitlab.shopware.com/";
         };
       };
 

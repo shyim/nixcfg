@@ -65,6 +65,7 @@ in
   programs.direnv.nix-direnv.enable = true;
 
   programs.bat.enable = true;
+  programs.zoxide.enable = true;
 
   programs.lsd.enable = true;
   programs.lsd.enableAliases = true;
