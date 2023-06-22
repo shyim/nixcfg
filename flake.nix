@@ -139,6 +139,7 @@
           screego = pkgs.callPackage ./pkgs/screego { };
           wakapi = pkgs.callPackage ./pkgs/wakapi { };
           yuzu-room = pkgs.callPackage ./pkgs/yuzu-room { };
+          ecsexec = pkgs.callPackage ./pkgs/ecsexec { };
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;

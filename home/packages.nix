@@ -29,15 +29,15 @@ in
     asciinema
     bash
     bat
-    colima
     cosign
-    flake.inputs.devenv.packages.${system}.devenv
     docker-client
     docker-compose
     dockerDown
     dockerUp
     fastly
     fd
+    flake.inputs.devenv.packages.${system}.devenv
+    flake.packages.${system}.ecsexec
     gh
     git
     git-credential-oauth
