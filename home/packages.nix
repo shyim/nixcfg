@@ -53,6 +53,8 @@ in
     tmux
     tree
     wget
+    php82
+    php82Packages.composer
   ];
 
   programs.home-manager.enable = true;
