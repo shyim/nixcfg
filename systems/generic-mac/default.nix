@@ -43,14 +43,8 @@
     # iStat Menus
     "1319778037"
 
-    # The unarchiver
-    "425424353"
-
     # Tailscale
     "1475387142"
-
-    # Wireguard
-    "1451685025"
   ];
 
   nix.distributedBuilds = true;
@@ -80,4 +74,14 @@
       system = "x86_64-linux";
     }
   ];
+
+  environment.etc."ssh/ssh_config.d/gitpod".text = ''
+    Host *.gitpod.io
+      ForwardAgent yes
+  '';
+
+  environment.etc."ssh/ssh_config.d/timeout".text = ''
+    Host *
+      ServerAliveInterval 60
+  '';
 }
