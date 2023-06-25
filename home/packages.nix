@@ -39,7 +39,6 @@ in
     flake.inputs.devenv.packages.${system}.devenv
     flake.packages.${system}.ecsexec
     gh
-    git
     git-credential-oauth
     github-copilot-cli
     htop
