@@ -23,6 +23,7 @@
       init.defaultBranch = "main";
       gpg.format = "ssh";
       tag.gpgsign = true;
+      http.postBuffer = 157286400;
 
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUY8rriTGw3ZcAtT6jJrsu5JAuUqi1WjFwOyWGoFZLA";
 
