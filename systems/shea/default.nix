@@ -27,7 +27,6 @@
 
   sops.defaultSopsFile = ./sops/default.yaml;
 
-  nixpkgs.overlays = [ (import ./overlays/rclone.nix) ];
   nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1t" ];
 
   environment.etc."resolv.conf".text = ''
@@ -37,8 +36,4 @@
     nameserver 8.8.8.8
     options edns0
   '';
-
-  environment.systemPackages = [
-    flake.packages."aarch64-linux".yuzu-room
-  ];
 }

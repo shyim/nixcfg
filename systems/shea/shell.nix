@@ -9,7 +9,6 @@
     psmisc # killall
     unzip
     tmux
-    rclone
   ];
 
   users.defaultUserShell = pkgs.fish;

@@ -10,6 +10,5 @@
     ./tailscale.nix
     ./thelounge.nix
     ./wakapi.nix
-    ./yuzu.nix
   ];
 }

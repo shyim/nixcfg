@@ -140,6 +140,7 @@
           wakapi = pkgs.callPackage ./pkgs/wakapi { };
           yuzu-room = pkgs.callPackage ./pkgs/yuzu-room { };
           ecsexec = pkgs.callPackage ./pkgs/ecsexec { };
+          cloudreve = pkgs.callPackage ./pkgs/cloudreve { };
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
