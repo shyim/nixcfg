@@ -13,6 +13,7 @@
     builders = @/etc/nix/machines
   '';
   nix.settings.trusted-users = [ "root" "shyim" ];
+  nix.settings.log-lines = 30;
   nix.nixPath = lib.mkForce [
     "nixpkgs=${flake.inputs.nixpkgs}"
   ];

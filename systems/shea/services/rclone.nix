@@ -21,7 +21,7 @@
     ];
     serviceConfig = {
       Type = "notify";
-      ExecStart = "${pkgs.rclone}/bin/rclone mount DropboxPrivate: --allow-other --vfs-cache-mode=minimal --config ${config.sops.secrets.rclone_config.path} /var/lib/cloudreve/uploads";
+      ExecStart = "${pkgs.rclone}/bin/rclone mount DropboxCloudreve: --allow-other --vfs-cache-mode=minimal --config ${config.sops.secrets.rclone_config.path} /var/lib/cloudreve/uploads";
       ExecStop = "${pkgs.fuse3}/bin/fusermount -uz /var/lib/cloudreve/uploads";
     };
   };
