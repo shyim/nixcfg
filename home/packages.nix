@@ -34,6 +34,7 @@ in
     docker-compose
     dockerDown
     dockerUp
+    cloudflared
     fastly
     fd
     flake.inputs.devenv.packages.${system}.devenv
