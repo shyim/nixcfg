@@ -99,7 +99,7 @@
           system = "aarch64-darwin";
           modules = [
             ./systems/generic-mac
-            ./systems/bob
+            ./systems/bob-the-buildmaster
           ];
         };
       };
