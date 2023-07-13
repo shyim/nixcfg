@@ -20,6 +20,7 @@
       builders = @/etc/nix/machines
       log-lines = 30
       nix-path = nixpkgs=${flake.inputs.nixpkgs}
+      extra-platforms = x86_64-darwin aarch64-darwin
     '';
     settings.trusted-users = [ "root" "shyim" ];
   };
