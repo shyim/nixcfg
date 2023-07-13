@@ -2,7 +2,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    nodejs-18_x
+    nodejs_20
     bash
     git
   ];

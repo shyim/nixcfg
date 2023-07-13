@@ -1,22 +1,30 @@
-{ flake, pkgs, remapKeys, lib, ... }: {
+{ flake
+, pkgs
+, remapKeys
+, lib
+, ...
+}: {
   imports = [
     ./packages.nix
     ./services.nix
+    ./builders.nix
   ];
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nixpkgs.config.allowUnfree = true;
-  nix.package = pkgs.nixUnstable;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    builders = @/etc/nix/machines
-  '';
-  nix.settings.trusted-users = [ "root" "shyim" ];
-  nix.settings.log-lines = 30;
-  nix.nixPath = lib.mkForce [
-    "nixpkgs=${flake.inputs.nixpkgs}"
-  ];
+  nix = {
+    package = pkgs.nixUnstable;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      builders = @/etc/nix/machines
+      log-lines = 30
+    '';
+    settings.trusted-users = [ "root" "shyim" ];
+    nixPath = lib.mkForce [
+      "nixpkgs=${flake.inputs.nixpkgs}"
+    ];
+  };
 
   environment.shells = [ pkgs.fish ];
   programs.fish.enable = true;
@@ -46,34 +54,6 @@
 
     # Tailscale
     "1475387142"
-  ];
-
-  nix.distributedBuilds = true;
-  nix.buildMachines = [
-    {
-      hostName = "shea.bunny-chickadee.ts.net";
-      maxJobs = 10;
-      sshKey = "/Users/shyim/.ssh/nix";
-      sshUser = "root";
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-      system = "aarch64-linux";
-    }
-    {
-      hostName = "138.201.121.30";
-      maxJobs = 10;
-      sshKey = "/Users/shyim/.ssh/nix";
-      sshUser = "root";
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-      system = "x86_64-linux";
-    }
-    {
-      hostName = "88.99.6.33";
-      maxJobs = 10;
-      sshKey = "/Users/shyim/.ssh/nix";
-      sshUser = "root";
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" "system" "features" ];
-      system = "x86_64-linux";
-    }
   ];
 
   environment.etc."ssh/ssh_config.d/gitpod".text = ''
