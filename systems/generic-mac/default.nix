@@ -19,11 +19,9 @@
       experimental-features = nix-command flakes
       builders = @/etc/nix/machines
       log-lines = 30
+      nix-path = nixpkgs=${flake.inputs.nixpkgs}
     '';
     settings.trusted-users = [ "root" "shyim" ];
-    nixPath = lib.mkForce [
-      "nixpkgs=${flake.inputs.nixpkgs}"
-    ];
   };
 
   environment.shells = [ pkgs.fish ];
