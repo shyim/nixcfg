@@ -3,8 +3,8 @@
 , lib
 , ...
 }: {
-    nix.distributedBuilds = false;
-    nix.buildMachines = [ ];
+    nix.distributedBuilds = lib.mkForce false;
+    nix.buildMachines = lib.mkForce [ ];
 
     environment.systemPackages = with pkgs; [
         flake.inputs.devenv.packages.${system}.devenv
