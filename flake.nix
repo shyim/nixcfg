@@ -94,6 +94,14 @@
             }
           ];
         };
+        bob = darwin.lib.darwinSystem {
+          specialArgs = extraArgs // { remapKeys = false; };
+          system = "aarch64-darwin";
+          modules = [
+            ./systems/generic-mac
+            ./systems/bob
+          ];
+        };
       };
 
       nixosConfigurations = {
