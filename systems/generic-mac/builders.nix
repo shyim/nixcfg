@@ -4,27 +4,39 @@
   nix.distributedBuilds = true;
   nix.buildMachines = [
     {
-      hostName = "shea.bunny-chickadee.ts.net";
+      # oracle arm
+      hostName = "100.111.47.100";
       maxJobs = 10;
-      sshKey = "/Users/shyim/.ssh/nix";
+      sshKey = "/Users/shyim/.nix-ssh-key";
       sshUser = "root";
       supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       system = "aarch64-linux";
     }
     {
-      hostName = "138.201.121.30";
+      # bob m1
+      hostName = "100.119.170.85";
       maxJobs = 10;
-      sshKey = "/Users/shyim/.ssh/nix";
+      sshKey = "/Users/shyim/.nix-ssh-key";
       sshUser = "root";
       supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-      system = "x86_64-linux";
+      system = "x86_64-darwin";
     }
     {
-      hostName = "88.99.6.33";
+      # bob m1
+      hostName = "100.119.170.85";
       maxJobs = 10;
-      sshKey = "/Users/shyim/.ssh/nix";
+      sshKey = "/Users/shyim/.nix-ssh-key";
       sshUser = "root";
-      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" "system" "features" ];
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
+      system = "aarch64-darwin";
+    }
+    {
+      # hetzner intel
+      hostName = "138.201.121.30";
+      maxJobs = 10;
+      sshKey = "/Users/shyim/.nix-ssh-key";
+      sshUser = "root";
+      supportedFeatures = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
       system = "x86_64-linux";
     }
   ];

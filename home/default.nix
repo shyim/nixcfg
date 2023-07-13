@@ -41,6 +41,11 @@
       path = "${config.home.homeDirectory}/.nix-access-token";
       format = "yaml";
     };
+    secrets.nix_ssh = {
+      path = "${config.home.homeDirectory}/.nix-ssh-key";
+      format = "yaml";
+      mode = "0600";
+    };
   };
 
   home.sessionVariables.NIX_USER_CONF_FILES = "${config.home.homeDirectory}/.config/nix/nix.conf:${config.home.homeDirectory}/.nix-access-token";
