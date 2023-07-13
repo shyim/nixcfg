@@ -1,7 +1,6 @@
 { flake
 , pkgs
 , lib
-, flake
 , ...
 }: {
     nix.distributedBuilds = false;
