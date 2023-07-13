@@ -94,7 +94,7 @@
             }
           ];
         };
-        bob = darwin.lib.darwinSystem {
+        bob-the-buildmaster-v2 = darwin.lib.darwinSystem {
           specialArgs = extraArgs // { remapKeys = false; };
           system = "aarch64-darwin";
           modules = [
