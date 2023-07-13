@@ -6,6 +6,10 @@
   nix.distributedBuilds = lib.mkForce false;
   nix.buildMachines = lib.mkForce [ ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "nodejs-16.20.1"
+  ];
+
   environment.systemPackages = with pkgs; [
     flake.inputs.devenv.packages.${system}.devenv
     cachix
