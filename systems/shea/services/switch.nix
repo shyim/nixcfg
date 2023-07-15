@@ -9,6 +9,13 @@
     '';
   };
 
+  services.caddy.virtualHosts."https://nut.shyim.de" = {
+    extraConfig = ''
+      reverse_proxy unix/var/run/nut/web.sock
+      encode gzip
+    '';
+  };
+
   users.users.nut = {
     description = "The nut service user";
     group = "caddy";
