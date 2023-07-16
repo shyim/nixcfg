@@ -2,23 +2,18 @@
 , pkgs
 , ...
 }: {
-  services.caddy.virtualHosts."http://nut.shyim.de" = {
-    extraConfig = ''
-      reverse_proxy unix/var/run/nut/web.sock
-      encode gzip
-    '';
-  };
-
-  services.caddy.virtualHosts."https://nut.shyim.de" = {
-    extraConfig = ''
-      reverse_proxy unix/var/run/nut/web.sock
-      encode gzip
-    '';
+  services.nginx.virtualHosts."nut.shyim.de" = {
+    enableACME = true;
+    forceSSL = false;
+    addSSL = true;
+    locations."/" = {
+      proxyPass = "http://unix:/var/run/nut/web.sock";
+    };
   };
 
   users.users.nut = {
     description = "The nut service user";
-    group = "caddy";
+    group = "nginx";
     isSystemUser = true;
   };
 
@@ -27,7 +22,7 @@
     serviceConfig = {
       ExecStart = "/opt/nut server --socket /var/run/nut/web.sock";
       User = "nut";
-      Group = "caddy";
+      Group = "nginx";
       StateDirectory = "nut";
       RuntimeDirectory = "nut";
       StateDirectoryMode = "0770";

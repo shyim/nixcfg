@@ -7,11 +7,13 @@
     enable = true;
   };
 
-  services.caddy.virtualHosts."paperless.shyim.de" = {
-    extraConfig = ''
-      reverse_proxy http://${config.services.paperless.address}:${toString config.services.paperless.port}
-      encode gzip
-    '';
+  services.nginx.virtualHosts."paperless.shyim.de" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://${config.services.paperless.address}:${toString config.services.paperless.port}";
+      proxyWebsockets = true;
+    };
   };
 
   systemd.services.paperless-scheduler.requires = [ "rclone-paperless.service" ];

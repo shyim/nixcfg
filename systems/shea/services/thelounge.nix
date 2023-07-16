@@ -9,7 +9,7 @@
   };
 
   systemd.services.thelounge.serviceConfig = {
-    Group = "caddy";
+    Group = "nginx";
     StateDirectory = "thelounge";
     RuntimeDirectory = "thelounge";
     StateDirectoryMode = "0770";
@@ -17,10 +17,12 @@
     UMask = "0002";
   };
 
-  services.caddy.virtualHosts."irc.shyim.de" = {
-    extraConfig = ''
-      reverse_proxy unix/run/thelounge/web.sock
-      encode gzip
-    '';
+  services.nginx.virtualHosts."irc.shyim.de" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://unix:/run/thelounge/web.sock";
+      proxyWebsockets = true;
+    };
   };
 }

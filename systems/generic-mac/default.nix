@@ -30,7 +30,7 @@
       auto-allocate-uids = true
       builders-use-substitutes = true
       builders = @/etc/nix/machines
-      log-lines = 30
+      log-lines = 100
       nix-path = nixpkgs=${flake.inputs.nixpkgs}
       extra-platforms = x86_64-darwin aarch64-darwin
     '';

@@ -10,7 +10,7 @@
 
   users.users.cloudreve = {
     isSystemUser = true;
-    group = "caddy";
+    group = "nginx";
   };
 
   systemd.services.rclone-cloudreve = {
@@ -49,17 +49,19 @@
       '';
       WorkingDirectory = "/var/lib/cloudreve";
       User = "cloudreve";
-      Group = "caddy";
+      Group = "nginx";
       RuntimeDirectory = "cloudreve";
       RuntimeDirectoryMode = "0770";
       UMask = "0002";
     };
   };
 
-  services.caddy.virtualHosts."drive.shyim.de" = {
-    extraConfig = ''
-      reverse_proxy http://127.0.0.1:5212
-      encode gzip
-    '';
+  services.nginx.virtualHosts."drive.shyim.de" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:5212";
+      proxyWebsockets = true;
+    };
   };
 }

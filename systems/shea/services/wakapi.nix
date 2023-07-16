@@ -5,7 +5,7 @@
 }: {
   users.users.wakapi = {
     description = "The wakapi service user";
-    group = "caddy";
+    group = "nginx";
     isSystemUser = true;
   };
 
@@ -42,7 +42,7 @@
       EnvironmentFile = config.sops.secrets.wakapi.path;
       ExecStart = "${flake.packages."aarch64-linux".wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
       User = "wakapi";
-      Group = "caddy";
+      Group = "nginx";
       StateDirectory = "wakapi";
       RuntimeDirectory = "wakapi";
       StateDirectoryMode = "0770";
@@ -51,10 +51,12 @@
     };
   };
 
-  services.caddy.virtualHosts."time.fos.gg" = {
-    extraConfig = ''
-      reverse_proxy unix/run/wakapi/web.sock
-      encode gzip
-    '';
+  services.nginx.virtualHosts."time.fos.gg" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://unix:/run/wakapi/web.sock";
+      proxyWebsockets = true;
+    };
   };
 }

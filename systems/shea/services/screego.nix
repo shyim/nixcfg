@@ -14,7 +14,7 @@
 
   users.users.screego = {
     description = "The screego service user";
-    group = "caddy";
+    group = "nginx";
     isSystemUser = true;
   };
 
@@ -60,20 +60,19 @@
       ExecStart = "${flake.packages."aarch64-linux".screego}/bin/screego serve";
       EnvironmentFile = config.sops.secrets.screego_env.path;
       User = "screego";
-      Group = "caddy";
+      Group = "nginx";
       RuntimeDirectory = "screego";
       RuntimeDirectoryMode = "0770";
       UMask = "0002";
     };
   };
 
-  networking.firewall.allowedTCPPorts = [ 3478 ];
-  networking.firewall.allowedUDPPorts = [ 3478 ];
-
-  services.caddy.virtualHosts."screen.fos.gg" = {
-    extraConfig = ''
-      reverse_proxy 127.0.0.1:3412
-      encode gzip
-    '';
+  services.nginx.virtualHosts."screen.fos.gg" = {
+    enableACME = true;
+    forceSSL = true;
+    locations."/" = {
+      proxyPass = "http://127.0.0.1:3412";
+      proxyWebsockets = true;
+    };
   };
 }
