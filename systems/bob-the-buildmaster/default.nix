@@ -32,49 +32,49 @@
       description = "GitHub agent user group";
     };
 
-#   launchd.daemons.gitlab-runner = {
-#     environment = {
-#       HOME = "${config.users.users.gitlab-runner.home}";
-#       NIX_SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
-#     } // (if config.nix.useDaemon then { NIX_REMOTE = "daemon"; } else { });
-#     path = with pkgs; [
-#       bash
-#       gawk
-#       jq
-#       moreutils
-#       remarshal
-#       github-runner
-#       coreutils
-#       gnugrep
-#       gnused
-#     ];
+  #   launchd.daemons.gitlab-runner = {
+  #     environment = {
+  #       HOME = "${config.users.users.gitlab-runner.home}";
+  #       NIX_SSL_CERT_FILE = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+  #     } // (if config.nix.useDaemon then { NIX_REMOTE = "daemon"; } else { });
+  #     path = with pkgs; [
+  #       bash
+  #       gawk
+  #       jq
+  #       moreutils
+  #       remarshal
+  #       github-runner
+  #       coreutils
+  #       gnugrep
+  #       gnused
+  #     ];
 
-#     script = ''
-#         STATE_DIRECTORY="$1"
-#         WORK_DIRECTORY="$2"
-#         LOGS_DIRECTORY="$3"
-#     '';
+  #     script = ''
+  #         STATE_DIRECTORY="$1"
+  #         WORK_DIRECTORY="$2"
+  #         LOGS_DIRECTORY="$3"
+  #     '';
 
-#     serviceConfig = {
-#       ProcessType = "Interactive";
-#       ThrottleInterval = 30;
+  #     serviceConfig = {
+  #       ProcessType = "Interactive";
+  #       ThrottleInterval = 30;
 
-#       # StandardOutPath = "/var/lib/gitlab-runner/out.log";
-#       # StandardErrorPath = "/var/lib/gitlab-runner/err.log";
-#       # The combination of KeepAlive.NetworkState and WatchPaths
-#       # will ensure that buildkite-agent is started on boot, but
-#       # after networking is available (so the hostname is
-#       # correct).
-#       RunAtLoad = true;
-#       #   KeepAlive.NetworkState = true;
-#       WatchPaths = [
-#         "/etc/resolv.conf"
-#         "/Library/Preferences/SystemConfiguration/NetworkInterfaces.plist"
-#       ];
+  #       # StandardOutPath = "/var/lib/gitlab-runner/out.log";
+  #       # StandardErrorPath = "/var/lib/gitlab-runner/err.log";
+  #       # The combination of KeepAlive.NetworkState and WatchPaths
+  #       # will ensure that buildkite-agent is started on boot, but
+  #       # after networking is available (so the hostname is
+  #       # correct).
+  #       RunAtLoad = true;
+  #       #   KeepAlive.NetworkState = true;
+  #       WatchPaths = [
+  #         "/etc/resolv.conf"
+  #         "/Library/Preferences/SystemConfiguration/NetworkInterfaces.plist"
+  #       ];
 
-#       GroupName = "github-runner";
-#       UserName = "github-runner";
-#       WorkingDirectory = config.users.users.github-runner.home;
-#     };
-#   };
+  #       GroupName = "github-runner";
+  #       UserName = "github-runner";
+  #       WorkingDirectory = config.users.users.github-runner.home;
+  #     };
+  #   };
 }

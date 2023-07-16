@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./modules
     ./services.nix
     ./security.nix
     ./shell.nix

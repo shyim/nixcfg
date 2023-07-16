@@ -23,7 +23,7 @@
     };
     serviceConfig.EnvironmentFile = config.sops.secrets.restic_env.path;
     serviceConfig.Type = "oneshot";
-    serviceConfig.ExecStart = "${pkgs.restic}/bin/restic backup /var/lib/mysql /var/lib/thelounge /var/lib/paperless";
+    serviceConfig.ExecStart = "${pkgs.restic}/bin/restic backup /var/lib/mysql /var/lib/thelounge /var/lib/paperless /var/lib/postgresql/";
   };
 
   systemd.timers.restic = {

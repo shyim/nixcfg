@@ -11,5 +11,6 @@
     ./thelounge.nix
     ./wakapi.nix
     ./paperless.nix
+    ./matrix.nix
   ];
 }
