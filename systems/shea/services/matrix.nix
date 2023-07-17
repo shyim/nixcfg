@@ -105,7 +105,7 @@ in
       bridge = {
         permissions = {
           "shyim.de" = "user";
-          "@hi:shyim.de" = "admin";
+          "@shyim:shyim.de" = "admin";
         };
         encryption = {
           allow = true;
@@ -133,7 +133,7 @@ in
       bridge = {
         permissions = {
           "shyim.de" = "user";
-          "@hi:shyim.de" = "admin";
+          "@shyim:shyim.de" = "admin";
         };
       };
 
@@ -162,7 +162,7 @@ in
       bridge = {
         permissions = {
           "shyim.de" = "user";
-          "@hi:shyim.de" = "admin";
+          "@shyim:shyim.de" = "admin";
         };
       };
     };
