@@ -15,6 +15,7 @@
     cachix
     htop
     github-runner
+    tmux
   ];
 
   users.users.github-runner =
