@@ -11,7 +11,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    flake.inputs.devenv.packages.${system}.devenv
     cachix
     htop
     github-runner
