@@ -3,7 +3,6 @@
 
   environment.systemPackages = with pkgs; [
     nodejs_20
-    bash
     git
   ];
 }
