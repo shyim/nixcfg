@@ -72,8 +72,16 @@
       ForwardAgent yes
   '';
 
+  environment.etc."ssh/ssh_config.d/gitlab".text = ''
+    Host gitlab.shopware.com
+      IdentityFile ${pkgs.writeText "gitlab-public.key" (builtins.readFile ./keys/work.pub)}
+      IdentitiesOnly yes
+  '';
+
   environment.etc."ssh/ssh_config.d/timeout".text = ''
     Host *
       ServerAliveInterval 60
   '';
+
+
 }
