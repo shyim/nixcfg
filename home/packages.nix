@@ -30,9 +30,6 @@ in
     bash
     bat
     cosign
-    colima
-    docker-client
-    docker-compose
     dockerDown
     dockerUp
     cloudflared

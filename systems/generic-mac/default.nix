@@ -7,7 +7,6 @@
   imports = [
     ./packages.nix
     ./services.nix
-    ./builders.nix
   ];
 
   # Auto upgrade nix package and the daemon service.
