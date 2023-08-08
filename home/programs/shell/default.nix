@@ -26,6 +26,9 @@ in
       container = {
         disabled = true;
       };
+      battery = {
+        disabled = true;
+      };
       username = {
         show_always = true;
       };
