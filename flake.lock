@@ -299,6 +299,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-staging": {
+      "locked": {
+        "lastModified": 1691821229,
+        "narHash": "sha256-kp+Nu9CSjmdezeYxXMofxpBmUVn6SWxWUOK+V5/3cs8=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "27b49fcb6d9e7250de9a42882507aaa4e5295a2b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "staging",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1691654369,
@@ -351,6 +367,7 @@
         "home-manager": "home-manager",
         "nixd": "nixd",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-staging": "nixpkgs-staging",
         "sops-nix": "sops-nix"
       }
     },

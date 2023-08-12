@@ -2,6 +2,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    nixpkgs-staging.url = "github:NixOS/nixpkgs/staging";
+
     # Darwin Inputs
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";

@@ -1,5 +1,7 @@
 {
     "files.exclude": {
         ".direnv": true
-    }
+    },
+    "nix.serverPath": "nixd",
+    "nix.enableLanguageServer": true
 }

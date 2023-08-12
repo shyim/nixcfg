@@ -36,6 +36,7 @@ in
     fastly
     fd
     flake.inputs.devenv.packages.${system}.devenv
+    flake.inputs.nixd.packages.${system}.nixd
     flake.packages.${system}.ecsexec
     gh
     git-credential-oauth
