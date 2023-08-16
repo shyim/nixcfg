@@ -30,6 +30,7 @@ in
     bash
     bat
     cosign
+    docker
     dockerDown
     dockerUp
     cloudflared
