@@ -67,21 +67,6 @@
 
       darwinConfigurations = {
         umbreon = darwin.lib.darwinSystem {
-          specialArgs = extraArgs // { remapKeys = false; };
-          system = "aarch64-darwin";
-          modules = [
-            ./systems/generic-mac
-            home-manager.darwinModules.default
-            darwin-modules.darwinModules.default
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = extraArgs;
-              home-manager.users.shyim = import ./home;
-            }
-          ];
-        };
-        espeon = darwin.lib.darwinSystem {
           specialArgs = extraArgs // { remapKeys = true; };
           system = "aarch64-darwin";
           modules = [
@@ -96,13 +81,19 @@
             }
           ];
         };
-        bob-the-buildmaster-v2 = darwin.lib.darwinSystem {
+        espeon = darwin.lib.darwinSystem {
           specialArgs = extraArgs // { remapKeys = false; };
           system = "aarch64-darwin";
           modules = [
             ./systems/generic-mac
+            home-manager.darwinModules.default
             darwin-modules.darwinModules.default
-            ./systems/bob-the-buildmaster
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = extraArgs;
+              home-manager.users.shyim = import ./home;
+            }
           ];
         };
       };
