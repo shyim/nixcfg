@@ -14,7 +14,7 @@
     darwin-modules.url = "github:shyim/nix-darwin-modules";
     darwin-modules.inputs.nixpkgs.follows = "nixpkgs";
 
-    devenv.url = "github:cachix/devenv/main";
+    devenv.url = "github:cachix/devenv/python-rewrite";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
