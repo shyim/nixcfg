@@ -1,5 +1,5 @@
 { lib, pkgs, ... }: {
-  config = lib.mkIf (pkgs.stdenv.isLinux) {
+  config = lib.mkIf (pkgs.stdenv.isLinux && builtins.getEnv "WSLENV" == "") {
     gtk = {
       enable = true;
 
