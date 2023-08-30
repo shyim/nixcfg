@@ -27,10 +27,6 @@ in
     home.sessionVariables.SSH_AUTH_SOCK = socket;
     systemd.user.sessionVariables.SSH_AUTH_SOCK = socket;
 
-    # IP is hopefully always same
-    home.sessionVariables.DISPLAY = "172.23.0.1:0.0";
-    systemd.user.sessionVariables.DISPLAY = "172.23.0.1:0.0";
-
     home.packages = [
       (pkgs.writeShellScriptBin "xdg-open" ''
         exec ${pkgs.wsl-open}/bin/wsl-open "$@"
@@ -40,6 +36,7 @@ in
     programs.fish.loginShellInit = ''
       fish_add_path /home/shyim/.nix-profile/bin
       fish_add_path /nix/var/nix/profiles/default/bin
+      fish_add_path /usr/local/go/bin
     '';
   };
 }

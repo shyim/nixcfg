@@ -33,6 +33,7 @@ in
     docker
     dockerDown
     dockerUp
+    deno
     cloudflared
     fastly
     fd
