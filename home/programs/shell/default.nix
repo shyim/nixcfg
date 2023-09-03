@@ -56,7 +56,6 @@ in
       ''}
 
       fish_add_path $HOME/.npm-packages/bin/
-      fish_add_path /usr/local/go/bin/
     '';
   };
 

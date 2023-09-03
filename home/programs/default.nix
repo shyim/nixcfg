@@ -9,5 +9,6 @@
     ./neovim
     ./pipewire
     ./gtk
+    ./go
   ];
 }
