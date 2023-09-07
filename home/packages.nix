@@ -28,6 +28,7 @@ in
     age
     asciinema
     bash
+    bun
     bat
     cosign
     docker
@@ -50,6 +51,7 @@ in
     nixpkgs-fmt
     rclone
     ripgrep
+    nodejs_20
     shopware-cli
     sops
     tmux
