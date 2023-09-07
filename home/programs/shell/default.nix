@@ -14,9 +14,18 @@ in
 {
   home.packages = builtins.map
     (name: pkgs.writeShellScriptBin name ''
+      
       export OP_PLUGIN_ALIASES_SOURCED=1
       export PATH="${_1passwordPlugins."${name}"}/bin:$PATH"
+      ${if pkgs.stdenv.hostPlatform.isDarwin then
+      ''
       exec op plugin run -- ${name} "$@"
+      ''
+      else
+      ''
+      exec ${name} "$@"
+      ''
+      }
     '')
     (builtins.attrNames _1passwordPlugins);
 
