@@ -28,7 +28,7 @@ in
     age
     asciinema
     bash
-    bun
+    (pkgs.callPackage ../pkgs/bun {})
     bat
     cosign
     docker
