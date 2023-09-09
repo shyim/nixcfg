@@ -36,6 +36,7 @@ in
     programs.fish.loginShellInit = ''
       fish_add_path /home/shyim/.nix-profile/bin
       fish_add_path /nix/var/nix/profiles/default/bin
+      alias code="/mnt/c/Program\ Files/Microsoft\ VS\ Code\ Insiders/Code\ -\ Insiders.exe"
     '';
   };
 }

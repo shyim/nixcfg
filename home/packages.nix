@@ -52,6 +52,10 @@ in
     rclone
     ripgrep
     nodejs_20
+    (pkgs.runCommand "corepack-enable" { } ''
+      mkdir -p $out/bin
+      ${pkgs.nodejs_20}/bin/corepack enable --install-directory $out/bin
+    '')
     shopware-cli
     sops
     tmux
