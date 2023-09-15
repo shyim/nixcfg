@@ -63,6 +63,9 @@ in
     wget
     php82
     php82Packages.composer
+
+    kubernetes-helm
+    kubectl
   ];
 
   programs.home-manager.enable = true;
