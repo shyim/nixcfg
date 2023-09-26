@@ -46,7 +46,7 @@
           specialArgs = extraArgs;
         };
 
-        "shea.bunny-chickadee.ts.net" =
+        "shea.shyim.de" =
           { name
           , nodes
           , pkgs
