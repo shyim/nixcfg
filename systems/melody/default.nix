@@ -19,7 +19,6 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.supportedFilesystems = [ "ntfs" ];
 
@@ -51,7 +50,7 @@
 
   fileSystems.shopware = {
     fsType = "tmpfs";
-    mountPoint = "/home/shyim/Code/platform/.devenv/state/mysql";
+    mountPoint = "/home/shyim/Developer/platform/.devenv/state/mysql";
   };
 
   fileSystems.games = {

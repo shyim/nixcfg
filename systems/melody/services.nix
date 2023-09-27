@@ -1,8 +1,8 @@
 { lib, pkgs, ... }: {
   services.xserver.enable = true;
 
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.sddm.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
 
   services.xserver = {
     layout = "us";
@@ -18,7 +18,6 @@
   security.polkit.enable = true;
   security.sudo.wheelNeedsPassword = false;
 
-  services.tailscale.enable = true;
   virtualisation.docker.enable = true;
 
   documentation.nixos.enable = false;
