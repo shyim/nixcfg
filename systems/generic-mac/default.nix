@@ -9,6 +9,9 @@
     ./services.nix
   ];
 
+  programs.bash.enable = true;
+  programs.zsh.enable = true;
+
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nixpkgs.config.allowUnfree = true;

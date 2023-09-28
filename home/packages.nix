@@ -31,10 +31,11 @@ in
     bun
     bat
     cosign
-    docker
+    trivy
     dockerDown
     dockerUp
     deno
+    packer
     cloudflared
     fastly
     fd
