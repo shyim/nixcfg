@@ -10,5 +10,6 @@
     ./pipewire
     ./gtk
     ./go
+    ./ssh
   ];
 }

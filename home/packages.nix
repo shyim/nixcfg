@@ -62,6 +62,8 @@ in
     tmux
     tree
     wget
+    zstd
+
     php82
     php82Packages.composer
 
