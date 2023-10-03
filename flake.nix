@@ -15,11 +15,11 @@
     darwin-modules.inputs.nixpkgs.follows = "nixpkgs";
 
     devenv.url = "github:cachix/devenv/main";
+    devenv.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixd.url = "github:nix-community/nixd";
+    sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
   };
   outputs =
     { nixpkgs

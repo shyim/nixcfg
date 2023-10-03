@@ -27,40 +27,28 @@ in
   home.packages = with pkgs; [
     age
     asciinema
-    bash
     bun
     bat
-    cosign
     trivy
     dockerDown
     dockerUp
-    deno
-    packer
     cloudflared
-    fastly
     fd
     flake.inputs.devenv.packages.${system}.devenv
-    flake.inputs.nixd.packages.${system}.nixd
     flake.packages.${system}.ecsexec
     gh
-    git-credential-oauth
     github-copilot-cli
     htop
     jq
     ncdu
     nixSha
     nixpkgs-fmt
-    rclone
     ripgrep
     nodejs_20
-    (pkgs.runCommand "corepack-enable" { } ''
-      mkdir -p $out/bin
-      ${pkgs.nodejs_20}/bin/corepack enable --install-directory $out/bin
-    '')
+    corepack_20
     shopware-cli
     sops
     tmux
-    tree
     wget
     zstd
 
