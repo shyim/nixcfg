@@ -5,5 +5,6 @@
     nodejs_20
     git
     gzip
+    kitty
   ];
 }
