@@ -1,4 +1,10 @@
 { pkgs, ... }: {
+    home.file.".ssh/config.d/umbreon".text = ''
+        Host umbreon.shy.ovh
+            ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
+            User shyim
+    '';
+
     home.file.".ssh/config.d/gitlab".text = ''
         Host gitlab.shopware.com
             IdentityFile ${pkgs.writeText "gitlab-public.key" (builtins.readFile ./keys/work.pub)}
