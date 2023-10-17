@@ -1,3 +1,3 @@
 builds:
- exclude:
-  - 'packages.x86_64-linux.homeConfigurations.shyim'
+ include:
+  - 'packages.aarch64-linux.yuzu-room'
