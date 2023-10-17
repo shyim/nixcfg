@@ -1,3 +1,5 @@
 builds:
- include:
-  - 'packages.aarch64-linux.*'
+  exclude:
+    - 'packages.aarch64-linux.homeConfigurations'
+  include:
+    - 'packages.aarch64-linux.*'
