@@ -35,13 +35,6 @@
           insteadOf = "https://gitlab.shopware.com/";
         };
       };
-
-      credential."https://gitlab.shopware.com" = {
-        oauthClientId = "27dbdada9445855de26ad7fd4f3f0e0eb30f31ee618cdbcc2987d3ba652e6f6d";
-        oauthScopes = "read_repository write_repository";
-        oauthAuthURL = "/oauth/authorize";
-        oauthTokenURL = "/oauth/token";
-      };
     };
 
     aliases = {
