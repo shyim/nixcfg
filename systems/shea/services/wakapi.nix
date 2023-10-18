@@ -43,9 +43,7 @@
       ExecStart = "${flake.packages."aarch64-linux".wakapi}/bin/wakapi -config ${pkgs.writeText "wakapi.yaml" ""}";
       User = "wakapi";
       Group = "nginx";
-      StateDirectory = "wakapi";
       RuntimeDirectory = "wakapi";
-      StateDirectoryMode = "0770";
       RuntimeDirectoryMode = "0770";
       UMask = "0002";
     };

@@ -23,9 +23,7 @@
       ExecStart = "/opt/nut server --socket /var/run/nut/web.sock";
       User = "nut";
       Group = "nginx";
-      StateDirectory = "nut";
       RuntimeDirectory = "nut";
-      StateDirectoryMode = "0770";
       RuntimeDirectoryMode = "0770";
       UMask = "0002";
     };

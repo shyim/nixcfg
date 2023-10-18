@@ -3,6 +3,7 @@
 , ...
 }: {
   imports = [
+    ./backup.nix
     ./screego.nix
     ./switch.nix
     ./thelounge.nix

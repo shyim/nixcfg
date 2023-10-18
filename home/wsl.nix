@@ -8,6 +8,11 @@ let
 in
 {
   config = lib.mkIf (builtins.getEnv "WSLENV" != "") {
+    home.sessionVariables.GDK_DPI_SCALE = "1.25";
+    home.sessionVariables.GDK_SCALE = "1.2";
+    home.sessionVariables.GTK_SCALE = "1.25";
+    home.sessionVariables.QT_SCALE_FACTOR = "1.25";
+
     systemd.user.services.ssh-proxy = {
       Unit = {
         Description = "WSL Proxy";
