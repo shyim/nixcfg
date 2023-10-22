@@ -8,5 +8,6 @@
     ./switch.nix
     ./thelounge.nix
     ./wakapi.nix
+    ./mediamtx.nix
   ];
 }
