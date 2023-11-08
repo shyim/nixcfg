@@ -2,4 +2,6 @@ builds:
   exclude:
     - 'packages.aarch64-linux.homeConfigurations'
   include:
-    - 'packages.aarch64-linux.*'
+    - 'packages.aarch64-linux.screego'
+    - 'packages.aarch64-linux.wakapi'
+    - 'packages.aarch64-darwin.devenv'

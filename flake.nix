@@ -144,6 +144,7 @@
           wakapi = pkgs.callPackage ./pkgs/wakapi { };
           yuzu-room = pkgs.callPackage ./pkgs/yuzu-room { };
           ecsexec = pkgs.callPackage ./pkgs/ecsexec { };
+          devenv = devenv.packages.${system}.devenv;
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
