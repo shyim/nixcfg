@@ -29,12 +29,4 @@
   sops.defaultSopsFile = ./sops/default.yaml;
 
   nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1t" ];
-
-  environment.etc."resolv.conf".text = ''
-    domain shyim.de
-    search shyim.de shea.shyim.de
-    nameserver 1.1.1.1
-    nameserver 8.8.8.8
-    options edns0
-  '';
 }
