@@ -1,6 +1,0 @@
-{ ...
-}: {
-  imports = [
-    ./mautrix-slack.nix
-  ];
-}

@@ -45,28 +45,6 @@
       };
     in
     {
-      colmena = {
-        meta = {
-          nixpkgs = import nixpkgs { system = "aarch64-linux"; };
-          specialArgs = extraArgs;
-        };
-
-        "shea.shyim.de" =
-          { name
-          , nodes
-          , pkgs
-          , ...
-          }: {
-            deployment.tags = [ "shea" ];
-            deployment.buildOnTarget = true;
-
-            imports = [
-              sops-nix.nixosModules.sops
-              ./systems/shea
-            ];
-          };
-      };
-
       darwinConfigurations = {
         umbreon = darwin.lib.darwinSystem {
           specialArgs = extraArgs // { remapKeys = true; };
@@ -117,18 +95,6 @@
         };
       };
 
-      devShells = forAllSystems (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          default = pkgs.mkShell {
-            buildInputs = with pkgs; [ colmena ];
-          };
-        }
-      );
-
       formatter = forAllSystems (
         system:
         nixpkgs.legacyPackages.${system}.nixpkgs-fmt
@@ -140,9 +106,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
-          screego = pkgs.callPackage ./pkgs/screego { };
-          wakapi = pkgs.callPackage ./pkgs/wakapi { };
-          yuzu-room = pkgs.callPackage ./pkgs/yuzu-room { };
           ecsexec = pkgs.callPackage ./pkgs/ecsexec { };
           devenv = devenv.packages.${system}.devenv;
 
