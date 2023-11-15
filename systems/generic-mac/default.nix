@@ -1,6 +1,5 @@
 { flake
 , pkgs
-, remapKeys
 , lib
 , ...
 }: {
@@ -47,9 +46,6 @@
   security.pam.enableSudoTouchIdAuth = true;
 
   time.timeZone = "Europe/Berlin";
-  system.keyboard.enableKeyMapping = true;
-
-  system.keyboard.swapLeftCommandAndLeftAlt = remapKeys;
 
   system.defaults.finder.ShowPathbar = true;
   system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true;
