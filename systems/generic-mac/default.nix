@@ -6,6 +6,7 @@
   imports = [
     ./packages.nix
     ./services.nix
+    ./fonts.nix
   ];
 
   programs.bash.enable = true;
