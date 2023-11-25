@@ -52,8 +52,8 @@ in
     wget
     zstd
 
-    php82
-    php82Packages.composer
+    php83
+    php83Packages.composer
 
     kubernetes-helm
     kubectl

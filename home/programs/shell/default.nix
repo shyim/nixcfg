@@ -52,9 +52,6 @@ in
         src = pkgs.fishPlugins.github-copilot-cli-fish.src;
       }
     ];
-    shellAliases = {
-      cat = "bat";
-    };
     loginShellInit = ''
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
       export EDITOR=nvim
