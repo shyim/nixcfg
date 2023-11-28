@@ -57,6 +57,10 @@ in
       export EDITOR=nvim
       set fish_greeting
 
+      function kswitch
+        kubectl config set-context --current --namespace=$argv
+      end
+
       ${lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''
       fish_add_path /run/current-system/sw/bin
       ''}
