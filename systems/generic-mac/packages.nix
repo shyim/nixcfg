@@ -5,6 +5,7 @@
     nodejs_20
     git
     gzip
-    kitty
+    coreutils
+    lima-bin
   ];
 }
