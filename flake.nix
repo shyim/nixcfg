@@ -107,7 +107,6 @@
         in
         {
           ecsexec = pkgs.callPackage ./pkgs/ecsexec { };
-          tabby = pkgs.callPackage ./pkgs/tabby { };
           devenv = devenv.packages.${system}.devenv;
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
@@ -123,3 +122,4 @@
       );
     };
 }
+
