@@ -51,6 +51,7 @@ in
     tmux
     wget
     zstd
+    opentofu
 
     php83
     php83Packages.composer
