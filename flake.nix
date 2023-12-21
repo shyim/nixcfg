@@ -107,6 +107,8 @@
         in
         {
           ecsexec = pkgs.callPackage ./pkgs/ecsexec { };
+          #bun = pkgs.callPackage ./pkgs/bun { };
+          bun = pkgs.bun;
           devenv = devenv.packages.${system}.devenv;
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {

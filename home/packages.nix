@@ -27,7 +27,6 @@ in
   home.packages = with pkgs; [
     age
     asciinema
-    bun
     bat
     trivy
     dockerDown
@@ -36,6 +35,7 @@ in
     fd
     flake.inputs.devenv.packages.${system}.devenv
     flake.packages.${system}.ecsexec
+    flake.packages.${system}.bun
     gh
     github-copilot-cli
     htop
