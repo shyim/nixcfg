@@ -25,6 +25,12 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
+
+    mac-app-util.url = "github:hraban/mac-app-util";
+    jetbrains = {
+      url = "github:shyim/jetbrains-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { nixpkgs
@@ -43,6 +49,9 @@
         inherit sops-nix;
         flake = self;
       };
+      nixpkgsConfig = {
+        config = { allowUnfree = true; };
+      };
     in
     {
       darwinConfigurations = {
@@ -54,21 +63,7 @@
             home-manager.darwinModules.default
             darwin-modules.darwinModules.default
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = extraArgs;
-              home-manager.users.shyim = import ./home;
-            }
-          ];
-        };
-        espeon = darwin.lib.darwinSystem {
-          specialArgs = extraArgs;
-          system = "aarch64-darwin";
-          modules = [
-            ./systems/generic-mac
-            home-manager.darwinModules.default
-            darwin-modules.darwinModules.default
-            {
+              nixpkgs = nixpkgsConfig;
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = extraArgs;

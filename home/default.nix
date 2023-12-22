@@ -3,14 +3,17 @@
 , lib
 , devenv
 , home-manager
+, flake
 , sops-nix
 , ...
 }: {
   imports = [
+    flake.inputs.mac-app-util.homeManagerModules.default
+    flake.inputs.sops-nix.homeManagerModule
+
     ./programs
     ./packages.nix
     ./files.nix
-    sops-nix.homeManagerModule
     ./wsl.nix
     ./ssh.nix
   ];
