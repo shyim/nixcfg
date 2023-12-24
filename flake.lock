@@ -35,26 +35,6 @@
         "type": "github"
       }
     },
-    "darwin-modules": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1672261794,
-        "narHash": "sha256-2TI/fJoSCpAOSXWgHYOWj7qWL3c7f+aSyBfsSfqjUoI=",
-        "owner": "shyim",
-        "repo": "nix-darwin-modules",
-        "rev": "19b159a7a6fb761806985e6e9a0e01e7a8248a86",
-        "type": "github"
-      },
-      "original": {
-        "owner": "shyim",
-        "repo": "nix-darwin-modules",
-        "type": "github"
-      }
-    },
     "devenv": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -318,16 +298,16 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1703134684,
-        "narHash": "sha256-SQmng1EnBFLzS7WSRyPM9HgmZP2kLJcPAz+Ug/nug6o=",
+        "lastModified": 1703441936,
+        "narHash": "sha256-XiVDq1Hv+5Ha5cC7yd/9PMwD0g9JpwHQ0n17baacibI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d6863cbcbbb80e71cecfc03356db1cda38919523",
+        "rev": "79fee6027b432958825b0bb83a1538314327a8a6",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "ref": "master",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -363,7 +343,6 @@
     "root": {
       "inputs": {
         "darwin": "darwin",
-        "darwin-modules": "darwin-modules",
         "devenv": "devenv",
         "home-manager": "home-manager",
         "jetbrains": "jetbrains",

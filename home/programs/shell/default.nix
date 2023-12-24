@@ -46,12 +46,6 @@ in
 
   programs.fish = {
     enable = true;
-    plugins = [
-      {
-        name = "github-copilot-cli-fish";
-        src = pkgs.fishPlugins.github-copilot-cli-fish.src;
-      }
-    ];
     loginShellInit = ''
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
       export EDITOR=nvim

@@ -93,22 +93,19 @@ let
   jetbrains = flake.inputs.jetbrains.packages.${pkgs.system}.jetbrains;
 in
 {
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
     age
-    bat
     dockerDown
     dockerUp
-    cloudflared
     fd
     flake.inputs.devenv.packages.${system}.devenv
     flake.packages.${system}.ecsexec
     flake.packages.${system}.bun
     gh
-    github-copilot-cli
     htop
     jq
     nixSha
-    nixpkgs-fmt
     ripgrep
     nodejs_20
     shopware-cli
@@ -117,7 +114,6 @@ in
     tmux
     wget
     zstd
-    opentofu
 
     (configureIde jetbrains.phpstorm)
     (configureIde jetbrains.goland)

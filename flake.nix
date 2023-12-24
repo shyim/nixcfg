@@ -5,7 +5,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/master";
 
     # Darwin Inputs
     darwin.url = "github:lnl7/nix-darwin";
@@ -15,9 +15,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    darwin-modules.url = "github:shyim/nix-darwin-modules";
-    darwin-modules.inputs.nixpkgs.follows = "nixpkgs";
 
     devenv.url = "github:cachix/devenv/main";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
@@ -36,7 +33,6 @@
     { nixpkgs
     , home-manager
     , darwin
-    , darwin-modules
     , devenv
     , self
     , sops-nix
@@ -61,7 +57,6 @@
           modules = [
             ./systems/generic-mac
             home-manager.darwinModules.default
-            darwin-modules.darwinModules.default
             {
               nixpkgs = nixpkgsConfig;
               home-manager.useGlobalPkgs = true;

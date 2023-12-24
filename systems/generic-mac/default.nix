@@ -19,13 +19,9 @@
     package = pkgs.nixUnstable;
     settings.substituters = [
       "https://shopware.cachix.org"
-      "https://shyim.cachix.org"
-      "https://devenv.cachix.org"
     ];
     settings.trusted-public-keys = [
       "shopware.cachix.org-1:IDifwLVQaaDU2qhlPkJsWJp/Pq0PfzHPIB90hBOhL3k="
-      "shyim.cachix.org-1:ZazuDAWm/q5YbFVmuJCTYbnopdR1NqI2Hl8IgZ1jYIM="
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
     extraOptions = ''
       experimental-features = nix-command flakes auto-allocate-uids repl-flake
@@ -57,9 +53,4 @@
   };
 
   environment.loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin";
-
-  mas.apps = [
-    # iStat Menus
-    "1319778037"
-  ];
 }
