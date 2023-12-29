@@ -109,11 +109,13 @@ in
     ripgrep
     nodejs_20
     shopware-cli
-    rustup
     sops
     tmux
-    wget
     zstd
+
+    slack
+    zoom-us
+    vscode
 
     (configureIde jetbrains.phpstorm)
     (configureIde jetbrains.goland)
