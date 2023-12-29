@@ -15,4 +15,10 @@
       set number relativenumber
     '';
   };
+
+  home.shellAliases = {
+    nano = "nvim";
+    vi = "nvim";
+    vim = "nvim";
+  };
 }
