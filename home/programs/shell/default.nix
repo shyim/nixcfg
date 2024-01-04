@@ -48,7 +48,6 @@ in
     enable = true;
     loginShellInit = ''
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
-      export EDITOR=nvim
       set fish_greeting
 
       function kswitch
