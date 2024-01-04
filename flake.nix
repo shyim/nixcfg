@@ -51,7 +51,7 @@
     in
     {
       darwinConfigurations = {
-        umbreon = darwin.lib.darwinSystem {
+        deoxys = darwin.lib.darwinSystem {
           specialArgs = extraArgs;
           system = "aarch64-darwin";
           modules = [
@@ -59,23 +59,6 @@
             home-manager.darwinModules.default
             {
               nixpkgs = nixpkgsConfig;
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = extraArgs;
-              home-manager.users.shyim = import ./home;
-            }
-          ];
-        };
-      };
-
-      nixosConfigurations = {
-        melody = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./systems/melody
-            sops-nix.nixosModules.sops
-            home-manager.nixosModules.home-manager
-            {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = extraArgs;

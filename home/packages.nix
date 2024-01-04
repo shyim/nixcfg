@@ -93,6 +93,7 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     age
     dockerDown
@@ -120,7 +121,6 @@ in
 
     (configureIde jetbrains.phpstorm)
     (configureIde jetbrains.goland)
-    (configureIde jetbrains.rust-rover)
   ];
 
   programs.home-manager.enable = true;

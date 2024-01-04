@@ -176,11 +176,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1703282085,
-        "narHash": "sha256-/k6xoHj1UbwNfSAXx3z27YAcOC0YWatBWrDv3cZAV2Q=",
+        "lastModified": 1704395986,
+        "narHash": "sha256-b3rR+hsl/TMDyxkEEnujEVxfxiCQm3OtQzC7SVN0XA0=",
         "owner": "shyim",
         "repo": "jetbrains-flake",
-        "rev": "c958e1720adb71bfc671a8d2be5f9e55b17f3d29",
+        "rev": "e16ea433135fada30ebc2cae0dd57fac838ddfbf",
         "type": "github"
       },
       "original": {
