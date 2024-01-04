@@ -92,8 +92,6 @@ let
   jetbrains = flake.inputs.jetbrains.packages.${pkgs.system}.jetbrains;
 in
 {
-  nixpkgs.config.allowUnfree = true;
-
   home.packages = with pkgs; [
     age
     dockerDown
