@@ -6,8 +6,7 @@
   imports = [
     ./git
     ./shell
-    ./neovim
-    ./go
+    ./helix
     ./ssh
   ];
 }

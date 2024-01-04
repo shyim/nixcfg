@@ -55,7 +55,6 @@ let
         rm -rf *.app/Contents/plugins/ini/
         rm -rf *.app/Contents/plugins/styled-components/
         rm -rf *.app/Contents/plugins/clouds-docker-gateway/
-        rm -rf *.app/Contents/plugins/clouds-docker-impl/
         rm -rf *.app/Contents/plugins/searchEverywhereMl/
         rm -rf *.app/Contents/plugins/jsonpath/
         rm -rf *.app/Contents/plugins/gherkin/
@@ -112,10 +111,12 @@ in
     sops
     tmux
     zstd
+		kubectl
 
     slack
     zoom-us
     vscode
+		iterm2
 
     (configureIde jetbrains.phpstorm)
     (configureIde jetbrains.goland)
