@@ -48,6 +48,11 @@ in
     zoom-us
     vscode
 		iterm2
+
+    (pkgs.writeShellScriptBin "kill-devenv" ''
+      MYID=$$
+      kill $(ps -ax | grep /nix/store | grep -v slack | grep -v vscode | grep -v zoom | grep -v iterm2 | grep -v $MYID | awk '{print $1}')
+    '')
  ];
 
   programs.home-manager.enable = true;
