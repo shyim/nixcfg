@@ -50,6 +50,8 @@ in
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
       set fish_greeting
 
+      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+
       function kswitch
         kubectl config set-context --current --namespace=$argv
       end
