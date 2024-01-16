@@ -28,6 +28,11 @@
       url = "github:shyim/jetbrains-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    froshpkgs = {
+      url = "github:FriendsOfShopware/nur-packages";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { nixpkgs
