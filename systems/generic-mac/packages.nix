@@ -6,6 +6,5 @@
     git
     gzip
     coreutils
-    lima-bin
   ];
 }
