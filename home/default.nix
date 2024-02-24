@@ -28,29 +28,4 @@
 
   manual.manpages.enable = false;
   programs.man.enable = false;
-
-  sops = {
-    age.keyFile = "${
-    if pkgs.stdenv.hostPlatform.isDarwin
-    then "/Users/shyim/Library/Application Support/sops/age/keys.txt"
-    else "/home/shyim/.config/sops/age/keys.txt"
-  }";
-    defaultSopsFile = ./sops/default.yaml;
-    secrets.go-github-to-jira = {
-      path = "${config.home.homeDirectory}/.go-github-to-jira.yaml";
-      format = "yaml";
-    };
-    secrets.nix_secrets = {
-      path = "${config.home.homeDirectory}/.nix-access-token";
-      format = "yaml";
-    };
-    secrets.nix_ssh = {
-      path = "${config.home.homeDirectory}/.nix-ssh-key";
-      format = "yaml";
-      mode = "0600";
-    };
-  };
-
-  home.sessionVariables.NIX_USER_CONF_FILES = "${config.home.homeDirectory}/.config/nix/nix.conf:${config.home.homeDirectory}/.nix-access-token";
-  systemd.user.sessionVariables.NIX_USER_CONF_FILES = "${config.home.homeDirectory}/.config/nix/nix.conf:${config.home.homeDirectory}/.nix-access-token";
 }

@@ -24,8 +24,7 @@
       "shopware.cachix.org-1:IDifwLVQaaDU2qhlPkJsWJp/Pq0PfzHPIB90hBOhL3k="
     ];
     extraOptions = ''
-      experimental-features = nix-command flakes auto-allocate-uids repl-flake
-      auto-allocate-uids = true
+      experimental-features = nix-command flakes
       builders-use-substitutes = true
       builders = @/etc/nix/machines
       log-lines = 100
@@ -35,7 +34,7 @@
     settings.trusted-users = [ "root" "shyim" ];
   };
 
-  environment.shells = [ pkgs.fish ];
+  environment.shells = [ pkgs.fish "/etc/profiles/per-user/shyim/bin/nu" ];
   programs.fish.enable = true;
 
   documentation.enable = false;

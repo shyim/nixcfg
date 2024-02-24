@@ -14,7 +14,7 @@ in
 {
   home.packages = builtins.map
     (name: pkgs.writeShellScriptBin name ''
-      
+
       export OP_PLUGIN_ALIASES_SOURCED=1
       export PATH="${_1passwordPlugins."${name}"}/bin:$PATH"
       ${if pkgs.stdenv.hostPlatform.isDarwin then
@@ -44,16 +44,47 @@ in
     };
   };
 
+  programs.nushell = {
+    enable = true;
+    configFile.text = ''
+      $env.config = {
+        show_banner: false
+      }
+
+      alias nix-shell = nix-shell --run nu
+
+      $env.PATH = (
+        $env.PATH |
+        split row (char esep) |
+        prepend '/run/current-system/sw/bin' |
+        prepend '/Users/shyim/.nix-profile/bin' |
+        prepend '/etc/profiles/per-user/shyim/bin' |
+        prepend '/nix/var/nix/profiles/default/bin' |
+        append '/Users/shyim/go/bin' |
+        append '/usr/local/bin'
+      )
+
+      def kswitch [name: string] {
+        kubectl config set-context --current $"--namespace=($name)"
+      }
+    '';
+    environmentVariables = {
+      OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES";
+    };
+  };
+
   programs.fish = {
     enable = true;
     loginShellInit = ''
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
       set fish_greeting
 
-      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
-
-      function kswitch
+      function kn-switch
         kubectl config set-context --current --namespace=$argv
+      end
+
+      function kc-switch
+        kubectl config use-context $argv
       end
 
       ${lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''

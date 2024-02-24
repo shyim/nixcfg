@@ -33,6 +33,11 @@
       url = "github:FriendsOfShopware/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nil = {
+      url = "github:oxalica/nil";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { nixpkgs
@@ -85,8 +90,8 @@
         in
         {
           ecsexec = pkgs.callPackage ./pkgs/ecsexec { };
-          bun = pkgs.callPackage ./pkgs/bun { };
-          #bun = pkgs.bun;
+          #bun = pkgs.callPackage ./pkgs/bun { };
+          bun = pkgs.bun;
           devenv = devenv.packages.${system}.devenv;
 
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
