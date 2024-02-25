@@ -45,7 +45,6 @@ in
     zstd
     kubectl
 
-    zoom-us
     rustup
 
     (pkgs.writeShellScriptBin "kill-devenv" ''

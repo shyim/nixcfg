@@ -33,11 +33,6 @@
       url = "github:FriendsOfShopware/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nil = {
-      url = "github:oxalica/nil";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
   outputs =
     { nixpkgs

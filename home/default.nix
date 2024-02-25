@@ -8,7 +8,6 @@
 , ...
 }: {
   imports = [
-    flake.inputs.mac-app-util.homeManagerModules.default
     flake.inputs.sops-nix.homeManagerModule
 
     ./programs
