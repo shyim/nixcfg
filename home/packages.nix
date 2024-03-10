@@ -44,6 +44,8 @@ in
     tmux
     zstd
     kubectl
+    go_1_22
+    deno
 
     rustup
 
