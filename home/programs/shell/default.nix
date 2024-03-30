@@ -7,7 +7,6 @@ let
   _1passwordPlugins = {
     "glab" = pkgs.glab;
     "cachix" = pkgs.cachix;
-    "aws" = pkgs.awscli2;
     "hcloud" = pkgs.hcloud;
   };
 in
@@ -85,6 +84,11 @@ in
 
       function kc-switch
         kubectl config use-context $argv
+      end
+
+      function awsp
+        set -gx AWS_PROFILE (aws configure list-profiles | ${pkgs.fzf}/bin/fzf -1)
+        echo "switched to profile: $AWS_PROFILE"
       end
 
       ${lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''

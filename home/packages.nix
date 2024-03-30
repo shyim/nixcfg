@@ -30,7 +30,7 @@ in
     dockerUp
     fd
     flake.inputs.devenv.packages.${system}.devenv
-    flake.packages.${system}.ecsexec
+    #flake.packages.${system}.ecsexec
     flake.packages.${system}.bun
     flake.inputs.froshpkgs.packages.${system}.shopware-cli
     gh
@@ -46,6 +46,8 @@ in
     kubectl
     go_1_22
     deno
+    php83
+    php83.packages.composer
 
     rustup
 

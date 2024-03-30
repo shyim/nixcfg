@@ -5,7 +5,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Darwin Inputs
     darwin.url = "github:lnl7/nix-darwin";
@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devenv.url = "github:cachix/devenv/main";
+    devenv.url = "path:/Users/shyim/Developer/devenv";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";
@@ -102,4 +102,3 @@
       );
     };
 }
-
