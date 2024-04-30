@@ -11,7 +11,7 @@
     delta.enable = true;
     lfs.enable = true;
 
-    userEmail = "s.sayakci@shopware.com";
+    userEmail = "s.sayakci@gmail.com";
     userName = "Soner Sayakci";
 
     extraConfig = {
