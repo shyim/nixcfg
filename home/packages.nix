@@ -30,24 +30,25 @@ in
     dockerUp
     fd
     flake.inputs.devenv.packages.${system}.devenv
-    #flake.packages.${system}.ecsexec
-    flake.packages.${system}.bun
     flake.inputs.froshpkgs.packages.${system}.shopware-cli
     gh
     htop
     jq
     nixSha
     ripgrep
-    nodejs_21
-    corepack_21
+    nodejs_22
+    corepack_22
     sops
     tmux
-    zstd
     kubectl
     go_1_22
     deno
     php83
     php83.packages.composer
+	awscli2
+	terraform
+	k9s
+	k6
 
     rustup
 

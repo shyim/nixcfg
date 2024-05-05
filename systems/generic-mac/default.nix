@@ -16,7 +16,7 @@
   services.nix-daemon.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix = {
-    package = pkgs.nixUnstable;
+    package = pkgs.nixVersions.latest;
     settings.substituters = [
       "https://shopware.cachix.org"
     ];
