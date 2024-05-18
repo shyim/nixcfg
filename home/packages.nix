@@ -29,7 +29,8 @@ in
     dockerDown
     dockerUp
     fd
-    flake.inputs.devenv.packages.${system}.devenv
+    devenv
+    # flake.inputs.devenv.packages.${system}.devenv
     flake.inputs.froshpkgs.packages.${system}.shopware-cli
     gh
     htop
@@ -49,6 +50,8 @@ in
 	terraform
 	k9s
 	k6
+	protobuf
+  watchexec
 
     rustup
 

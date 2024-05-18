@@ -6,7 +6,7 @@
   imports = [
     ./git
     ./shell
-    ./nvim
+    ./helix
     ./ssh
   ];
 }

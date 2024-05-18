@@ -4,14 +4,14 @@
 , ...
 }:
 {
-  programs.neovim = {
+  programs.helix = {
     enable = true;
     defaultEditor = true;
   };
 
   home.shellAliases = {
-    nano = "nvim";
-    vi = "nvim";
-    vim = "nvim";
+    nano = "hx";
+    vi = "hx";
+    vim = "hx";
   };
 }
