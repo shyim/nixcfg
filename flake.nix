@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devenv.url = "path:/Users/shyim/Developer/devenv";
+    devenv.url = "github:shyim/devenv/add-nix-caching";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
 
     sops-nix.url = "github:Mic92/sops-nix";

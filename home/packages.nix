@@ -46,12 +46,12 @@ in
     deno
     php83
     php83.packages.composer
-	awscli2
-	terraform
-	k9s
-	k6
-	protobuf
-  watchexec
+    awscli2
+    terraform
+    k9s
+    k6
+    protobuf
+    watchexec
 
     rustup
 

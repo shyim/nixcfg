@@ -14,7 +14,7 @@
     ./packages.nix
     ./files.nix
     ./wsl.nix
-    ./ssh.nix
+    ./linux.nix
   ];
 
   home.username = "shyim";
