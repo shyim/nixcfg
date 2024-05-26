@@ -19,15 +19,8 @@
     devenv.url = "github:shyim/devenv/add-nix-caching";
     devenv.inputs.nixpkgs.follows = "nixpkgs";
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
-
-    mac-app-util.url = "github:hraban/mac-app-util";
-    jetbrains = {
-      url = "github:shyim/jetbrains-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    jetbrains.url = "github:shyim/jetbrains-flake";
+    jetbrains.inputs.nixpkgs.follows = "nixpkgs";
 
     froshpkgs = {
       url = "github:FriendsOfShopware/nur-packages";
@@ -40,14 +33,12 @@
     , darwin
     , devenv
     , self
-    , sops-nix
     , ...
     }:
     let
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       extraArgs = {
-        inherit sops-nix;
         flake = self;
       };
       nixpkgsConfig = {

@@ -30,7 +30,7 @@ in
     dockerUp
     fd
     devenv
-    # flake.inputs.devenv.packages.${system}.devenv
+    #flake.inputs.devenv.packages.${system}.devenv
     flake.inputs.froshpkgs.packages.${system}.shopware-cli
     gh
     htop
@@ -46,12 +46,13 @@ in
     deno
     php83
     php83.packages.composer
+    git-credential-oauth
     awscli2
     terraform
     k9s
     k6
-    protobuf
     watchexec
+    git-credential-oauth
 
     rustup
 

@@ -24,16 +24,27 @@
       gpg.format = "ssh";
       tag.gpgsign = true;
       http.postBuffer = 157286400;
+      credential.helper = [
+        "cache"
+        "oauth"
+      ];
 
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUY8rriTGw3ZcAtT6jJrsu5JAuUqi1WjFwOyWGoFZLA";
 
       url = {
-        "git@github.com:" = {
-          insteadOf = "https://github.com/";
+        "https://github.com/" = {
+          insteadOf = "git@github.com:";
         };
-        "git@gitlab.shopware.com:" = {
-          insteadOf = "https://gitlab.shopware.com/";
+        "https://gitlab.shopware.com/" = {
+          insteadOf = "git@gitlab.shopware.com:";
         };
+      };
+
+      credential."https://gitlab.shopware.com" = {
+        oauthClientId = "27dbdada9445855de26ad7fd4f3f0e0eb30f31ee618cdbcc2987d3ba652e6f6d";
+        oauthScopes = "read_repository write_repository";
+        oauthAuthURL = "/oauth/authorize";
+        oauthTokenURL = "/oauth/token";
       };
     };
 

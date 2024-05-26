@@ -1,21 +1,23 @@
 { config
 , pkgs
 , lib
-, devenv
-, home-manager
 , flake
-, sops-nix
 , ...
 }: {
   imports = [
-    flake.inputs.sops-nix.homeManagerModule
-
     ./programs
     ./packages.nix
     ./files.nix
     ./wsl.nix
     ./linux.nix
   ];
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  };
 
   home.username = "shyim";
   home.homeDirectory = "${
