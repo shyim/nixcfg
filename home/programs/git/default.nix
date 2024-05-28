@@ -5,6 +5,26 @@
 }: {
   programs.lazygit.enable = true;
 
+  home.packages = [ pkgs.gitsign ];
+
+  systemd.user.services.gitsign-credential-cache = {
+    Unit = {
+      Description = "Gitsign Credential Cache";
+    };
+    Service = {
+      ExecStart = "${pkgs.writeShellScript "start-credetial-cache" ''
+        #!${pkgs.stdenv.shell}
+        exec ${pkgs.gitsign}/bin/gitsign-credential-cache
+      ''}";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
+
+  home.sessionVariables.GITSIGN_CREDENTIAL_CACHE = "${config.home.homeDirectory}/.cache/sigstore/gitsign/cache.sock";
+  systemd.user.sessionVariables.GITSIGN_CREDENTIAL_CACHE = "${config.home.homeDirectory}/.cache/sigstore/gitsign/cache.sock";
+
   programs.git = {
     enable = true;
 
@@ -21,7 +41,9 @@
       pull.rebase = true;
       rebase.autoStash = true;
       init.defaultBranch = "main";
-      gpg.format = "ssh";
+      gpg.format = "x509";
+      gpg.x509.program = "gitsign";
+      gitsign.connectorID = "https://github.com/login/oauth";
       tag.gpgsign = true;
       http.postBuffer = 157286400;
       credential.helper = [
