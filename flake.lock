@@ -241,11 +241,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716234455,
-        "narHash": "sha256-vKc0TERGXG0q3WSCRn1ZyWjE3S9IXiDdNk7D2ToWj/4=",
+        "lastModified": 1716810389,
+        "narHash": "sha256-AwXtDGXrzdOLYAE7bZcBqLRRKXId8AqaZLqcEL9ESN4=",
         "owner": "FriendsOfShopware",
         "repo": "nur-packages",
-        "rev": "62d4c6b79207049b3b3c0234c95543b191b5a1af",
+        "rev": "4b7bc9573b6ff6f56a243ff922630460a774140b",
         "type": "github"
       },
       "original": {
@@ -306,11 +306,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716736760,
-        "narHash": "sha256-h3RmnNknKYtVA+EvUSra6QAwfZjC2q1G8YA7W0gat8Y=",
+        "lastModified": 1716847642,
+        "narHash": "sha256-rjEswRV0o23eBBils8lJXyIGha+l/VjV73IPg+ztxgk=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5d151429e1e79107acf6d06dcc5ace4e642ec239",
+        "rev": "10c7c219b7dae5795fb67f465a0d86cbe29f25fa",
         "type": "github"
       },
       "original": {
