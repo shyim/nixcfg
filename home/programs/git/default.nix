@@ -7,6 +7,15 @@
 
   home.packages = [ pkgs.gitsign ];
 
+  launchd.enable = true;
+  launchd.agents.gitsign-credential-cache = {
+    enable = true;
+    config = {
+        ProgramArguments = [ "${pkgs.gitsign}/bin/gitsign-credential-cache" ];
+        RunAtLoad = true;
+    };
+  };
+
   systemd.user.services.gitsign-credential-cache = {
     Unit = {
       Description = "Gitsign Credential Cache";
@@ -22,8 +31,11 @@
     };
   };
 
-  home.sessionVariables.GITSIGN_CREDENTIAL_CACHE = "${config.home.homeDirectory}/.cache/sigstore/gitsign/cache.sock";
-  systemd.user.sessionVariables.GITSIGN_CREDENTIAL_CACHE = "${config.home.homeDirectory}/.cache/sigstore/gitsign/cache.sock";
+  home.sessionVariables.GITSIGN_CREDENTIAL_CACHE = "${config.home.homeDirectory}/${if pkgs.stdenv.hostPlatform.isDarwin then
+    "Library/Caches/sigstore/gitsign/cache.sock"
+    else
+    ".cache/sigstore/gitsign/cache.sock"}";
+  systemd.user.sessionVariables.GITSIGN_CREDENTIAL_CACHE = config.home.sessionVariables.GITSIGN_CREDENTIAL_CACHE;
 
   programs.git = {
     enable = true;
