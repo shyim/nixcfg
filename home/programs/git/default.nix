@@ -13,6 +13,7 @@
     config = {
         ProgramArguments = [ "${pkgs.gitsign}/bin/gitsign-credential-cache" ];
         RunAtLoad = true;
+        KeepAlive = true;
     };
   };
 
