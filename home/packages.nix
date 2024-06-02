@@ -42,6 +42,7 @@ in
     sops
     tmux
     kubectl
+    kubectl-neat
     go_1_22
     deno
     php83

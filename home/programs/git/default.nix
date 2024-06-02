@@ -3,19 +3,13 @@
 , lib
 , ...
 }: {
+  imports = [
+    ./macos.nix
+  ];
+
   programs.lazygit.enable = true;
 
   home.packages = [ pkgs.gitsign ];
-
-  launchd.enable = true;
-  launchd.agents.gitsign-credential-cache = {
-    enable = true;
-    config = {
-        ProgramArguments = [ "${pkgs.gitsign}/bin/gitsign-credential-cache" ];
-        RunAtLoad = true;
-        KeepAlive = true;
-    };
-  };
 
   systemd.user.services.gitsign-credential-cache = {
     Unit = {
