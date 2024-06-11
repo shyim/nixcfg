@@ -24,8 +24,9 @@
       "shopware.cachix.org-1:IDifwLVQaaDU2qhlPkJsWJp/Pq0PfzHPIB90hBOhL3k="
     ];
     extraOptions = ''
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes auto-allocate-uids
       builders-use-substitutes = true
+      auto-allocate-uids = true
       builders = @/etc/nix/machines
       log-lines = 100
       nix-path = nixpkgs=${flake.inputs.nixpkgs}

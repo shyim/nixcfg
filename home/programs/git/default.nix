@@ -54,7 +54,7 @@
       tag.gpgsign = true;
       http.postBuffer = 157286400;
       credential.helper = [
-        "cache"
+        "cache --timeout 21600"
         "oauth"
       ];
 
