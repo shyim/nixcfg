@@ -1,8 +1,6 @@
 { pkgs, ... }: {
   fonts = {
-    fontDir.enable = true;
-
-    fonts = [
+    packages = [
       pkgs.jetbrains-mono
       pkgs.monaspace
       pkgs.inter
