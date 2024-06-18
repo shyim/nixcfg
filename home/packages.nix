@@ -22,6 +22,11 @@ let
   nixSha = pkgs.writeShellScriptBin "nix-sha" ''
     nix hash to-sri sha256:$(nix-prefetch-url $1)
   '';
+  php = pkgs.php83.buildEnv {
+    extraConfig = ''
+        memory_limit=512M
+    '';
+  };
 in
 {
   home.packages = with pkgs; [
@@ -45,8 +50,8 @@ in
     kubectl-neat
     go_1_22
     deno
-    php83
-    php83.packages.composer
+    php
+    php.packages.composer
     git-credential-oauth
     awscli2
     terraform
