@@ -69,6 +69,7 @@ in
     '';
     environmentVariables = {
       OBJC_DISABLE_INITIALIZE_FORK_SAFETY = "YES";
+      BUILDKIT_PROGRESS = "plain";
     };
   };
 
@@ -76,6 +77,7 @@ in
     enable = true;
     loginShellInit = ''
       export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+      export BUILDKIT_PROGRESS=plain
       set fish_greeting
 
       function kn-switch
