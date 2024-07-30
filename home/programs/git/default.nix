@@ -3,34 +3,7 @@
 , lib
 , ...
 }: {
-  imports = [
-    ./macos.nix
-  ];
-
   programs.lazygit.enable = true;
-
-  home.packages = [ pkgs.gitsign ];
-
-  systemd.user.services.gitsign-credential-cache = {
-    Unit = {
-      Description = "Gitsign Credential Cache";
-    };
-    Service = {
-      ExecStart = "${pkgs.writeShellScript "start-credetial-cache" ''
-        #!${pkgs.stdenv.shell}
-        exec ${pkgs.gitsign}/bin/gitsign-credential-cache
-      ''}";
-    };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-  };
-
-  home.sessionVariables.GITSIGN_CREDENTIAL_CACHE = "${config.home.homeDirectory}/${if pkgs.stdenv.hostPlatform.isDarwin then
-    "Library/Caches/sigstore/gitsign/cache.sock"
-    else
-    ".cache/sigstore/gitsign/cache.sock"}";
-  systemd.user.sessionVariables.GITSIGN_CREDENTIAL_CACHE = config.home.sessionVariables.GITSIGN_CREDENTIAL_CACHE;
 
   programs.git = {
     enable = true;
@@ -48,14 +21,12 @@
       pull.rebase = true;
       rebase.autoStash = true;
       init.defaultBranch = "main";
-      gpg.format = "x509";
-      gpg.x509.program = "gitsign";
-      gitsign.connectorID = "https://github.com/login/oauth";
+      gpg.format = "ssh";
       tag.gpgsign = true;
       http.postBuffer = 157286400;
       credential.helper = [
         "cache --timeout 21600"
-        "oauth"
+        "manager"
       ];
 
       user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJUY8rriTGw3ZcAtT6jJrsu5JAuUqi1WjFwOyWGoFZLA";
@@ -70,10 +41,10 @@
       };
 
       credential."https://gitlab.shopware.com" = {
-        oauthClientId = "27dbdada9445855de26ad7fd4f3f0e0eb30f31ee618cdbcc2987d3ba652e6f6d";
-        oauthScopes = "read_repository write_repository";
-        oauthAuthURL = "/oauth/authorize";
-        oauthTokenURL = "/oauth/token";
+        gitLabDevClientId = "d814eac52d07870752d434f9ec0710a9194cdf9d3dc8e9f7027b727a98b8cc9a";
+        gitLabDevClientSecret = "gloas-7e58c08652b003b097a913c8d5dcc0e8882ece48bfc707b46d1484a6517e7c79";
+        gitLabAuthModes = "browser";
+        provider = "gitlab";
       };
     };
 

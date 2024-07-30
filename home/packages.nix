@@ -52,13 +52,12 @@ in
     deno
     php
     php.packages.composer
-    git-credential-oauth
+    git-credential-manager
     awscli2
     terraform
     k9s
     k6
     watchexec
-    git-credential-oauth
 
     rustup
 
