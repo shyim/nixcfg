@@ -6,7 +6,6 @@
 let
   _1passwordPlugins = {
     "glab" = pkgs.glab;
-    "cachix" = pkgs.cachix;
     "hcloud" = pkgs.hcloud;
   };
 in

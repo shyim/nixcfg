@@ -16,12 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    devenv.url = "github:shyim/devenv/add-nix-caching";
-    devenv.inputs.nixpkgs.follows = "nixpkgs";
-
-    jetbrains.url = "github:shyim/jetbrains-flake";
-    jetbrains.inputs.nixpkgs.follows = "nixpkgs";
-
     froshpkgs = {
       url = "github:FriendsOfShopware/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,7 +25,6 @@
     { nixpkgs
     , home-manager
     , darwin
-    , devenv
     , self
     , ...
     }:
@@ -75,11 +68,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
-          ecsexec = pkgs.callPackage ./pkgs/ecsexec { };
-          #bun = pkgs.callPackage ./pkgs/bun { };
-          bun = pkgs.bun;
-          devenv = devenv.packages.${system}.devenv;
-
           homeConfigurations.shyim = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
 

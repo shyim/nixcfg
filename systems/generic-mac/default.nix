@@ -9,6 +9,8 @@
     ./fonts.nix
   ];
 
+  system.stateVersion = 5;
+
   programs.bash.enable = true;
   programs.zsh.enable = true;
 
@@ -16,13 +18,7 @@
   services.nix-daemon.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix = {
-    package = pkgs.nixVersions.nix_2_20;
-    settings.substituters = [
-      "https://shopware.cachix.org"
-    ];
-    settings.trusted-public-keys = [
-      "shopware.cachix.org-1:IDifwLVQaaDU2qhlPkJsWJp/Pq0PfzHPIB90hBOhL3k="
-    ];
+    package = pkgs.nixVersions.nix_2_23;
     extraOptions = ''
       experimental-features = nix-command flakes auto-allocate-uids
       builders-use-substitutes = true

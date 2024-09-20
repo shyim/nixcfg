@@ -10,6 +10,7 @@
         ServerAliveInterval 60
         ControlMaster auto
         ControlPath /tmp/ssh-%r@%h:%p
+        SetEnv TERM=xterm-256color
   '';
 
   home.file.".ssh/config.d/gitpod".text = ''

@@ -1,7 +1,6 @@
 { config
 , pkgs
 , lib
-, devenv
 , home-manager
 , ...
 }: {

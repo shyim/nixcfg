@@ -8,8 +8,6 @@
     ./programs
     ./packages.nix
     ./files.nix
-    ./wsl.nix
-    ./linux.nix
   ];
 
   nixpkgs = {
