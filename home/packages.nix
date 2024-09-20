@@ -11,7 +11,7 @@ let
   '';
   php = pkgs.php83.buildEnv {
     extraConfig = ''
-        memory_limit=512M
+      memory_limit=512M
     '';
   };
 in
