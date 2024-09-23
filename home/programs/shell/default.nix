@@ -92,6 +92,8 @@ in
         echo "switched to profile: $AWS_PROFILE"
       end
 
+      alias sudo="sudo --preserve-env=TERMINFO"
+
       ${lib.optionalString pkgs.stdenv.hostPlatform.isDarwin ''
       fish_add_path /run/current-system/sw/bin
       ''}

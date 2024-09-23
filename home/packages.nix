@@ -10,6 +10,7 @@ let
     nix hash to-sri sha256:$(nix-prefetch-url $1)
   '';
   php = pkgs.php83.buildEnv {
+    extensions = { enabled, all }: enabled ++ [ all.xdebug ];
     extraConfig = ''
       memory_limit=512M
     '';
@@ -39,7 +40,7 @@ in
     k9s
     k6
     watchexec
-    colmena
+    symfony-cli
   ];
 
   programs.home-manager.enable = true;

@@ -20,11 +20,17 @@
       url = "github:FriendsOfShopware/nur-packages";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+        url = "github:Mic92/sops-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     { nixpkgs
     , home-manager
     , darwin
+    , sops-nix
     , self
     , ...
     }:
@@ -39,6 +45,22 @@
       };
     in
     {
+      colmena = {
+        meta = {
+          nixpkgs = import nixpkgs {
+            system = "x86_64-linux";
+          };
+        };
+        "snorlax" = {
+          deployment.targetHost = "snorlax.bunny-chickadee.ts.net";
+          deployment.buildOnTarget = true;
+          imports = [
+            ./systems/nas
+            sops-nix.nixosModules.sops
+          ];
+        };
+      };
+
       darwinConfigurations = {
         deoxys = darwin.lib.darwinSystem {
           specialArgs = extraArgs;
