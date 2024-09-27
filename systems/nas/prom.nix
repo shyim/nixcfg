@@ -1,6 +1,7 @@
 { ... }: {
   sops.secrets.grafanaToken = {
     restartUnits = [ "alloy.service" ];
+    mode = "0444";
   };
 
   services.alloy.enable = true;
