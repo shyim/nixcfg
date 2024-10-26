@@ -47,6 +47,14 @@
         "create mask" = "0770";
         "directory mask" = "0770";
       };
+      nvme = {
+        "path" = "/mnt/nvme";
+        "valid users" = "shyim";
+        "read only" = "no";
+        "browseable" = "yes";
+        "create mask" = "0770";
+        "directory mask" = "0770";
+      };
       timemachine = {
         "path" = "/mnt/timemachine";
         "comment" = "Apple Backup Shared Folder";

@@ -22,8 +22,8 @@
     };
 
     sops-nix = {
-        url = "github:Mic92/sops-nix";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs =
@@ -52,7 +52,7 @@
           };
         };
         "snorlax" = {
-          deployment.targetHost = "snorlax.bunny-chickadee.ts.net";
+          deployment.targetHost = "192.168.31.92";
           deployment.buildOnTarget = true;
           imports = [
             ./systems/nas

@@ -35,16 +35,6 @@
         "https://github.com/" = {
           insteadOf = "git@github.com:";
         };
-        "https://gitlab.shopware.com/" = {
-          insteadOf = "git@gitlab.shopware.com:";
-        };
-      };
-
-      credential."https://gitlab.shopware.com" = {
-        gitLabDevClientId = "d814eac52d07870752d434f9ec0710a9194cdf9d3dc8e9f7027b727a98b8cc9a";
-        gitLabDevClientSecret = "gloas-7e58c08652b003b097a913c8d5dcc0e8882ece48bfc707b46d1484a6517e7c79";
-        gitLabAuthModes = "browser";
-        provider = "gitlab";
       };
     };
 
