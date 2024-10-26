@@ -1,6 +1,5 @@
 { flake
 , pkgs
-, lib
 , ...
 }: {
   imports = [
@@ -13,17 +12,19 @@
 
   programs.bash.enable = true;
   programs.zsh.enable = true;
+  programs.fish.enable = true;
 
-  # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix = {
-    package = pkgs.nixVersions.nix_2_23;
+    package = pkgs.nixVersions.latest;
+    settings = {
+      
+    };
     extraOptions = ''
       experimental-features = nix-command flakes auto-allocate-uids
       builders-use-substitutes = true
       auto-allocate-uids = true
-      builders = @/etc/nix/machines
       log-lines = 100
       nix-path = nixpkgs=${flake.inputs.nixpkgs}
       extra-platforms = x86_64-darwin aarch64-darwin
@@ -32,7 +33,6 @@
   };
 
   environment.shells = [ pkgs.fish "/etc/profiles/per-user/shyim/bin/nu" ];
-  programs.fish.enable = true;
 
   documentation.enable = false;
   documentation.man.enable = false;

@@ -1,7 +1,4 @@
 { config
-, pkgs
-, lib
-, home-manager
 , ...
 }: {
   home.file.".wakatime.cfg".text = ''[settings]
