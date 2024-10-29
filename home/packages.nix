@@ -10,6 +10,8 @@ let
   php = pkgs.php.buildEnv {
     extensions = ({ enabled, all }: enabled ++ (with all; [
       redis
+      amqp
+      zstd
     ]));
     extraConfig = ''
       memory_limit=512M
@@ -22,8 +24,8 @@ in
     fd
     curl
     php
+    php.packages.composer
     flake.inputs.froshpkgs.packages.${system}.shopware-cli
-    devenv
     gh
     htop
     jq

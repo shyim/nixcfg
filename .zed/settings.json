@@ -1,0 +1,9 @@
+{
+  "lsp": {
+    "nix": {
+      "binary": {
+        "path": "nixd"
+      }
+    }
+  }
+}
