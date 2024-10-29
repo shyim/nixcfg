@@ -17,9 +17,9 @@
   services.nix-daemon.enable = true;
   nixpkgs.config.allowUnfree = true;
   nix = {
-    package = pkgs.nixVersions.latest;
+    package = pkgs.lixVersions.lix_2_91;
     settings = {
-      
+
     };
     extraOptions = ''
       experimental-features = nix-command flakes auto-allocate-uids
