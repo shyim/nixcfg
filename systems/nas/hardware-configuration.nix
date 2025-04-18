@@ -1,6 +1,6 @@
 { modulesPath, ... }:
 {
-  imports = [ (modulesPath + "/profiles/headless.nix") ];
+  imports = [ (modulesPath + "/profiles/minimal.nix") ];
   boot.loader.grub = {
     efiSupport = true;
     efiInstallAsRemovable = true;
