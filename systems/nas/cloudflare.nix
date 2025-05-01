@@ -6,7 +6,8 @@
   systemd.services.cloudflare-tunnel = {
     description = "Cloudflare Tunnel";
     wantedBy = [ "multi-user.target" ];
-    after = [ "network.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
     serviceConfig = {
       EnvironmentFile = "/run/secrets/cloudflareTunnelToken";
       ExecStart = "${pkgs.cloudflared}/bin/cloudflared --no-autoupdate tunnel run --token \${CLOUDFLARE_TUNNEL_TOKEN}";
