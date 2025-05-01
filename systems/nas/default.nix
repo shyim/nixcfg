@@ -32,5 +32,8 @@
     htop
   ];
 
+  services.zfs.autoScrub.enable = true;
+  boot.zfs.extraPools = [ "nvme" "storage" ];
+
   services.vnstat.enable = true;
 }
