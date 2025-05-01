@@ -31,4 +31,6 @@
   environment.systemPackages = with pkgs; [
     htop
   ];
+
+  services.vnstat.enable = true;
 }
