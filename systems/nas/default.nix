@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
     ./cloudflare.nix
     ./smb.nix
+    ./webserver.nix
   ];
 
   sops.defaultSopsFile = ./sops/default.yaml;
@@ -36,4 +37,12 @@
   boot.zfs.extraPools = [ "nvme" "storage" ];
 
   services.vnstat.enable = true;
+
+  services.adguardhome = {
+    enable = true;
+    openFirewall = true;
+  };
+
+  networking.firewall.allowedTCPPorts = [ 53 ];
+  networking.firewall.allowedUDPPorts = [ 53 ];
 }
