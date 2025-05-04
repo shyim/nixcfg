@@ -4,6 +4,7 @@
     ./cloudflare.nix
     ./smb.nix
     ./webserver.nix
+    ./adguard.nix
   ];
 
   sops.defaultSopsFile = ./sops/default.yaml;
@@ -31,6 +32,7 @@
 
   environment.systemPackages = with pkgs; [
     htop
+    smartmontools
   ];
 
   services.zfs.autoScrub.enable = true;
@@ -38,11 +40,27 @@
 
   services.vnstat.enable = true;
 
-  services.adguardhome = {
+  boot.kernelParams = [
+      "i915.enable_guc=2"
+    ];
+
+  hardware.graphics = {
     enable = true;
-    openFirewall = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-compute-runtime
+    ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 53 ];
-  networking.firewall.allowedUDPPorts = [ 53 ];
+  services.smartd = {
+    enable = true;
+    devices = [
+      {
+        device = "/dev/disk/by-id/ata-ST14000NM001G-2KJ103_ZL201L70";
+      }
+      {
+        device = "/dev/disk/by-id/ata-ST14000NM001G-2KJ103_ZL2D6VB6";
+      }
+    ];
+  };
 }
