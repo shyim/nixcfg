@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
-    ./cloudflare.nix
     ./smb.nix
     ./webserver.nix
     ./adguard.nix
@@ -14,7 +14,9 @@
   networking.hostName = "snorlax";
   networking.domain = "shyim.de";
   services.openssh.enable = true;
-  users.users.root.openssh.authorizedKeys.keys = [ ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuZPgjmIp/dZ0HzRpoFDLsAqFwRGuFBwJiu9qk22tHP'' ];
+  users.users.root.openssh.authorizedKeys.keys = [
+    ''ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBuZPgjmIp/dZ0HzRpoFDLsAqFwRGuFBwJiu9qk22tHP''
+  ];
   system.stateVersion = "24.11";
   systemd.network.enable = true;
   networking.useDHCP = false;
@@ -36,13 +38,19 @@
   ];
 
   services.zfs.autoScrub.enable = true;
-  boot.zfs.extraPools = [ "nvme" "storage" ];
+  boot.zfs.extraPools = [
+    "nvme"
+    "storage"
+  ];
 
   services.vnstat.enable = true;
+  services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "server";
+  services.resolved.enable = true;
 
   boot.kernelParams = [
-      "i915.enable_guc=2"
-    ];
+    "i915.enable_guc=2"
+  ];
 
   hardware.graphics = {
     enable = true;

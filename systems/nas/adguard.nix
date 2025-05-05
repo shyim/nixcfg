@@ -1,17 +1,17 @@
-{ pkgs, ... }: {
-    sops.secrets.adguardLink = {
-        restartUnits = [ "adguard-linkip.service" ];
-    };
+{ pkgs, ... }:
+{
+  sops.secrets.adguardLink = {
+    restartUnits = [ "adguard-linkip.service" ];
+  };
 
-systemd.services.adguard-linkip = {
+  systemd.services.adguard-linkip = {
     description = "AdGuard DNS LinkIP Update Service";
 
-    
     # Define what the service should do
     script = ''
       ${pkgs.curl}/bin/curl -s "$ADGUARD_URL"
     '';
-    
+
     # Service configuration
     serviceConfig = {
       EnvironmentFile = "/run/secrets/adguardLink";
@@ -29,7 +29,7 @@ systemd.services.adguard-linkip = {
   systemd.timers.adguard-linkip = {
     description = "AdGuard DNS LinkIP Update Timer";
     wantedBy = [ "timers.target" ];
-    
+
     # Timer configuration
     timerConfig = {
       OnBootSec = "1min"; # Run shortly after boot

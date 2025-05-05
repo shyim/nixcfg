@@ -1,5 +1,14 @@
-{ pkgs, config, ... }: {
-  sops.secrets.cfDNSToken = {};
+{
+  pkgs,
+  config,
+  ...
+}:
+{
+  # Caddy QUIC Recommandation
+  boot.kernel.sysctl."net.core.rmem_max" = 26214400;
+  boot.kernel.sysctl."net.core.wmem_max" = 26214400;
+
+  sops.secrets.cfDNSToken = { };
 
   security.acme = {
     acceptTerms = true;
@@ -8,19 +17,94 @@
       dnsProvider = "cloudflare";
       extraDomainNames = [ "*.shyim.de" ];
       environmentFile = "/run/secrets/cfDNSToken";
+    };
   };
-};
+
+  sops.secrets.tailscale = {
+    restartUnits = [ "caddy.service" ];
+  };
+
+  sops.secrets.cloudflareDnsTokenSingle = { };
+
+  services.cloudflare-dyndns = {
+    enable = true;
+    ipv4 = false;
+    ipv6 = true;
+    proxied = true;
+    apiTokenFile = "/run/secrets/cloudflareDnsTokenSingle";
+    domains = [
+      "home.shyim.de"
+      "nut.shyim.de"
+      "jellyfin.shyim.de"
+      "jellyseerr.shyim.de"
+    ];
+  };
 
   services.caddy = {
     enable = true;
+    environmentFile = "/run/secrets/tailscale";
+    package = pkgs.caddy.withPlugins {
+      plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20250207163903-69a970c84556" ];
+      hash = "sha256-USKNTAvxmuxzhqA8e8XERr1U8513ONG54Md5vcDUERg=";
+    };
+    virtualHosts."nut.shyim.de" = {
+      useACMEHost = "shyim.de";
+      extraConfig = ''
+        reverse_proxy localhost:9000
+      '';
+    };
+    virtualHosts."home.shyim.de" = {
+      useACMEHost = "shyim.de";
+      extraConfig = ''
+        reverse_proxy localhost:8123
+      '';
+    };
     virtualHosts."jellyfin.shyim.de" = {
       useACMEHost = "shyim.de";
       extraConfig = ''
         reverse_proxy localhost:8096
       '';
     };
+    virtualHosts."jellyseerr.shyim.de" = {
+      useACMEHost = "shyim.de";
+      extraConfig = ''
+        reverse_proxy localhost:5055
+      '';
+    };
+    virtualHosts."https://radarr.bunny-chickadee.ts.net" = {
+      extraConfig = ''
+        bind tailscale/radarr
+        reverse_proxy localhost:7878
+      '';
+    };
+    virtualHosts."https://sonarr.bunny-chickadee.ts.net" = {
+      extraConfig = ''
+        bind tailscale/sonarr
+        reverse_proxy localhost:8989
+      '';
+    };
+    virtualHosts."https://sabnzbd.bunny-chickadee.ts.net" = {
+      extraConfig = ''
+        bind tailscale/sabnzbd
+        reverse_proxy localhost:8172
+      '';
+    };
+    virtualHosts."https://portainer.bunny-chickadee.ts.net" = {
+      extraConfig = ''
+        bind tailscale/portainer
+        reverse_proxy localhost:9443 {
+          transport http {
+                tls
+                tls_insecure_skip_verify
+          }
+        }
+      '';
+    };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+  ];
   networking.firewall.allowedUDPPorts = [ 443 ];
 }

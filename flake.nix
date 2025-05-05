@@ -10,23 +10,33 @@
     colmena.url = "github:zhaofengli/colmena";
   };
   outputs =
-    { nixpkgs
-    , colmena
-    , sops-nix
-    , self
-    , ...
+    {
+      nixpkgs,
+      colmena,
+      sops-nix,
+      self,
+      ...
     }:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+      supportedSystems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
       extraArgs = {
         flake = self;
       };
       nixpkgsConfig = {
-        config = { allowUnfree = true; };
+        config = {
+          allowUnfree = true;
+        };
       };
     in
     {
+      # Add formatter for nix files
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+
       colmenaHive = colmena.lib.makeHive self.outputs.colmena;
       colmena = {
         meta = {
@@ -35,7 +45,7 @@
           };
         };
         "snorlax" = {
-          deployment.targetHost = "192.168.31.92";
+          deployment.targetHost = "snorlax.bunny-chickadee.ts.net";
           deployment.buildOnTarget = true;
           imports = [
             ./systems/nas

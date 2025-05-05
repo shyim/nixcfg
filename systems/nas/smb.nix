@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   users.users.shyim = {
     isNormalUser = true;
   };
