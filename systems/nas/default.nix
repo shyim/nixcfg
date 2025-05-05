@@ -45,8 +45,20 @@
 
   services.vnstat.enable = true;
   services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "server";
+  services.tailscale.useRoutingFeatures = "both";
+  services.tailscale.openFirewall = true;
   services.resolved.enable = true;
+
+  services.networkd-dispatcher = {
+    enable = true;
+    rules."50-tailscale" = {
+      onState = ["routable"];
+      script = ''
+        #!${pkgs.runtimeShell}
+        ${pkgs.ethtool}/bin/ethtool -K enp3s0 rx-udp-gro-forwarding on rx-gro-list off
+      '';
+    };
+  };
 
   boot.kernelParams = [
     "i915.enable_guc=2"
