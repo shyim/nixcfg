@@ -33,15 +33,17 @@
     proxied = true;
     apiTokenFile = "/run/secrets/cloudflareDnsTokenSingle";
     domains = [
-      "home.shyim.de"
       "nut.shyim.de"
       "jellyfin.shyim.de"
       "jellyseerr.shyim.de"
     ];
   };
 
+  services.glances.enable = true;
+
   services.caddy = {
     enable = true;
+    enableReload = false;
     environmentFile = "/run/secrets/tailscale";
     package = pkgs.caddy.withPlugins {
       plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20250207163903-69a970c84556" ];
@@ -51,12 +53,6 @@
       useACMEHost = "shyim.de";
       extraConfig = ''
         reverse_proxy localhost:9000
-      '';
-    };
-    virtualHosts."home.shyim.de" = {
-      useACMEHost = "shyim.de";
-      extraConfig = ''
-        reverse_proxy localhost:8123
       '';
     };
     virtualHosts."jellyfin.shyim.de" = {
@@ -87,6 +83,12 @@
       extraConfig = ''
         bind tailscale/sabnzbd
         reverse_proxy localhost:8172
+      '';
+    };
+    virtualHosts."https://glances.bunny-chickadee.ts.net" = {
+      extraConfig = ''
+        bind tailscale/glances
+        reverse_proxy localhost:61208
       '';
     };
     virtualHosts."https://portainer.bunny-chickadee.ts.net" = {

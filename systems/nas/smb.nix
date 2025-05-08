@@ -32,14 +32,6 @@
         "create mask" = "0770";
         "directory mask" = "0770";
       };
-      p = {
-        "path" = "/mnt/p";
-        "valid users" = "shyim";
-        "read only" = "no";
-        "browseable" = "yes";
-        "create mask" = "0770";
-        "directory mask" = "0770";
-      };
       shyim = {
         "path" = "/mnt/shyim";
         "valid users" = "shyim";

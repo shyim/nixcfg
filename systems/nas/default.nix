@@ -40,7 +40,7 @@
   services.zfs.autoScrub.enable = true;
   boot.zfs.extraPools = [
     "nvme"
-    "storage"
+    "snorlax"
   ];
 
   services.vnstat.enable = true;
