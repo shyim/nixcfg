@@ -52,6 +52,15 @@
             sops-nix.nixosModules.sops
           ];
         };
+
+        "shea" = {
+          deployment.targetHost = "shea.shyim.de";
+          deployment.buildOnTarget = true;
+          imports = [
+            ./systems/shea
+            sops-nix.nixosModules.sops
+          ];
+        };
       };
     };
 }
