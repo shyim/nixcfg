@@ -1,8 +1,10 @@
-{ config
-, pkgs
-, flake
-, ...
-}: {
+{
+  config,
+  pkgs,
+  flake,
+  ...
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./services.nix

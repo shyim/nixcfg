@@ -1,7 +1,8 @@
-{ pkgs , ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
-     vim
-     ghostty.terminfo
-     htop
+    vim
+    ghostty.terminfo
+    htop
   ];
 }

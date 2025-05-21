@@ -1,4 +1,5 @@
-{ pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./services/wakapi.nix
   ];
@@ -9,7 +10,10 @@
     enable = true;
     openFirewall = true;
     useRoutingFeatures = "both";
-    extraUpFlags = [ "--ssh" "--advertise-exit-node" ];
+    extraUpFlags = [
+      "--ssh"
+      "--advertise-exit-node"
+    ];
 
     derper = {
       enable = true;
@@ -22,7 +26,7 @@
   services.networkd-dispatcher = {
     enable = true;
     rules."50-tailscale" = {
-      onState = ["routable"];
+      onState = [ "routable" ];
       script = ''
         #!${pkgs.runtimeShell}
         ${pkgs.ethtool}/bin/ethtool -K enp0s3 rx-udp-gro-forwarding on rx-gro-list off
@@ -31,7 +35,10 @@
   };
 
   networking.firewall = {
-    allowedTCPPorts = [ 80 443 ];
+    allowedTCPPorts = [
+      80
+      443
+    ];
     allowedUDPPorts = [ 443 ];
   };
 

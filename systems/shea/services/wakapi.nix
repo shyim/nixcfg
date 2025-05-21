@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   services.nginx.virtualHosts."time.fos.gg" = {
     enableACME = true;
     forceSSL = true;

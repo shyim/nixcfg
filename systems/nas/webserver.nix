@@ -24,19 +24,21 @@
     restartUnits = [ "caddy.service" ];
   };
 
-  sops.secrets.cloudflareDnsTokenSingle = { };
+  sops.secrets.cloudflareTunnelToken = {
+    restartUnits = [ "cloudflare-tunnel.service" ];
+  };
 
-  services.cloudflare-dyndns = {
-    enable = true;
-    ipv4 = false;
-    ipv6 = true;
-    proxied = true;
-    apiTokenFile = "/run/secrets/cloudflareDnsTokenSingle";
-    domains = [
-      "nut.shyim.de"
-      "jellyfin.shyim.de"
-      "jellyseerr.shyim.de"
-    ];
+  systemd.services.cloudflare-tunnel = {
+    description = "Cloudflare Tunnel";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    serviceConfig = {
+      EnvironmentFile = "/run/secrets/cloudflareTunnelToken";
+      ExecStart = "${pkgs.cloudflared}/bin/cloudflared --no-autoupdate tunnel run --token \${CLOUDFLARE_TUNNEL_TOKEN}";
+      DynamicUser = true;
+      Restart = "always";
+    };
   };
 
   services.glances.enable = true;

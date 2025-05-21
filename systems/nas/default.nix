@@ -52,7 +52,7 @@
   services.networkd-dispatcher = {
     enable = true;
     rules."50-tailscale" = {
-      onState = ["routable"];
+      onState = [ "routable" ];
       script = ''
         #!${pkgs.runtimeShell}
         ${pkgs.ethtool}/bin/ethtool -K enp3s0 rx-udp-gro-forwarding on rx-gro-list off
