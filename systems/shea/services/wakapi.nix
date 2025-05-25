@@ -38,9 +38,8 @@
         provider = "smtp";
         sender = "Wakapi <contact@fos.gg>";
         smtp = {
-          host = "smtp.mail.me.com";
+          host = "email-smtp.eu-central-1.amazonaws.com";
           port = 587;
-          username = "s.sayakci@icloud.com";
           tls = false;
         };
       };
