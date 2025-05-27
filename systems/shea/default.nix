@@ -10,6 +10,7 @@
     ./services.nix
     ./security.nix
     ./packages.nix
+    ./ssh.nix
   ];
 
   sops.defaultSopsFile = ./sops/default.yaml;
@@ -20,6 +21,8 @@
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.tmp.cleanOnBoot = true;
+
+  virtualisation.docker.enable = true;
 
   networking = {
     hostName = "shea";
