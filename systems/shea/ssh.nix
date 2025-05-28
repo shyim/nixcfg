@@ -47,7 +47,7 @@ in
     group = "opksshuser";
     text = ''
       github s.sayakci@gmail.com https://accounts.google.com
-      github repo:FriendsOfShopware/shopmon:ref:refs/heads/main https://token.actions.githubusercontent.com
+      github repo:FriendsOfShopware/shopmon:environment:staging https://token.actions.githubusercontent.com
       github repo:shyim/opkssh-test:ref:refs/heads/main https://token.actions.githubusercontent.com
     '';
   };

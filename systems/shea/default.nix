@@ -22,7 +22,11 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.tmp.cleanOnBoot = true;
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    liveRestore = true;
+    autoPrune.enable = true;
+  };
 
   networking = {
     hostName = "shea";

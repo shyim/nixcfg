@@ -2,6 +2,8 @@
 {
   imports = [
     ./services/wakapi.nix
+    ./services/shopmon.nix
+    ./services/alloy.nix
   ];
 
   services.openssh.enable = true;
