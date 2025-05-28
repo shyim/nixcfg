@@ -1,54 +1,47 @@
 { config, pkgs, ... }:
 
-let
-  opkssh = (pkgs.callPackage ./pkgs/opkssh.nix { });
-in
 {
+  imports = [ ./opkssh.nix ];
+
   users.users.github = {
     isNormalUser = true;
     extraGroups = [ "docker" ];
   };
 
-  users.groups.opksshuser = { };
-  users.users.opksshuser = {
-    isSystemUser = true;
-    description = "OpenID Connect SSH User";
-    group = "opksshuser";
-  };
+  services.openssh.settings.PasswordAuthentication = false;
 
-  services.openssh = {
-    authorizedKeysCommand = "/run/wrappers/bin/opkssh verify %u %k %t";
-    authorizedKeysCommandUser = "opksshuser";
+  services.opkssh = {
+    enable = true;
 
-    settings = {
-      "PasswordAuthentication" = false;
+    providers = {
+      google = {
+        issuer = "https://accounts.google.com";
+        clientId = "206584157355-7cbe4s640tvm7naoludob4ut1emii7sf.apps.googleusercontent.com";
+        lifetime = "24h";
+      };
+      github = {
+        issuer = "https://token.actions.githubusercontent.com";
+        clientId = "github";
+        lifetime = "oidc";
+      };
     };
-  };
 
-  security.wrappers."opkssh" = {
-    source = "${opkssh}/bin/opkssh";
-    owner = "root";
-    group = "root";
-  };
-
-  environment.etc."opk/providers" = {
-    mode = "0640";
-    user = "opksshuser";
-    group = "opksshuser";
-    text = ''
-      https://accounts.google.com 206584157355-7cbe4s640tvm7naoludob4ut1emii7sf.apps.googleusercontent.com 24h
-      https://token.actions.githubusercontent.com github oidc
-    '';
-  };
-
-  environment.etc."opk/auth_id" = {
-    mode = "0640";
-    user = "opksshuser";
-    group = "opksshuser";
-    text = ''
-      github s.sayakci@gmail.com https://accounts.google.com
-      github repo:FriendsOfShopware/shopmon:environment:staging https://token.actions.githubusercontent.com
-      github repo:shyim/opkssh-test:ref:refs/heads/main https://token.actions.githubusercontent.com
-    '';
+    authorizations = [
+      {
+        user = "github";
+        principal = "s.sayakci@gmail.com";
+        issuer = "https://accounts.google.com";
+      }
+      {
+        user = "github";
+        principal = "repo:FriendsOfShopware/shopmon:environment:staging";
+        issuer = "https://token.actions.githubusercontent.com";
+      }
+      {
+        user = "github";
+        principal = "repo:shyim/opkssh-test:ref:refs/heads/main";
+        issuer = "https://token.actions.githubusercontent.com";
+      }
+    ];
   };
 }
