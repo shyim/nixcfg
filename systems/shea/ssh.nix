@@ -39,6 +39,11 @@
       }
       {
         user = "github";
+        principal = "repo:FriendsOfShopware/shopmon:environment:production";
+        issuer = "https://token.actions.githubusercontent.com";
+      }
+      {
+        user = "github";
         principal = "repo:shyim/opkssh-test:ref:refs/heads/main";
         issuer = "https://token.actions.githubusercontent.com";
       }
