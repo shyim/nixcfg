@@ -49,7 +49,7 @@
     environmentFile = "/run/secrets/tailscale";
     package = pkgs.caddy.withPlugins {
       plugins = [ "github.com/tailscale/caddy-tailscale@v0.0.0-20250207163903-69a970c84556" ];
-      hash = "sha256-USKNTAvxmuxzhqA8e8XERr1U8513ONG54Md5vcDUERg=";
+      hash = "sha256-wt3+xCsT83RpPySbL7dKVwgqjKw06qzrP2Em+SxEPto=";
     };
     virtualHosts."http://nut.shyim.de" = {
       extraConfig = ''
