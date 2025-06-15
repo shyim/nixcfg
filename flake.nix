@@ -45,7 +45,7 @@
           };
         };
         "snorlax" = {
-          deployment.targetHost = "snorlax.bunny-chickadee.ts.net";
+          deployment.targetHost = "192.168.31.92";
           deployment.buildOnTarget = true;
           imports = [
             ./systems/nas

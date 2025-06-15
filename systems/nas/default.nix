@@ -3,8 +3,8 @@
   imports = [
     ./hardware-configuration.nix
     ./smb.nix
-    ./webserver.nix
     ./adguard.nix
+    ./alloy.nix
   ];
 
   sops.defaultSopsFile = ./sops/default.yaml;
@@ -20,7 +20,17 @@
   system.stateVersion = "24.11";
   systemd.network.enable = true;
   networking.useDHCP = false;
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      "log-driver" = "journald";
+      "live-restore" = true;
+    };
+  };
+
+  services.journald.extraConfig = ''
+    SystemMaxUse=1G
+  '';
 
   systemd.network.networks."10-lan" = {
     matchConfig.Name = "enp3s0";
@@ -44,21 +54,7 @@
   ];
 
   services.vnstat.enable = true;
-  services.tailscale.enable = true;
-  services.tailscale.useRoutingFeatures = "both";
-  services.tailscale.openFirewall = true;
   services.resolved.enable = true;
-
-  services.networkd-dispatcher = {
-    enable = true;
-    rules."50-tailscale" = {
-      onState = [ "routable" ];
-      script = ''
-        #!${pkgs.runtimeShell}
-        ${pkgs.ethtool}/bin/ethtool -K enp3s0 rx-udp-gro-forwarding on rx-gro-list off
-      '';
-    };
-  };
 
   boot.kernelParams = [
     "i915.enable_guc=2"
@@ -80,6 +76,12 @@
       }
       {
         device = "/dev/disk/by-id/ata-ST14000NM001G-2KJ103_ZL2D6VB6";
+      }
+      {
+        device = "/dev/disk/by-id/ata-ST28000NM000C-3WM103_ZXA0K8WZ";
+      }
+      {
+        device = "/dev/disk/by-id/ata-ST28000NM000C-3WM103_ZXA0Q9E2";
       }
     ];
   };
