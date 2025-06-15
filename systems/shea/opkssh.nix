@@ -9,7 +9,7 @@ with lib;
 
 let
   cfg = config.services.opkssh;
-  opkssh = pkgs.callPackage ./pkgs/opkssh.nix { };
+  opkssh = pkgs.opkssh;
 
   providerFile = pkgs.writeText "opkssh-providers" (
     concatStringsSep "\n" (
@@ -28,6 +28,8 @@ in
 {
   options.services.opkssh = {
     enable = mkEnableOption "OpenID Connect SSH authentication";
+
+    package = mkPackageOption pkgs "opkssh" { };
 
     user = mkOption {
       type = types.str;
@@ -147,7 +149,7 @@ in
     };
 
     security.wrappers."opkssh" = {
-      source = "${opkssh}/bin/opkssh";
+      source = "${cfg.package}/bin/opkssh";
       owner = "root";
       group = "root";
     };
