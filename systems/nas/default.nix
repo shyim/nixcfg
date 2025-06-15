@@ -27,6 +27,7 @@
       "live-restore" = true;
     };
   };
+  nix.gc.automatic = true;
 
   services.journald.extraConfig = ''
     SystemMaxUse=1G

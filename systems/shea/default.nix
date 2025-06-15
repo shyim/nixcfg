@@ -28,6 +28,8 @@
     autoPrune.enable = true;
   };
 
+  nix.gc.automatic = true;
+
   networking = {
     hostName = "shea";
     domain = "shyim.de";
