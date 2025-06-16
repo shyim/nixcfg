@@ -1,4 +1,5 @@
-{ lib, config, ... }: {
+{ lib, config, ... }:
+{
   sops.secrets = {
     grafanaCloud = {
     };

@@ -1,29 +1,29 @@
 { config, ... }:
 {
-  services.nginx.virtualHosts."shopmon.fos.gg" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:3000";
-      proxyWebsockets = true;
-    };
-  };
+  sops.secrets.swdemo = {};
 
-  services.nginx.virtualHosts."shopmon-staging.fos.gg" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:3001";
-      proxyWebsockets = true;
-    };
-  };
+  services.docker-compose.swdemo.config = {
+    services.shopware = {
+      image = "ghcr.io/friendsofshopware/shopware-demo-environment:6.6.10";
+      labels = [
+        "traefik.enable=true"
+        "traefik.http.routers.swdemo.entrypoints=websecure"
+        "traefik.http.routers.swdemo.rule=Host(`demo.fos.gg`)"
+        "traefik.http.routers.swdemo.tls=true"
+        "traefik.http.routers.swdemo.tls.certresolver=cloudflare"
+        "traefik.http.routers.swdemo.tls.domains[0].main=fos.gg"
+        "traefik.http.routers.swdemo.tls.domains[0].sans=*.fos.gg"
 
-  services.nginx.virtualHosts."demo.fos.gg" = {
-    enableACME = true;
-    forceSSL = true;
-    locations."/" = {
-      proxyPass = "http://127.0.0.1:3070";
-      proxyWebsockets = true;
+        "traefik.http.middlewares.swdemo-compress.compress=true"
+        "traefik.http.middlewares.swdemo-compress.compress.encodings=zstd,gzip"
+        "traefik.http.routers.swdemo.middlewares=swdemo-compress"
+      ];
+      env_file = config.sops.secrets.swdemo.path;
+      environment = {
+        EXTENSIONS = "frosh/tools:* frosh/shopmon:*";
+        TRUSTED_PROXIES = "REMOTE_ADDR";
+        APP_URL = "https://demo.fos.gg";
+      };
     };
   };
 }

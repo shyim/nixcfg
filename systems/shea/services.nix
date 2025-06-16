@@ -3,6 +3,7 @@
   imports = [
     ./services/wakapi.nix
     ./services/shopmon.nix
+    ./services/traefik.nix
   ];
 
   services.openssh.enable = true;
@@ -13,18 +14,5 @@
       443
     ];
     allowedUDPPorts = [ 443 ];
-  };
-
-  services.nginx = {
-    enable = true;
-    recommendedOptimisation = true;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    recommendedGzipSettings = true;
-  };
-
-  security.acme = {
-    acceptTerms = true;
-    email = "acme@shyim.de";
   };
 }

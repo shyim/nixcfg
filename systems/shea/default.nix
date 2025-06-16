@@ -6,6 +6,7 @@
 }:
 {
   imports = [
+    ../../modules/docker-compose.nix
     ./hardware-configuration.nix
     ./services.nix
     ./security.nix
