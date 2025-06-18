@@ -14,6 +14,10 @@
         "--entrypoints.web.address=:80"
         "--entrypoints.websecure.address=:443"
 
+        # Metrics
+        "--metrics.prometheus=true"
+        "--metrics.prometheus.addrouterslabels=true"
+
         # Enable Docker provider
         "--providers.docker=true"
         "--providers.docker.exposedbydefault=false"
