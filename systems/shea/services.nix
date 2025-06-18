@@ -4,6 +4,7 @@
     ./services/wakapi.nix
     ./services/shopmon.nix
     ./services/traefik.nix
+    ./services/alloy.nix
   ];
 
   services.openssh.enable = true;
