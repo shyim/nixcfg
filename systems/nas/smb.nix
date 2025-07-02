@@ -4,12 +4,16 @@
     isNormalUser = true;
   };
 
+  users.users.thelostsandman = {
+    isNormalUser = true;
+  };
+
   services.samba = {
     enable = true;
     openFirewall = true;
     settings = {
       global = {
-        "min protocol" = "SMB2";
+        "min protocol" = "SMB3";
         "vfs objects" = "catia fruit streams_xattr";
         "fruit:nfs_aces" = "no";
         "fruit:metadata" = "stream";
@@ -18,11 +22,17 @@
         "fruit:veto_appledouble" = "no";
         "fruit:wipe_intentionally_left_blank_rfork" = "yes";
         "fruit:delete_empty_adfiles" = "yes";
-        "server min protocol" = "SMB2";
+        "server min protocol" = "SMB3";
         "wins support" = "yes";
         "dns proxy" = "yes";
         "hosts allow" = "192.168.31. 127.0.0.1 100.64.0.0/10 localhost";
         "hosts deny" = "0.0.0.0/0";
+      };
+      jellyfin = {
+        "path" = "/mnt/jellyfin";
+        "valid users" = "shyim thelostsandman";
+        "read only" = "yes";
+        "browseable" = "yes";
       };
       switch = {
         "path" = "/mnt/switch";
