@@ -25,7 +25,7 @@
         "server min protocol" = "SMB3";
         "wins support" = "yes";
         "dns proxy" = "yes";
-        "hosts allow" = "192.168.31. 127.0.0.1 100.64.0.0/10 localhost";
+        "hosts allow" = "192.168.31. 127.0.0.1 172.28.0. 100.64.0.0/10 localhost";
         "hosts deny" = "0.0.0.0/0";
       };
       jellyfin = {
