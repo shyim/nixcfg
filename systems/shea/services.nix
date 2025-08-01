@@ -4,6 +4,7 @@
     ./services/wakapi.nix
     ./services/traefik.nix
     ./services/alloy.nix
+    ./services/swdemo.nix
   ];
 
   services.openssh.enable = true;
