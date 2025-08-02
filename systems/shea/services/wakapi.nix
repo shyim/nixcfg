@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  sops.secrets.wakapi = {};
+  sops.secrets.wakapi = { };
 
   services.docker-compose.wakapi.config = {
     services.wakapi = {

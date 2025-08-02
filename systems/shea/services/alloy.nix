@@ -1,7 +1,7 @@
 { lib, config, ... }:
 {
   sops.secrets = {
-    grafanaCloud = {};
+    grafanaCloud = { };
   };
 
   services.alloy = {

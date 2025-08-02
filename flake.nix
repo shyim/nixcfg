@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -45,7 +45,7 @@
           };
         };
         "snorlax" = {
-          deployment.targetHost = "snorlax.shyim.de";
+          deployment.targetHost = "192.168.31.92";
           deployment.buildOnTarget = true;
           imports = [
             ./systems/nas

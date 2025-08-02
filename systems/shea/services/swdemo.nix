@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  sops.secrets.swdemo = {};
+  sops.secrets.swdemo = { };
 
   services.docker-compose.swdemo.config = {
     services.shopware = {
