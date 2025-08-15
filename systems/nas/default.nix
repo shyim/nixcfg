@@ -5,6 +5,7 @@
     ./smb.nix
     ./adguard.nix
     ./alloy.nix
+    ./wg.nix
   ];
 
   sops.defaultSopsFile = ./sops/default.yaml;

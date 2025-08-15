@@ -2,49 +2,52 @@
 {
   sops.secrets.traefik = { };
 
-  services.docker-compose.traefik.config = {
-    services = {
-      pangolin = {
-        image = "docker.io/fosrl/pangolin:1.8.0";
-        restart = "unless-stopped";
-        volumes = [
-          "/var/lib/pangolin:/app/config"
-        ];
-        healthcheck = {
-          test = ["CMD" "curl" "-f" "http://localhost:3001/api/v1/"];
-          interval = "30s";
-          timeout = "10s";
-          start_interval = "3s";
-          start_period = "30s";
-          retries = 3;
+  services.traefik = {
+    enable = true;
+
+    staticConfigOptions = {
+      entryPoints = {
+        web = {
+          address = ":80";
+          asDefault = true;
+          http.redirections.entrypoint = {
+            to = "websecure";
+            scheme = "https";
+          };
+        };
+
+        websecure = {
+          address = ":443";
+          asDefault = true;
+          http.tls.certResolver = "letsencrypt";
         };
       };
-      gerbil = {
-        image = "docker.io/fosrl/gerbil:1.1.0";
-        restart = "unless-stopped";
-        depends_on.pangolin.condition = "service_healthy";
-        command = [
-          "--reachableAt=http://gerbil:3003"
-          "--generateAndSaveKeyTo=/var/config/key"
-          "--remoteConfig=http://pangolin:3001/api/v1/gerbil/get-config"
-          "--reportBandwidthTo=http://pangolin:3001/api/v1/gerbil/receive-bandwidth"
-        ];
-        volumes = [
-          "/var/lib/pangolin:/var/config"
-        ];
-        cap_add = [
-          "NET_ADMIN"
-          "SYS_MODULE"
-        ];
-        ports = [
-          "51820:51820/udp"
-          "21820:21820/udp"
-          "80:80"
-          "443:443"
-          "443:443/udp"
-        ];
+
+      log = {
+        level = "INFO";
+        filePath = "${config.services.traefik.dataDir}/traefik.log";
+        format = "json";
       };
 
+      certificatesResolvers.letsencrypt.acme = {
+        email = "postmaster@YOUR.DOMAIN";
+        storage = "${config.services.traefik.dataDir}/acme.json";
+        httpChallenge.entryPoint = "web";
+      };
+
+      api.dashboard = true;
+      # Access the Traefik dashboard on <Traefik IP>:8080 of your server
+      # api.insecure = true;
+    };
+
+    dynamicConfigOptions = {
+      http.routers = {};
+      http.services = {};
+    };
+  };
+
+  services.docker-compose.traefik.config = {
+    services = {
       traefik = {
         image = "traefik";
         volumes = [
@@ -79,11 +82,6 @@
           "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53"
           "--certificatesresolvers.cloudflare.acme.email=acme@shyim.de"
           "--certificatesresolvers.cloudflare.acme.storage=/data/acme.json"
-
-          # Global Redirect
-          "--entrypoints.web.http.redirections.entrypoint.to=websecure"
-          "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-          "--entrypoints.web.http.redirections.entrypoint.permanent=true"
 
           "--log.level=INFO"
           "--accesslog=true"

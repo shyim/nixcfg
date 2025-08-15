@@ -45,7 +45,7 @@
           };
         };
         "snorlax" = {
-          deployment.targetHost = "192.168.31.92";
+          deployment.targetHost = "10.100.0.2";
           deployment.buildOnTarget = true;
           imports = [
             ./systems/nas
