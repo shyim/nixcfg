@@ -25,7 +25,6 @@
 
   virtualisation.docker = {
     enable = true;
-    liveRestore = true;
     autoPrune.enable = true;
   };
 
