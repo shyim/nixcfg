@@ -45,19 +45,10 @@
           };
         };
         "snorlax" = {
-          deployment.targetHost = "10.100.0.2";
+          deployment.targetHost = "192.168.31.92";
           deployment.buildOnTarget = true;
           imports = [
             ./systems/nas
-            sops-nix.nixosModules.sops
-          ];
-        };
-
-        "shea" = {
-          deployment.targetHost = "shea.shyim.de";
-          deployment.buildOnTarget = true;
-          imports = [
-            ./systems/shea
             sops-nix.nixosModules.sops
           ];
         };
